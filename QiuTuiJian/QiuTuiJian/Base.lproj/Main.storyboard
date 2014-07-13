@@ -66,7 +66,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="Second View3" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
                                 <rect key="frame" x="135" y="219" width="210" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
@@ -104,6 +104,26 @@
             </objects>
             <point key="canvasLocation" x="3042" y="1397"/>
         </scene>
+        <!--Share - Share-->
+        <scene sceneID="QyG-Zy-L6v">
+            <objects>
+                <viewController id="PbT-B6-csG" customClass="VCShare" customModule="QiuTuiJian" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2fy-A4-I7p"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ei-Qn-gy2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="liZ-9S-X3v">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Share" image="share" id="BPi-tF-HDq" userLabel="Share"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSU-RK-Vho" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3042" y="1958"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -117,65 +137,17 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="PbT-B6-csG" kind="relationship" relationship="viewControllers" id="SBv-66-20V"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2283" y="965"/>
         </scene>
-        <!--Second View Controller - Second-->
-        <scene sceneID="OZT-dC-z8l">
-            <objects>
-                <viewController id="lQF-s3-0cD" customClass="SecondViewController" customModule="QiuTuiJian" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qWv-mr-82f"/>
-                        <viewControllerLayoutGuide type="bottom" id="aIg-ks-hxW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bYy-Am-tU3">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="TzJ-yZ-4pZ">
-                                <rect key="frame" x="135" y="219" width="210" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the second view controller — an instance of SecondViewController — specified in the app delegate." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cvc-68-vmK">
-                                <rect key="frame" x="50" y="269" width="380" height="112"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="500" constant="380" id="jwg-QC-m9Y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="TzJ-yZ-4pZ" secondAttribute="centerY" id="01l-fR-hiW"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Cvc-68-vmK" secondAttribute="trailing" constant="50" id="BVb-3K-47v"/>
-                            <constraint firstItem="Cvc-68-vmK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bYy-Am-tU3" secondAttribute="leading" constant="50" id="EEZ-jy-ZiY"/>
-                            <constraint firstItem="TzJ-yZ-4pZ" firstAttribute="centerX" secondItem="Cvc-68-vmK" secondAttribute="centerX" id="R1m-Xa-ZTp"/>
-                            <constraint firstAttribute="trailing" secondItem="bYy-Am-tU3" secondAttribute="trailing" id="XF1-5y-fQ2"/>
-                            <constraint firstItem="Cvc-68-vmK" firstAttribute="top" secondItem="TzJ-yZ-4pZ" secondAttribute="bottom" constant="8" symbolic="YES" id="ZGX-Y0-HHQ"/>
-                            <constraint firstAttribute="leading" secondItem="bYy-Am-tU3" secondAttribute="leading" id="ZQB-0Q-Hu5"/>
-                            <constraint firstAttribute="top" secondItem="bYy-Am-tU3" secondAttribute="top" id="fjG-Nv-WGu"/>
-                            <constraint firstItem="aIg-ks-hxW" firstAttribute="top" secondItem="Cvc-68-vmK" secondAttribute="bottom" constant="50" placeholder="YES" id="itS-tR-3QC"/>
-                            <constraint firstAttribute="centerX" secondItem="TzJ-yZ-4pZ" secondAttribute="centerX" id="j0e-Vd-qnt"/>
-                        </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="8TI-du-N6n"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4i9-Ia-e6m" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3042" y="1245"/>
-        </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
+        <image name="share" width="30" height="30"/>
     </resources>
 </document>
