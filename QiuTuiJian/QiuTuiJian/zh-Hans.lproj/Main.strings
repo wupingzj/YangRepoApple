@@ -3,11 +3,13 @@
 "acW-dT-cKf.title" = "收藏";
 "cPa-gy-q4n.title" = "求推荐";
 "BPi-tF-HDq.title" = "分享";
+"OfH-ju-COA.title" = "公告";
 
 
 "KQZ-1w-vlD.text" = "第一页";
 "zEq-FU-wV5.text" = "第二页";
-"YGM-gQ-syG.text" = "第3页";
+"t42-GT-O1a.text" = "故事分享";
+"NnE-mP-p0x.text" = "公告板";
 
 
 "A5M-7J-77L.text" = "Loaded by the first view controller — an instance of FirstViewController — specified in the app delegate.";
