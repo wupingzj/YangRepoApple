@@ -1,0 +1,22 @@
+
+/* Class = "IBUITextView"; text = "Loaded by the first view controller — an instance of FirstViewController — specified in the app delegate."; ObjectID = "A5M-7J-77L"; */
+"A5M-7J-77L.text" = "Loaded by the first view controller — an instance of FirstViewController — specified in the app delegate.";
+
+/* Class = "IBUILabel"; text = "First View"; ObjectID = "KQZ-1w-vlD"; */
+"KQZ-1w-vlD.text" = "第一页";
+
+/* Class = "IBUITextView"; text = "Loaded by the second view controller — an instance of SecondViewController — specified in the app delegate."; ObjectID = "NDk-cv-Gan"; */
+"NDk-cv-Gan.text" = "Loaded by the second view controller — an instance of SecondViewController — specified in the app delegate.";
+
+/* Class = "IBUITabBarItem"; title = "First"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "御用";
+
+/* Class = "IBUITabBarItem"; title = "Second"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "求推荐";
+
+/* Class = "IBUILabel"; text = "Second View"; ObjectID = "zEq-FU-wV5"; */
+"zEq-FU-wV5.text" = "第二页";
+
+"jNC-DH-ni7.text" = "分享";
+
+"YGM-gQ-syG.text" = "第3页";
