@@ -2,9 +2,23 @@
 
 import Cocoa
 
-var str = "Hello, playground222"
-let a = 2;
-let b = 2;
-var c = a + b;
+var a : String? = nil
+a == nil
+!a
+a = nil
+
+NSSearchPathDirectory.DocumentDirectory
+NSSearchPathDirectory.DocumentationDirectory
+
+NSSearchPathDirectory.DocumentDirectory.hashValue
+NSSearchPathDirectory.DocumentationDirectory.hashValue
+
+
+NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+
+urls.count
+urls[urls.endIndex-1] as NSURL
+
 
 

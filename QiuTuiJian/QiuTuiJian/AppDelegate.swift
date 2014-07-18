@@ -23,7 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println(c)
         
         let tabBarController = self.window!.rootViewController as UITabBarController
-        let controller = tabBarController.childViewControllers[0] as FirstViewController
+        let controllers = tabBarController.childViewControllers
+        let stController = tabBarController.childViewControllers[0]
+        if stController is FavoriteTableVC {
+            println("stController is a FavoriteTableVC")
+        }
+        
+        if stController is SecondViewController {
+            println("stController is a SecondViewController")
+        }
+        let controller = tabBarController.childViewControllers[0] as FavoriteTableVC
         controller.managedObjectContext = self.managedObjectContext
         
         return true
