@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
-        <!--Favorite TableVC - Item-->
+        <!--Favorite TableVC - Favorite-->
         <scene sceneID="oGw-YW-bfI">
             <objects>
                 <tableViewController id="swO-p5-xKx" customClass="FavoriteTableVC" customModule="QiuTuiJian" customModuleProvider="target" sceneMemberID="viewController">
@@ -13,11 +13,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="8Cq-Sl-PSz">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Favorite" id="Jy0-gV-60h"/>
+                            </items>
+                        </navigationBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" id="wII-Z0-ijj">
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" accessoryType="detailButton" indentationWidth="10" textLabel="br7-mS-fvn" imageView="50L-Mb-9D9" style="IBUITableViewCellStyleDefault" id="wII-Z0-ijj">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wII-Z0-ijj" id="4ZA-JT-4sF">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="br7-mS-fvn">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="second" id="50L-Mb-9D9">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -26,7 +44,7 @@
                             <outlet property="delegate" destination="swO-p5-xKx" id="YUb-ym-IgR"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="LjZ-HA-wMK"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="first" id="LjZ-HA-wMK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbV-iV-rS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -157,6 +175,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
         <image name="share" width="30" height="30"/>
     </resources>
