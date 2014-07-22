@@ -22,6 +22,7 @@ class QiuTuiJianTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
+        println("Unit testExample passed")
         XCTAssert(true, "Pass")
     }
     
