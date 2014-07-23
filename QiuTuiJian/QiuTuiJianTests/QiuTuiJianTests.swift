@@ -7,12 +7,16 @@
 //
 
 import XCTest
+import QiuTuiJian
+import UIKit
+import CoreData
 
 class QiuTuiJianTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        println("******* SETUP ******")
+        
     }
     
     override func tearDown() {
@@ -20,13 +24,43 @@ class QiuTuiJianTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        println("Unit testExample passed")
-        XCTAssert(true, "Pass")
+    func testGetDelegate() {
+        let app: UIApplication = UIApplication.sharedApplication()
+        isObjectNil(Object: app, ObjectName: "app")
+        
+        let delegate : UIApplicationDelegate = app.delegate
+        isObjectNil(Object: delegate, ObjectName: "delegate")
+        
+        let appDelegate : AppDelegate = delegate as AppDelegate
+        isObjectNil(Object: appDelegate, ObjectName: "appDelegate")
+        
+        let ctx : NSManagedObjectContext = appDelegate.managedObjectContext
+        isObjectNil(Object: appDelegate, ObjectName: "ctx")
+        
     }
     
-    func testPerformanceExample() {
+    func isObjectNil(Object obj:AnyObject, ObjectName objName:NSString) {
+        if (obj == nil) {
+            println("*** \(objName) is nil")
+        } else {
+            println("*** \(objName) is NOT nil")
+        }
+    }
+    
+    func xtestExample() {
+        // YOU SHOULD NEVER test in this way!
+        // YOU SHOULD NEVER initialize a AppDelegate object directly
+        // because that will initialize the application delegate again, which should be done only once!
+
+        let appDelegate: AppDelegate = AppDelegate();
+
+        //appDelegate.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
+        
+
+        XCTAssert(false, "Fail")
+    }
+    
+    func xtestPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {
             // Put the code you want to measure the time of here.
