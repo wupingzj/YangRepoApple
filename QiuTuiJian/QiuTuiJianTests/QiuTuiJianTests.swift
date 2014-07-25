@@ -15,12 +15,9 @@ class QiuTuiJianTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        println("******* SETUP ******")
-        
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
@@ -51,17 +48,13 @@ class QiuTuiJianTests: XCTestCase {
         // YOU SHOULD NEVER test in this way!
         // YOU SHOULD NEVER initialize a AppDelegate object directly
         // because that will initialize the application delegate again, which should be done only once!
-
-        let appDelegate: AppDelegate = AppDelegate();
-
-        //appDelegate.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
-        
-
         XCTAssert(false, "Fail")
+        
+        let appDelegate: AppDelegate = AppDelegate();
+        //appDelegate.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
     }
     
     func xtestPerformanceExample() {
-        // This is an example of a performance test case.
         self.measureBlock() {
             // Put the code you want to measure the time of here.
         }
