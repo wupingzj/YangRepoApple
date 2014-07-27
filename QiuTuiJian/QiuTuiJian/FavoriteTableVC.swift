@@ -11,6 +11,8 @@ import CoreData
 
 class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
+    var dataService:DataService = DataService.sharedInstance
+
     var managedObjectContext: NSManagedObjectContext? = nil
 
     override func viewDidLoad() {
@@ -21,6 +23,8 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        self.managedObjectContext = dataService.ctx
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,12 +91,9 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
     }
     
     // #pragma mark - Fetched results controller
-    
-    //var managedObjectContext : NSManagedObjectContext = AppDelegate.manage
-    
     var fetchedResultsController: NSFetchedResultsController {
-    if _fetchedResultsController != nil {
-        return _fetchedResultsController!
+        if _fetchedResultsController != nil {
+            return _fetchedResultsController!
         }
         
         let fetchRequest = NSFetchRequest()

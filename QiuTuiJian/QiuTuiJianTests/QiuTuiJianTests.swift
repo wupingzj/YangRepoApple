@@ -22,6 +22,8 @@ class QiuTuiJianTests: XCTestCase {
     }
     
     func testGetDelegate() {
+        println("*** running test testGetDelegate ***")
+        
         let app: UIApplication = UIApplication.sharedApplication()
         isObjectNil(Object: app, ObjectName: "app")
         
@@ -31,7 +33,7 @@ class QiuTuiJianTests: XCTestCase {
         let appDelegate : AppDelegate = delegate as AppDelegate
         isObjectNil(Object: appDelegate, ObjectName: "appDelegate")
         
-        let ctx : NSManagedObjectContext = appDelegate.managedObjectContext
+        let ctx : NSManagedObjectContext = DataService.sharedInstance.ctx
         isObjectNil(Object: appDelegate, ObjectName: "ctx")
         
     }
