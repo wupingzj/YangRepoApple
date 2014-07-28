@@ -100,6 +100,7 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
         // Edit the entity name as appropriate.
         let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: self.managedObjectContext)
         fetchRequest.entity = entity
+        println("************* Event entity class name=\(entity.managedObjectClassName)")
         
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 20

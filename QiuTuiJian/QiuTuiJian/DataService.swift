@@ -63,7 +63,7 @@ class DataService {
     // If the coordinator doesn't already exist, it is created and the application's store added to it.
     var sharedPSC: NSPersistentStoreCoordinator {
         if !_persistentStoreCoordinator {
-            let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent("QiuTuiJianV0.sqlite")
+            let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent("QiuTuiJianV0c.sqlite")
             println(storeURL)
             var error: NSError? = nil
             _persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
