@@ -26,111 +26,124 @@ class DataServiceTest: XCTestCase {
     func xtestGetDataServiceSingleton() {
         let dataService:DataService = DataService.sharedInstance
         XCTAssertNotNil(dataService, "DataService is nil")
-        XCTAssert(true, "Pass")
+        XCTAssert(true, "This is FAILURE message")
     }
     
-    func failed_testModelClassName() {
-        let aMobilePhone: MobilePhone = MobilePhone()
-        println("aMobilePhone class name = \(aMobilePhone.entity)")
-        println("\(object_getClassName(aMobilePhone))");
-        XCTAssert(true, "Pass")
-    }
-
-    func testCreateTestData() {
+    func XtestCreateTestData() {
         println("********** testCreateTestData starting... ***********")
 
-        let dataService:DataService = DataService.sharedInstance
+        let dataService: DataService = DataService.sharedInstance
         let ctx: NSManagedObjectContext = dataService.ctx
-        
-        self.insertNewObject("DataServiceTest")
-        
         XCTAssertNotNil(ctx, "ManagedObjectContext ctx is nil")
+        
+        self.insertNewObject(ctx)
     }
     
-    func insertNewObjectX(sender: AnyObject) {
-        println("\(sender) is creating a new BusinessEntity entity...")
-        
-        let dataService: DataService = DataService.sharedInstance
-        let ctx: NSManagedObjectContext = dataService.ctx
-        //let entity = self.fetchedResultsController.fetchRequest.entity
-        let businessEntityED: NSEntityDescription = NSEntityDescription.entityForName("BusinessEntity", inManagedObjectContext: ctx)
-        
-        println("businessEntityED.name is \(businessEntityED.name)")
-        println("businessEntityED is \(businessEntityED)")
-        println("businessEntityED.managedObjectClassName is \(businessEntityED.managedObjectClassName)")
-        let aBusinessEntity = NSEntityDescription.insertNewObjectForEntityForName(businessEntityED.name, inManagedObjectContext: ctx) as NSManagedObject
-        
-        
-//        if (aBusinessEntity is BusinessEntity) {
-//            println("aBusinessEntity is a BusinessEntity")
-//        } else {
-//            println("aBusinessEntity is NOT a BusinessEntity")
-//            
-//        }
-//        
-//        let newBusinessEntity = NSEntityDescription.insertNewObjectForEntityForName(businessEntityED.name, inManagedObjectContext: ctx) as BusinessEntity
-//        
-        // If appropriate, configure the new managed object.
-        // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-        //newMobilePhone.setValue(NSDate.date(), forKey: "timeStamp")
-        //newBusinessEntity.name = "64"
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    func insertNewObject(sender: AnyObject) {
-        println("\(sender) is creating a new mobile phone entity...")
-        
-        let dataService: DataService = DataService.sharedInstance
-        let ctx: NSManagedObjectContext = dataService.ctx
-        //let entity = self.fetchedResultsController.fetchRequest.entity
+    func insertNewObject(ctx: NSManagedObjectContext) {
         let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName("MobilePhone", inManagedObjectContext: ctx)
-        
-        println("mobilePhoneED.name is \(mobilePhoneED.name)")
-        println("mobilePhoneED is \(mobilePhoneED)")
-        println("mobilePhoneED.managedObjectClassName is \(mobilePhoneED.managedObjectClassName)")
 //        let aMobilePhone = NSEntityDescription.insertNewObjectForEntityForName(mobilePhoneED.name, inManagedObjectContext: ctx) as NSManagedObject
-//        
-//        if (aMobilePhone is MobilePhone) {
-//            println("aMobilePhone is a MobilePhone")
-//        } else {
-//            println("aMobilePhone is NOT a MobilePhone")
-//            
-//        }
-        
-//        let newMobilePhone = NSEntityDescription.insertNewObjectForEntityForName(mobilePhoneED.name, inManagedObjectContext: ctx) as NSManagedObject
+//        println("mobilePhoneED.name is \(mobilePhoneED.name)")
+//        println("mobilePhoneED.managedObjectClassName is \(mobilePhoneED.managedObjectClassName)")
         
         let newMobilePhone = MobilePhone(entity: mobilePhoneED, insertIntoManagedObjectContext: ctx)
-        println("************* MobilePhone entity class name=\(newMobilePhone.entity.managedObjectClassName)")
         
-        
-        // If appropriate, configure the new managed object.
         // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-        //newMobilePhone.setValue(NSDate.date(), forKey: "timeStamp")
+        //newMobilePhone.setValue("65", forKey: "countryCode")
         newMobilePhone.countryCode = "64"
         newMobilePhone.areaCode="4"
         newMobilePhone.number="87654321"
         newMobilePhone.phoneModel="iPhone 4S"
-        
-//        newMobilePhone.setValue("64", forKey: "countryCode")
-//        newMobilePhone.setValue("4", forKey: "areaCode")
-//        newMobilePhone.setValue("87654321", forKey: "phoneNumber")
-//        newMobilePhone.setValue("iPhone 4S", forKey: "phoneModel")
-        
+//        println("************* MobilePhone =\(newMobilePhone.entity)")
+        println("************* MobilePhone =\(newMobilePhone)")
         
         // Save the context.
-//        var error: NSError? = nil
-//        if !ctx.save(&error) {
-//            // Replace this implementation with code to handle the error appropriately.
-//            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//            println("Unresolved error \(error), \(error.userInfo)")
-//            abort()
+        var error: NSError? = nil
+        if !ctx.save(&error) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            println("Unresolved error \(error), \(error.description)")
+            //abort()
+            
+            XCTAssertNotNil(false, "Failed to save managed object context")
+        } else {
+            println("********** SUCCESSFULLY SAVED the managed object context")
+        }
+    }
+    
+    func testGetMobilePhone() {
+        let dataService: DataService = DataService.sharedInstance
+        let ctx: NSManagedObjectContext = dataService.ctx
+        XCTAssertNotNil(ctx, "ManagedObjectContext ctx is nil")
+        
+        //let fetchRequest = NSFetchRequest()
+        // Edit the entity name as appropriate.
+        //let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName("MobilePhone", inManagedObjectContext: ctx)
+        //fetchRequest.entity = mobilePhoneED
+        let fetchRequest = NSFetchRequest(entityName: "MobilePhone")
+        
+        // disable faulting
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        // Set the batch size
+        fetchRequest.fetchBatchSize = 20
+        
+        // Set the sort key
+        let sortDescriptor = NSSortDescriptor(key: "number", ascending: false)
+        let sortDescriptors = [sortDescriptor]
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+//        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: ctx, sectionNameKeyPath: nil, cacheName: "Master")
+//        
+        var error: NSError? = nil
+        //var mobilePhones: MobilePhone[] = ctx.executeFetchRequest(fetchRequest, error: &error) as MobilePhone[]
+        var mobilePhones: AnyObject[] = ctx.executeFetchRequest(fetchRequest, error: &error)
+        
+        println("************** error= \(error)")
+        if (error != nil) {
+            println("Unresolved error \(error), \(error.description)")
+            
+            XCTAssertNotNil(false, "Failed to save managed object context")
+        } else {
+            println("********** SUCCESSFULLY SAVED the managed object context")
+            println("There are totally \(mobilePhones.count) mobile phones in store.")
+            var a = mobilePhones[0]
+            if (a is MobilePhone) {
+                println("The stored is a mobile phone object")
+            } else {
+                println("The stored is NOT a mobile phone object")
+            }
+            
+            if (a is NSManagedObject) {
+                println("The stored is a NSManagedObject")
+            } else {
+                println("The stored is NOT a NSManagedObject")
+            }
+            
+            println("There are totally \(mobilePhones[0]) mobile phones in store.")
+            
+            var mobilePhone: MobilePhone? = nil
+//            for (mobilePhone in mobilePhones) {
+//                
+//            }
+        }
+        
+        
+        
+        // narrow the fetch to these two properties
+//        fetchRequest.propertiesToFetch = [NSArray arrayWithObjects:@"location", @"date", nil];
+//        [fetchRequest setResultType:NSDictionaryResultType];
+//        
+        // before adding the earthquake, first check if there's a duplicate in the backing store
+//        NSError *error = nil;
+//        Earthquake *earthquake = nil;
+//        for (earthquake in earthquakes) {
+//            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"location = %@ AND date = %@", earthquake.location, earthquake.date];
+//            
+//            NSArray *fetchedItems = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+//            if (fetchedItems.count == 0) {
+//                // we found no duplicate earthquakes, so insert this new one
+//                [self.managedObjectContext insertObject:earthquake];
+//            }
 //        }
     }
 }

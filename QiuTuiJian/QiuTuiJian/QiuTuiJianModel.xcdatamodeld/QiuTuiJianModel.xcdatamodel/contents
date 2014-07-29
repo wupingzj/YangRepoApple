@@ -6,7 +6,7 @@
     <entity name="Event" syncable="YES">
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="MobilePhone" syncable="YES">
+    <entity name="MobilePhone" representedClassName="QiuTuiJian.MobilePhone" syncable="YES">
         <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -20,9 +20,9 @@
         <attribute name="mobileId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
+        <element name="BusinessEntity" positionX="-45" positionY="-99" width="126" height="58"/>
         <element name="Event" positionX="-360" positionY="72" width="128" height="60"/>
         <element name="MobilePhone" positionX="-191" positionY="-109" width="128" height="118"/>
         <element name="User" positionX="-378" positionY="-108" width="128" height="103"/>
-        <element name="BusinessEntity" positionX="-45" positionY="-99" width="126" height="58"/>
     </elements>
 </model>

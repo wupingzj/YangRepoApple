@@ -21,7 +21,7 @@ class QiuTuiJianTests: XCTestCase {
         super.tearDown()
     }
     
-    func testGetDelegate() {
+    func xtestGetDelegate() {
         println("*** running test testGetDelegate ***")
         
         let app: UIApplication = UIApplication.sharedApplication()
