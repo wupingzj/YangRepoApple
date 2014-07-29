@@ -76,11 +76,11 @@ class DataServiceTest: XCTestCase {
         let ctx: NSManagedObjectContext = dataService.ctx
         XCTAssertNotNil(ctx, "ManagedObjectContext ctx is nil")
         
+        let fetchRequest = NSFetchRequest(entityName: "MobilePhone")
         //let fetchRequest = NSFetchRequest()
-        // Edit the entity name as appropriate.
         //let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName("MobilePhone", inManagedObjectContext: ctx)
         //fetchRequest.entity = mobilePhoneED
-        let fetchRequest = NSFetchRequest(entityName: "MobilePhone")
+        
         
         // disable faulting
         // otherwise, you would see data = {fault} if you don't access the fields
@@ -98,8 +98,10 @@ class DataServiceTest: XCTestCase {
 //        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: ctx, sectionNameKeyPath: nil, cacheName: "Master")
 //        
         var error: NSError? = nil
-        //var mobilePhones: MobilePhone[] = ctx.executeFetchRequest(fetchRequest, error: &error) as MobilePhone[]
-        var mobilePhones: AnyObject[] = ctx.executeFetchRequest(fetchRequest, error: &error)
+        // To make the class downcast possible, the MobilePhone entity must be mapped to QiuTuiJianTests.MobilePhone in the data model
+        // I.E., the model class in Test Target
+        var mobilePhones: MobilePhone[] = ctx.executeFetchRequest(fetchRequest, error: &error) as MobilePhone[]
+        //var mobilePhones: AnyObject[] = ctx.executeFetchRequest(fetchRequest, error: &error)
         
         println("************** error= \(error)")
         if (error != nil) {
@@ -109,29 +111,29 @@ class DataServiceTest: XCTestCase {
         } else {
             println("There are totally \(mobilePhones.count) mobile phones in store.")
             var a = mobilePhones[0]
-            if (a is MobilePhone) {
-                println("The stored is a mobile phone object")
-            } else {
-                println("The stored is NOT a mobile phone object")
-            }
-            
-            if (a is NSManagedObject) {
-                println("The stored is a NSManagedObject")
-            } else {
-                println("The stored is NOT a NSManagedObject")
-            }
-            
+//            if (a is MobilePhone) {
+//                println("The stored is a mobile phone object")
+//            } else {
+//                println("The stored is NOT a mobile phone object")
+//            }
+//            
+//            if (a is NSManagedObject) {
+//                println("The stored is a NSManagedObject")
+//            } else {
+//                println("The stored is NOT a NSManagedObject")
+//            }
+//            
             
             //var obj :AnyObject? = nil
-            for obj : AnyObject in mobilePhones {
-                println("mobile phone: \(obj) ")
-            }
+//            for obj : AnyObject in mobilePhones {
+//                println("mobile phone: \(obj) ")
+//            }
             
             
             var mobilePhone: MobilePhone? = nil
-//            for (mobilePhone in mobilePhones) {
-//                
-//            }
+            for mobilePhone in mobilePhones {
+                println("mobile phone: \(mobilePhone) ")
+            }
         }
         
         

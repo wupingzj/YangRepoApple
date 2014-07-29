@@ -6,7 +6,7 @@
     <entity name="Event" syncable="YES">
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="MobilePhone" representedClassName="QiuTuiJian.MobilePhone" syncable="YES">
+    <entity name="MobilePhone" representedClassName="QiuTuiJianTests.MobilePhone" syncable="YES">
         <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -19,6 +19,8 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mobileId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
+    <fetchRequest name="FetchRequest" entity="Event"/>
+    <configuration name="Testing"/>
     <elements>
         <element name="BusinessEntity" positionX="-45" positionY="-99" width="126" height="58"/>
         <element name="Event" positionX="-360" positionY="72" width="128" height="60"/>

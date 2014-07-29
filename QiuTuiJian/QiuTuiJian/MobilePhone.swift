@@ -29,6 +29,7 @@ class MobilePhone: NSManagedObject{
         
         println("Initializing the singleton DataServie.")
         println("**** My class is \(self.entity.managedObjectClassName)")
+        //println("entity = \(entity)")
         
         // *********** IMPORTANT: *****************
         // YOU SHOULD NOT set the value for the fields. Otherwise, the FetchRequest does NOT populate these fields from data store!!!!
