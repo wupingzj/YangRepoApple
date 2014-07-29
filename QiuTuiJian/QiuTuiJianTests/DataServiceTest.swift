@@ -49,9 +49,10 @@ class DataServiceTest: XCTestCase {
         
         // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
         //newMobilePhone.setValue("65", forKey: "countryCode")
-        newMobilePhone.countryCode = "64"
-        newMobilePhone.areaCode="4"
-        newMobilePhone.number="87654321"
+        newMobilePhone.initData()
+        //newMobilePhone.countryCode = "64"
+        //newMobilePhone.areaCode="4"
+        newMobilePhone.number="00000002"
         newMobilePhone.phoneModel="iPhone 4S"
 //        println("************* MobilePhone =\(newMobilePhone.entity)")
         println("************* MobilePhone =\(newMobilePhone)")
@@ -82,7 +83,9 @@ class DataServiceTest: XCTestCase {
         let fetchRequest = NSFetchRequest(entityName: "MobilePhone")
         
         // disable faulting
+        // otherwise, you would see data = {fault} if you don't access the fields
         fetchRequest.returnsObjectsAsFaults = false
+        //fetchRequest.includesPropertyValues = true
         
         // Set the batch size
         fetchRequest.fetchBatchSize = 20
@@ -104,7 +107,6 @@ class DataServiceTest: XCTestCase {
             
             XCTAssertNotNil(false, "Failed to save managed object context")
         } else {
-            println("********** SUCCESSFULLY SAVED the managed object context")
             println("There are totally \(mobilePhones.count) mobile phones in store.")
             var a = mobilePhones[0]
             if (a is MobilePhone) {
@@ -119,7 +121,12 @@ class DataServiceTest: XCTestCase {
                 println("The stored is NOT a NSManagedObject")
             }
             
-            println("There are totally \(mobilePhones[0]) mobile phones in store.")
+            
+            //var obj :AnyObject? = nil
+            for obj : AnyObject in mobilePhones {
+                println("mobile phone: \(obj) ")
+            }
+            
             
             var mobilePhone: MobilePhone? = nil
 //            for (mobilePhone in mobilePhones) {

@@ -30,9 +30,22 @@ class MobilePhone: NSManagedObject{
         println("Initializing the singleton DataServie.")
         println("**** My class is \(self.entity.managedObjectClassName)")
         
-        countryCode = "64"
-        areaCode = "4"
-        number = "12345678"
-        phoneModel = "iPhone 5"
+        // *********** IMPORTANT: *****************
+        // YOU SHOULD NOT set the value for the fields. Otherwise, the FetchRequest does NOT populate these fields from data store!!!!
+        // If you do set the value for some fields, the value of these fields will NOT be retrieved from database.
+        
+//        NEVER POPULATE FIELDS here
+//        countryCode = "64"
+//        areaCode = "4"
+//        number = "4444444 - init"
+//        phoneModel = "iPhone 5 - init"
+    }
+    
+    func initData() {
+        // ONLY INIT data for creation!!!
+            countryCode = "64"
+            areaCode = "4"
+            number = "12345678"
+            phoneModel = "iPhone 5"
     }
 }
