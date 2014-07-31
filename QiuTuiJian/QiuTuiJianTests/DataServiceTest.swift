@@ -71,7 +71,7 @@ class DataServiceTest: XCTestCase {
         }
     }
     
-    func testGetMobilePhone() {
+    func XtestGetMobilePhone() {
         let dataService: DataService = DataService.sharedInstance
         let ctx: NSManagedObjectContext = dataService.ctx
         XCTAssertNotNil(ctx, "ManagedObjectContext ctx is nil")
