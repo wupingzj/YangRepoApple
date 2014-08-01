@@ -9,4 +9,5 @@
 Sample
 TryMasterDetails
 TryTabbed
-*.xcodeproj/
+TryCoreData
+#*.xcodeproj/
