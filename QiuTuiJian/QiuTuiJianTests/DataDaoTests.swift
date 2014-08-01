@@ -9,16 +9,20 @@
 import XCTest
 
 class DataDaoTests: XCTestCase {
-
-    
-    func testDataDao() {
+    func testListMobilePhones() {
         var dataDao: DataDao = DataDao()
-        dataDao.listPersistenceStore();
-        XCTAssert(true, "Pass")
-    }
-    
-    func testAccessClass() {
+
+        let (mobilePhones, error) = dataDao.listEntities("MobilePhone")
+        if (error != nil) {
+            println("Failed to get all mobile phones. Unresolved error \(error), \(error.description)")
+        } else {
+            println("There are totally \(mobilePhones.count) mobile phones in store.")
+            
+            for (index, mobilePhone) in enumerate(mobilePhones) {
+                println("mobile phone[\(index)]: \(mobilePhone).")
+            }
+        }
         
-        
+        XCTAssertNil(error, "Failed to get all mobile phonese")
     }
 }
