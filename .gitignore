@@ -10,4 +10,4 @@ Sample
 TryMasterDetails
 TryTabbed
 TryCoreData
-#*.xcodeproj/
+*.xcodeproj/

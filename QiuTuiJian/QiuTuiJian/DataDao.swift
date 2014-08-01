@@ -12,17 +12,17 @@ import CoreData
 // Import note on error-handling: 
 //  Caller must check return NSError before use returned managed object array to make sure the retrieval was successful.
 class DataDao {
-    func listEntities(entityName:String!) -> (NSManagedObject[], NSError?) {
-        return listEntities(entityName, fault:false, sortByKey: nil, ascending: false, fetchBatchSize: 20)
+    func listEntities(entityName:String!)  -> (managedObjects: NSManagedObject[], error: NSError?) {
+        return listEntities(entityName, fault:false, sortByKey: "number", ascending: false, fetchBatchSize:20)
     }
     
-    func listEntities(entityName:String!, fault:Bool?, sortByKey:String?, ascending:Bool?, fetchBatchSize:Int?) -> (NSManagedObject[], NSError?) {
+    func listEntities(entityName:String!, fault:Bool?, sortByKey:String?, ascending:Bool?, fetchBatchSize:Int?) -> (managedObjects: NSManagedObject[], error: NSError?) {
         let dataService: DataService = DataService.sharedInstance
         let ctx: NSManagedObjectContext = dataService.ctx
         
         let fetchRequest = NSFetchRequest(entityName: entityName)
         //let fetchRequest = NSFetchRequest()
-        //let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName("MobilePhone", inManagedObjectContext: ctx)
+        //let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: ctx)
         //fetchRequest.entity = mobilePhoneED
         
         
