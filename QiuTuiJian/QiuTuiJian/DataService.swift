@@ -12,9 +12,9 @@ import Foundation
 import CoreData
 
 let dataServiceInstance = DataService()
-class DataService {
+public class DataService {
     // Singleton
-    class var sharedInstance : DataService {
+    public class var sharedInstance : DataService {
         return dataServiceInstance
     }
     
@@ -28,7 +28,7 @@ class DataService {
     
     // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
     // managed object context for frontend GUI work
-    var ctx: NSManagedObjectContext {
+    public var ctx: NSManagedObjectContext {
         if !_ctx {
             let coordinator = self.sharedPSC
             if coordinator != nil {
@@ -38,10 +38,10 @@ class DataService {
         }
         return _ctx!
     }
-    var _ctx: NSManagedObjectContext? = nil
+    private var _ctx: NSManagedObjectContext? = nil
     
     // managed object context for background communication
-    var ctxForNetwork: NSManagedObjectContext {
+    public var ctxForNetwork: NSManagedObjectContext {
     if !_ctxForNetwork {
         let coordinator = self.sharedPSC
         if coordinator != nil {
@@ -51,7 +51,7 @@ class DataService {
         }
         return _ctxForNetwork!
     }
-    var _ctxForNetwork: NSManagedObjectContext? = nil
+    private var _ctxForNetwork: NSManagedObjectContext? = nil
     
     
     
@@ -61,7 +61,7 @@ class DataService {
     
     // Returns the persistent store coordinator for the application.
     // If the coordinator doesn't already exist, it is created and the application's store added to it.
-    var sharedPSC: NSPersistentStoreCoordinator {
+    public var sharedPSC: NSPersistentStoreCoordinator {
         if !_persistentStoreCoordinator {
             let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent("QiuTuiJianV0c.sqlite")
             println(storeURL)
@@ -96,20 +96,20 @@ class DataService {
                 Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
                 
                 */
-                println("Unresolved error \(error), \(error.description)")
+                println("Unresolved error \(error), \(error!.description)")
                 //println("Unresolved error \(error), \(error.?.userInfo)")
                 abort()
             }
         }
         return _persistentStoreCoordinator!
     }
-    var _persistentStoreCoordinator: NSPersistentStoreCoordinator? = nil
+    private var _persistentStoreCoordinator: NSPersistentStoreCoordinator? = nil
     
     
     
     // *** object model ***
     // If the model doesn't already exist, it is created from the application's model.
-    var managedObjectModel: NSManagedObjectModel {
+    public var managedObjectModel: NSManagedObjectModel {
         if !_managedObjectModel {
             //let modelURL = NSBundle.mainBundle().URLForResource("QiuTuiJianV0", withExtension: "momd")
             let modelURL = NSBundle.mainBundle().URLForResource("QiuTuiJianModel", withExtension: "momd")
@@ -121,15 +121,15 @@ class DataService {
         
         return _managedObjectModel!
     }
-    var _managedObjectModel: NSManagedObjectModel? = nil
+    private var _managedObjectModel: NSManagedObjectModel? = nil
     
 
     
     // #pragma mark - Application's Documents directory
     
     // Returns the URL to the application's Documents directory.
-    var applicationDocumentsDirectory: NSURL {
-    let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+    public var applicationDocumentsDirectory: NSURL {
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.endIndex-1] as NSURL
     }   
 }

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import QiuTuiJian
 
 class DataDaoTests: XCTestCase {
     
@@ -27,12 +28,12 @@ class DataDaoTests: XCTestCase {
         let (managedObjects, error) = dataDao.listEntities("MobilePhone")
         //let result = dataDao.listEntities("MobilePhone", fault:false, sortByKey: nil, ascending: false, fetchBatchSize:20)
         if (error != nil) {
-            println("Failed to get all mobile phones. Unresolved error \(error), \(error.description)")
+            println("Failed to get all mobile phones. Unresolved error \(error), \(error!.description)")
         } else {
             println("There are totally \(managedObjects.count) mobile phones in store.")
             
             // cast to mobile phones
-            let mobilePhones: MobilePhone[] = managedObjects as MobilePhone[]
+            let mobilePhones: [MobilePhone] = managedObjects as [MobilePhone]
             for (index, mobilePhone) in enumerate(mobilePhones) {
                 println("mobile phone[\(index)]: number:\(mobilePhone.number).")
             }

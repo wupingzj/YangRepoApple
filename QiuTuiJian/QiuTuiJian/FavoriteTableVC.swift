@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
+public class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var dataService:DataService = DataService.sharedInstance
 
     var managedObjectContext: NSManagedObjectContext? = nil
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -27,7 +27,7 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
         self.managedObjectContext = dataService.ctx
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -38,7 +38,7 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
     
     // #pragma mark - Segues
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //        if segue.identifier == "showDetail" {
         //            let indexPath = self.tableView.indexPathForSelectedRow()
         //            let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
@@ -50,27 +50,27 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
     
     // #pragma mark - Table View
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.fetchedResultsController.sections.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
         return sectionInfo.numberOfObjects
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let context = self.fetchedResultsController.managedObjectContext
             context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject)
@@ -79,7 +79,7 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
             if !context.save(&error) {
                 // Replace this implementation with code to handle the error appropriately.
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                println("Unresolved error \(error), \(error.description)")
+                println("Unresolved error \(error), \(error!.description)")
                 abort()
             }
         }
@@ -122,7 +122,7 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             //println("Unresolved error \(error), \(error.userInfo)")
-            println("Unresolved error \(error), \(error.description)")
+            println("Unresolved error \(error), \(error!.description)")
             abort()
         }
         
@@ -130,30 +130,32 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
     }
     var _fetchedResultsController: NSFetchedResultsController? = nil
     
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+    public func controllerWillChangeContent(controller: NSFetchedResultsController) {
         self.tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    public func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
         switch type {
-        case NSFetchedResultsChangeInsert:
+        case NSFetchedResultsChangeType.Insert:
             self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-        case NSFetchedResultsChangeDelete:
+        case NSFetchedResultsChangeType.Delete:
             self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
         default:
+            // Move
+            // Update
             return
         }
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+    public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
         switch type {
-        case NSFetchedResultsChangeInsert:
+        case NSFetchedResultsChangeType.Insert:
             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
-        case NSFetchedResultsChangeDelete:
+        case NSFetchedResultsChangeType.Delete:
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        case NSFetchedResultsChangeUpdate:
+        case NSFetchedResultsChangeType.Update:
             self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
-        case NSFetchedResultsChangeMove:
+        case NSFetchedResultsChangeType.Move:
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
         default:
@@ -161,7 +163,7 @@ class FavoriteTableVC: UITableViewController, NSFetchedResultsControllerDelegate
         }
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    public func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
     }
     

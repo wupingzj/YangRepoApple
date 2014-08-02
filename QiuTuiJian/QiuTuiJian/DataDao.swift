@@ -11,12 +11,15 @@ import CoreData
 
 // Import note on error-handling: 
 //  Caller must check return NSError before use returned managed object array to make sure the retrieval was successful.
-class DataDao {
-    func listEntities(entityName:String!)  -> (managedObjects: NSManagedObject[], error: NSError?) {
+public class DataDao {
+    public init() {
+    }
+    
+    public func listEntities(entityName:String!)  -> (managedObjects: [NSManagedObject], error: NSError?) {
         return listEntities(entityName, fault:false, sortByKey: "number", ascending: false, fetchBatchSize:20)
     }
     
-    func listEntities(entityName:String!, fault:Bool?, sortByKey:String?, ascending:Bool?, fetchBatchSize:Int?) -> (managedObjects: NSManagedObject[], error: NSError?) {
+    public func listEntities(entityName:String!, fault:Bool?, sortByKey:String?, ascending:Bool?, fetchBatchSize:Int?) -> (managedObjects: [NSManagedObject], error: NSError?) {
         let dataService: DataService = DataService.sharedInstance
         let ctx: NSManagedObjectContext = dataService.ctx
         
@@ -53,11 +56,15 @@ class DataDao {
         // To make the class downcast possible, the MobilePhone entity must be mapped to QiuTuiJianTests.MobilePhone in the data model
         // I.E., the model class in Test Target
         //var mobilePhones: MobilePhone[] = ctx.executeFetchRequest(fetchRequest, error: &error) as MobilePhone[]
-        var managedObjects: NSManagedObject[] = ctx.executeFetchRequest(fetchRequest, error: &error) as NSManagedObject[]
+        var managedObjects: [NSManagedObject] = ctx.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]
+        
+        if let actualError = error {
+            println("An Error Occurred: \(actualError)")
+        }
         
         if (error != nil) {
             // log error
-            println("Failed to get all \(entityName)s. Unresolved error \(error), \(error.description)")
+            println("Failed to get all \(entityName)s. Unresolved error \(error), \(error!.description)")
         }
         
         return (managedObjects, error)
