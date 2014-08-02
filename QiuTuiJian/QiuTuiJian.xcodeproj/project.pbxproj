@@ -7,19 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		392F43B3198D2714003C4D01 /* MobilePhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B2198D2714003C4D01 /* MobilePhone.swift */; };
+		392F43B5198D2769003C4D01 /* DataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B4198D2769003C4D01 /* DataDao.swift */; };
+		392F43B7198D279A003C4D01 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B6198D279A003C4D01 /* DataService.swift */; };
 		393841F019720A0D00060A6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393841EF19720A0D00060A6E /* AppDelegate.swift */; };
 		393841F419720A0D00060A6E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393841F319720A0D00060A6E /* SecondViewController.swift */; };
 		393841F719720A0D00060A6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393841F519720A0D00060A6E /* Main.storyboard */; };
 		393841F919720A0D00060A6E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393841F819720A0D00060A6E /* Images.xcassets */; };
 		3938420519720A0D00060A6E /* QiuTuiJianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3938420419720A0D00060A6E /* QiuTuiJianTests.swift */; };
-		39B1D5E1197F9D95000BE637 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E0197F9D95000BE637 /* DataService.swift */; };
 		39B1D5E31981B462000BE637 /* DataServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E21981B462000BE637 /* DataServiceTest.swift */; };
-		39B1D5E419825ABB000BE637 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E0197F9D95000BE637 /* DataService.swift */; };
-		39B1D5EA19851A2C000BE637 /* MobilePhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E919851A2C000BE637 /* MobilePhone.swift */; };
-		39B1D5EB198528CA000BE637 /* MobilePhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E919851A2C000BE637 /* MobilePhone.swift */; };
-		39BE31A3198BB50A00758D4B /* DataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE31A2198BB50A00758D4B /* DataDao.swift */; };
 		39BE31A5198BB5B000758D4B /* DataDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE31A4198BB5B000758D4B /* DataDaoTests.swift */; };
-		39BE31A6198BB63E00758D4B /* DataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE31A2198BB50A00758D4B /* DataDao.swift */; };
 		39FEFDEF1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */; };
 		39FEFDF71979DBA500415EC0 /* FavoriteTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */; };
 		39FEFDF91979DECB00415EC0 /* ShareTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDF81979DECB00415EC0 /* ShareTableVC.swift */; };
@@ -50,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		392F43B2198D2714003C4D01 /* MobilePhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobilePhone.swift; sourceTree = "<group>"; };
+		392F43B4198D2769003C4D01 /* DataDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDao.swift; sourceTree = "<group>"; };
+		392F43B6198D279A003C4D01 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		393841EA19720A0D00060A6E /* QiuTuiJian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiuTuiJian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		393841EE19720A0D00060A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393841EF19720A0D00060A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,10 +60,7 @@
 		3938420319720A0D00060A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3938420419720A0D00060A6E /* QiuTuiJianTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiuTuiJianTests.swift; sourceTree = "<group>"; };
 		3938420E197223FA00060A6E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
-		39B1D5E0197F9D95000BE637 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		39B1D5E21981B462000BE637 /* DataServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServiceTest.swift; sourceTree = "<group>"; };
-		39B1D5E919851A2C000BE637 /* MobilePhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobilePhone.swift; sourceTree = "<group>"; };
-		39BE31A2198BB50A00758D4B /* DataDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDao.swift; sourceTree = "<group>"; };
 		39BE31A4198BB5B000758D4B /* DataDaoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDaoTests.swift; sourceTree = "<group>"; };
 		39FEFDEE1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel.xcdatamodel; sourceTree = "<group>"; };
 		39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableVC.swift; sourceTree = "<group>"; };
@@ -152,9 +149,9 @@
 		39FEFDEC1977B02800415EC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				39B1D5E0197F9D95000BE637 /* DataService.swift */,
-				39B1D5E919851A2C000BE637 /* MobilePhone.swift */,
-				39BE31A2198BB50A00758D4B /* DataDao.swift */,
+				392F43B4198D2769003C4D01 /* DataDao.swift */,
+				392F43B2198D2714003C4D01 /* MobilePhone.swift */,
+				392F43B6198D279A003C4D01 /* DataService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -263,11 +260,11 @@
 				39FEFDEF1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld in Sources */,
 				39FEFDF71979DBA500415EC0 /* FavoriteTableVC.swift in Sources */,
 				393841F419720A0D00060A6E /* SecondViewController.swift in Sources */,
-				39B1D5E1197F9D95000BE637 /* DataService.swift in Sources */,
 				39FEFDF91979DECB00415EC0 /* ShareTableVC.swift in Sources */,
-				39B1D5EA19851A2C000BE637 /* MobilePhone.swift in Sources */,
-				39BE31A3198BB50A00758D4B /* DataDao.swift in Sources */,
+				392F43B3198D2714003C4D01 /* MobilePhone.swift in Sources */,
+				392F43B5198D2769003C4D01 /* DataDao.swift in Sources */,
 				393841F019720A0D00060A6E /* AppDelegate.swift in Sources */,
+				392F43B7198D279A003C4D01 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,10 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39BE31A5198BB5B000758D4B /* DataDaoTests.swift in Sources */,
-				39B1D5E419825ABB000BE637 /* DataService.swift in Sources */,
-				39BE31A6198BB63E00758D4B /* DataDao.swift in Sources */,
 				3938420519720A0D00060A6E /* QiuTuiJianTests.swift in Sources */,
-				39B1D5EB198528CA000BE637 /* MobilePhone.swift in Sources */,
 				39B1D5E31981B462000BE637 /* DataServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

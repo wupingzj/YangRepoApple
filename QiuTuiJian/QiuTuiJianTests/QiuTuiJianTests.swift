@@ -38,11 +38,11 @@ class QiuTuiJianTests: XCTestCase {
         
     }
     
-    func isObjectNil(Object obj:AnyObject, ObjectName objName:NSString) {
-        if (obj == nil) {
-            println("*** \(objName) is nil")
+    func isObjectNil(Object obj:AnyObject?, ObjectName objName:String) {
+        if let objReal: AnyObject = obj {
+            println("*** \(objName) is NOT nil: \(objReal).")
         } else {
-            println("*** \(objName) is NOT nil")
+            println("*** \(objName) is nil")
         }
     }
     

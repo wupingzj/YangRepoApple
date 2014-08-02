@@ -9,22 +9,22 @@
 import Foundation
 import CoreData
 
-class MobilePhone: NSManagedObject{
+public class MobilePhone: NSManagedObject{
     @NSManaged
-    var countryCode:String
+    public var countryCode:String
     
     @NSManaged
-    var areaCode:String
+    public var areaCode:String
 
     // phone number
     @NSManaged
-    var number:String
+    public var number:String
 
     // phone model
     @NSManaged
-    var phoneModel:String
+    public var phoneModel:String
     
-    init(entity: NSEntityDescription!, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    public init(entity: NSEntityDescription!, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         
         println("Initializing the singleton DataServie.")
@@ -42,7 +42,7 @@ class MobilePhone: NSManagedObject{
 //        phoneModel = "iPhone 5 - init"
     }
     
-    func initData() {
+    public func initData() {
         // ONLY INIT data for creation!!!
             countryCode = "64"
             areaCode = "4"

@@ -10,9 +10,12 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+public class AppDelegate: UIResponder, UIApplicationDelegate {
+    public init() {
+        
+    }
                             
-    var window: UIWindow?
+    public var window: UIWindow?
     var dataService:DataService = DataService.sharedInstance
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
@@ -27,15 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    public func applicationWillResignActive(application: UIApplication) {
         saveContext()
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    public func applicationDidEnterBackground(application: UIApplication) {
         saveContext()
     }
    
-    func applicationWillTerminate(application: UIApplication) {
+    public func applicationWillTerminate(application: UIApplication) {
         saveContext()
     }
     
