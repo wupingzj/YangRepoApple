@@ -137,7 +137,7 @@
                   symbolName = "QiuTuiJianTests.QiuTuiJianTests.xtestExample (QiuTuiJianTests.QiuTuiJianTests)() -&gt; ()"
                   moduleName = "QiuTuiJianTests"
                   urlString = "file:///Users/Ping/git/YangRepoApple/QiuTuiJian/QiuTuiJianTests/QiuTuiJianTests.swift"
-                  timestampString = "428681792.931341"
+                  timestampString = "428755325.600804"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "53"
@@ -151,7 +151,7 @@
                   symbolName = "QiuTuiJianTests.QiuTuiJianTests.(xtestExample (QiuTuiJianTests.QiuTuiJianTests) -&gt; () -&gt; ()).(implicit closure #1)"
                   moduleName = "QiuTuiJianTests"
                   urlString = "file:///Users/Ping/git/YangRepoApple/QiuTuiJian/QiuTuiJianTests/QiuTuiJianTests.swift"
-                  timestampString = "428681792.932259"
+                  timestampString = "428755325.601403"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "53"
@@ -247,7 +247,7 @@
                   symbolName = "QiuTuiJian.AppDelegate.saveContext (QiuTuiJian.AppDelegate)() -&gt; ()"
                   moduleName = "QiuTuiJian"
                   urlString = "file:///Users/Ping/git/YangRepoApple/QiuTuiJian/QiuTuiJian/AppDelegate.swift"
-                  timestampString = "428681788.499236"
+                  timestampString = "428755324.21758"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
@@ -261,7 +261,7 @@
                   symbolName = "QiuTuiJian.AppDelegate.saveContext (QiuTuiJian.AppDelegate)() -&gt; ()"
                   moduleName = "QiuTuiJian"
                   urlString = "file:///Users/Ping/git/YangRepoApple/QiuTuiJian/QiuTuiJian/AppDelegate.swift"
-                  timestampString = "428681788.499451"
+                  timestampString = "428755324.217781"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
@@ -424,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiuTuiJian/MobilePhone.swift"
-            timestampString = "428324009.05528"
+            timestampString = "428728321.423723"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "init(entity:insertIntoManagedObjectContext:)"
             landmarkType = "5">
             <Locations>
@@ -486,11 +486,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiuTuiJian/DataDao.swift"
-            timestampString = "428595486.012911"
+            timestampString = "428752026.332557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "listEntities(_:fault:sortByKey:ascending:fetchBatchSize:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -507,23 +507,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
             endingLineNumber = "15"
-            landmarkName = "testListMobilePhones1()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QiuTuiJian/DataDao.swift"
-            timestampString = "428595486.012911"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "init()"
+            landmarkName = "xtestListMobilePhones1()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -631,31 +615,31 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
             endingLineNumber = "21"
-            landmarkName = "testListMobilePhones1()"
+            landmarkName = "xtestListMobilePhones1()"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "QiuTuiJianTests.DataDaoTests.testListMobilePhones1 (QiuTuiJianTests.DataDaoTests)() -&gt; ()"
+                  symbolName = "QiuTuiJianTests.DataDaoTests.xtestListMobilePhones1 (QiuTuiJianTests.DataDaoTests)() -&gt; ()"
                   moduleName = "QiuTuiJianTests"
                   urlString = "file:///Users/Ping/git/YangRepoApple/QiuTuiJian/QiuTuiJianTests/DataDaoTests.swift"
-                  timestampString = "428681792.932829"
+                  timestampString = "428755325.602297"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
                   endingLineNumber = "21"
-                  offsetFromSymbolStart = "380">
+                  offsetFromSymbolStart = "314">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "QiuTuiJianTests.DataDaoTests.(testListMobilePhones1 (QiuTuiJianTests.DataDaoTests) -&gt; () -&gt; ()).(implicit closure #1)"
+                  symbolName = "QiuTuiJianTests.DataDaoTests.(xtestListMobilePhones1 (QiuTuiJianTests.DataDaoTests) -&gt; () -&gt; ()).(implicit closure #1)"
                   moduleName = "QiuTuiJianTests"
                   urlString = "file:///Users/Ping/git/YangRepoApple/QiuTuiJian/QiuTuiJianTests/DataDaoTests.swift"
-                  timestampString = "428681792.933017"
+                  timestampString = "428755325.602647"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
@@ -677,31 +661,31 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
             endingLineNumber = "21"
-            landmarkName = "testListMobilePhones1()"
+            landmarkName = "xtestListMobilePhones1()"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "QiuTuiJianTests.DataDaoTests.testListMobilePhones1 (QiuTuiJianTests.DataDaoTests)() -&gt; ()"
+                  symbolName = "QiuTuiJianTests.DataDaoTests.xtestListMobilePhones1 (QiuTuiJianTests.DataDaoTests)() -&gt; ()"
                   moduleName = "QiuTuiJianTests"
                   urlString = "file:///Users/Ping/git/YangRepoApple/QiuTuiJian/QiuTuiJianTests/DataDaoTests.swift"
-                  timestampString = "428681792.933211"
+                  timestampString = "428755325.604557"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
                   endingLineNumber = "21"
-                  offsetFromSymbolStart = "380">
+                  offsetFromSymbolStart = "314">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "QiuTuiJianTests.DataDaoTests.(testListMobilePhones1 (QiuTuiJianTests.DataDaoTests) -&gt; () -&gt; ()).(implicit closure #1)"
+                  symbolName = "QiuTuiJianTests.DataDaoTests.(xtestListMobilePhones1 (QiuTuiJianTests.DataDaoTests) -&gt; () -&gt; ()).(implicit closure #1)"
                   moduleName = "QiuTuiJianTests"
                   urlString = "file:///Users/Ping/git/YangRepoApple/QiuTuiJian/QiuTuiJianTests/DataDaoTests.swift"
-                  timestampString = "428681792.9334"
+                  timestampString = "428755325.604884"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "21"
@@ -717,13 +701,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QiuTuiJian/DataService.swift"
-            timestampString = "428680019.905714"
+            filePath = "QiuTuiJian/DataDao.swift"
+            timestampString = "428752026.332557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "init()"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "listEntities(_:fault:sortByKey:ascending:fetchBatchSize:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -734,12 +718,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiuTuiJianTests/DataDaoTests.swift"
-            timestampString = "428680126.779493"
+            timestampString = "428754657.883039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "testListMobilePhones2()"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "xtestCreateMobilePhone()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -750,12 +734,108 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QiuTuiJian/DataDao.swift"
-            timestampString = "428682011.247263"
+            timestampString = "428751836.348746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "listEntities(_:fault:sortByKey:ascending:fetchBatchSize:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiuTuiJianTests/DataDaoTests.swift"
+            timestampString = "428754657.883039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "xtestNothing()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiuTuiJian/DataDao.swift"
+            timestampString = "428753865.398068"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "DataDao"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiuTuiJian/DataDao.swift"
+            timestampString = "428753865.398068"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "DataDao"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiuTuiJian/DataDao.swift"
+            timestampString = "428753865.398068"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "DataDao"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiuTuiJianTests/DataDaoTests.swift"
+            timestampString = "428754035.340889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "xtestListMobilePhones1()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QiuTuiJianTests/DataDaoTests.swift"
+            timestampString = "428754641.18875"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "testListMobilePhones2()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
