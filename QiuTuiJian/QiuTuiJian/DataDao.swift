@@ -73,56 +73,6 @@ public class DataDao {
         return (managedObjects, error)
     }
     
-    
-    
-//    public func createEntity(managedObject:NSManagedObject) -> NSError? {
-//        let dataService: DataService = DataService.sharedInstance
-//        let ctx: NSManagedObjectContext = dataService.ctx
-//
-//        let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName("MobilePhone", inManagedObjectContext: ctx)
-//
-//        let newMobilePhone = MobilePhone(entity: mobilePhoneED, insertIntoManagedObjectContext: ctx)
-//
-//        // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-//        //newMobilePhone.setValue("65", forKey: "countryCode")
-//        newMobilePhone.initData()
-//        //newMobilePhone.countryCode = "64"
-//        //newMobilePhone.areaCode="4"
-//        newMobilePhone.number="00000002"
-//        newMobilePhone.phoneModel="iPhone 4S"
-////        println("************* MobilePhone =\(newMobilePhone.entity)")
-//        println("************* MobilePhone =\(newMobilePhone)")
-//
-//        // Save the context.
-//        var error: NSError? = nil
-//        if !ctx.save(&error) {
-//            // Replace this implementation with code to handle the error appropriately.
-//            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//            println("Unresolved error \(error), \(error!.description)")
-//            //abort()
-//
-//            XCTAssertNotNil(false, "Failed to save managed object context")
-//        } else {
-//            println("********** SUCCESSFULLY SAVED the managed object context")
-//        }
-//        
-//        
-//        
-//        var error: NSError? = nil
-//        if ctx != nil {
-//            if ctx.hasChanges && !ctx.save(&error) {
-//                if let err = error {
-//                    println("Error occurred while saving data: \(err) , \(err.userInfo)")
-//                } else {
-//                    println("Saved data")
-//                }
-//            }
-//        }
-//        
-//        return error
-//    }
-    
-
     // Caller must check the returned NSError to make sure no failure with save
     public func saveContext() -> NSError? {
         let dataService: DataService = DataService.sharedInstance
