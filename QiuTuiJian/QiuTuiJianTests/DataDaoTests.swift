@@ -12,7 +12,7 @@ import QiuTuiJian
 class DataDaoTests: XCTestCase {
     
     // This test case handles raw managed objects
-    func testListMobilePhones1() {
+    func xtestListMobilePhones1() {
         var dataDao: DataDao = DataDao()
         let result = dataDao.listEntities("MobilePhone")
         //let result = dataDao.listEntities("MobilePhone", fault:false, sortByKey: nil, ascending: false, fetchBatchSize:20)
@@ -25,7 +25,9 @@ class DataDaoTests: XCTestCase {
     func testListMobilePhones2() {
         var dataDao: DataDao = DataDao()
         
-        let (managedObjects, error) = dataDao.listEntities("MobilePhone")
+        //let (managedObjects, error) = dataDao.listEntities("MobilePhone")
+        let (managedObjects, error) = dataDao.listEntities("MobilePhone", fault:false, sortByKey: nil, ascending: false, fetchBatchSize:20)
+
         //let result = dataDao.listEntities("MobilePhone", fault:false, sortByKey: nil, ascending: false, fetchBatchSize:20)
         if (error != nil) {
             println("Failed to get all mobile phones. Unresolved error \(error), \(error!.description)")
@@ -39,7 +41,30 @@ class DataDaoTests: XCTestCase {
             }
         }
         
-        XCTAssertNil(error, "Failed to get all mobile phonese")
+        XCTAssertNil(error, "Failed to get all mobile phones")
+    }
+    
+    func xtestCreateMobilePhone() {
+        let dataDao: DataDao = DataDao()
+        
+        let newMobilePhone: MobilePhone = MobilePhone.createEntity()
+        //newMobilePhone.setValue("65", forKey: "countryCode")
+        newMobilePhone.countryCode = "65"
+        newMobilePhone.areaCode="4"
+        newMobilePhone.number="00000008"
+        newMobilePhone.phoneModel="iPhone 5S"
+        
+        var error: NSError? = dataDao.saveContext()
+        if let err = error {
+            println("Failed to save data context. \(err.userInfo)")
+        }
+        
+        XCTAssert(true, "Failed to create a new mobile phone")
+    }
+    
+    func xtestNothing() {
+        println("Finished testing.")
+        XCTAssert(true, "Failed to run an empty test")
     }
 
 }
