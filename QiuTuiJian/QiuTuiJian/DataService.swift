@@ -99,6 +99,8 @@ public class DataService {
                 println("Unresolved error \(error), \(error!.description)")
                 //println("Unresolved error \(error), \(error.?.userInfo)")
                 abort()
+            } else {
+                println("successfully added data store.")
             }
         }
         return _persistentStoreCoordinator!
