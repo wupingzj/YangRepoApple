@@ -49,9 +49,9 @@ class DataDaoTests: XCTestCase {
         
         let newMobilePhone: MobilePhone = MobilePhone.createEntity()
         //newMobilePhone.setValue("65", forKey: "countryCode")
-        newMobilePhone.countryCode = "65"
+        newMobilePhone.countryCode = "61"
         newMobilePhone.areaCode="4"
-        newMobilePhone.number="00000008"
+        newMobilePhone.number="00000010"
         newMobilePhone.phoneModel="iPhone 5S"
         
         var error: NSError? = dataDao.saveContext()
