@@ -54,6 +54,7 @@
 		392F43B6198D279A003C4D01 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		3935251E1990E21900298ED0 /* BusinessEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessEntity.swift; sourceTree = "<group>"; };
 		393525201990E48200298ED0 /* BusinessEntityTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessEntityTest.swift; sourceTree = "<group>"; };
+		393525221990F40800298ED0 /* QiuTuiJianModel_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v2.xcdatamodel; sourceTree = "<group>"; };
 		393841EA19720A0D00060A6E /* QiuTuiJian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiuTuiJian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		393841EE19720A0D00060A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393841EF19720A0D00060A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -500,10 +501,11 @@
 		39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				393525221990F40800298ED0 /* QiuTuiJianModel_v2.xcdatamodel */,
 				39FAA2F8198FB18600739C94 /* QiuTuiJianModel_v1.xcdatamodel */,
 				39FEFDEE1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodel */,
 			);
-			currentVersion = 39FAA2F8198FB18600739C94 /* QiuTuiJianModel_v1.xcdatamodel */;
+			currentVersion = 393525221990F40800298ED0 /* QiuTuiJianModel_v2.xcdatamodel */;
 			path = QiuTuiJianModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

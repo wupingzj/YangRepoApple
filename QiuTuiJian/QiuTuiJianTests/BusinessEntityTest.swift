@@ -32,7 +32,7 @@ class BusinessEntityTest: XCTestCase {
         XCTAssertNil(error, "Failed to get all business entities")
     }
     
-    func testCreateEntity() {
+    func xtestCreateEntity() {
         let dataDao: DataDao = DataDao()
         
         let newBusinessEntity: BusinessEntity = BusinessEntity.createEntity()
