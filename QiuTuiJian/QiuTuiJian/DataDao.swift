@@ -21,7 +21,7 @@ public class DataDao {
     
     public func listEntities(entityName:String, fault:Bool?, sortByKey:String?, ascending:Bool?, fetchBatchSize:Int?) -> (managedObjects: [NSManagedObject], error: NSError?) {
         
-        println("**** Will retrieve all entities")
+        println("**** Will retrieve all \(entityName) entities ****")
         
         let dataService: DataService = DataService.sharedInstance
         let ctx: NSManagedObjectContext = dataService.ctx

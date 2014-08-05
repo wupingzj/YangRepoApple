@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="ModelVersionIDv1" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6208.6" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="BusinessEntity" representedClassName="BusinessEntity" syncable="YES">
+    <entity name="BusinessEntity" representedClassName="QiuTuiJian.BusinessEntity" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -23,7 +23,7 @@
     <fetchRequest name="FetchRequest" entity="Event"/>
     <configuration name="Testing"/>
     <elements>
-        <element name="BusinessEntity" positionX="-45" positionY="-99" width="126" height="73"/>
+        <element name="BusinessEntity" positionX="-45" positionY="-99" width="126" height="75"/>
         <element name="Event" positionX="-360" positionY="72" width="128" height="60"/>
         <element name="MobilePhone" positionX="-191" positionY="-109" width="128" height="120"/>
         <element name="User" positionX="-378" positionY="-108" width="128" height="103"/>

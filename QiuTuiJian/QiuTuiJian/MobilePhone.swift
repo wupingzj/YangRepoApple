@@ -27,7 +27,7 @@ public class MobilePhone: NSManagedObject{
     public init(entity: NSEntityDescription!, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
 
-        println("**** My class is \(self.entity.managedObjectClassName)")
+        //println("**** My class is \(self.entity.managedObjectClassName)")
         
         // *********** IMPORTANT: *****************
         // YOU SHOULD NOT do anything in this minit method. 

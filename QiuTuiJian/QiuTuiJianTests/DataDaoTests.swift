@@ -22,7 +22,7 @@ class DataDaoTests: XCTestCase {
     }
     
     // This test case casts to entity class Mobile Phone
-    func testListMobilePhones2() {
+    func xtestListMobilePhones2() {
         var dataDao: DataDao = DataDao()
         
         //let (managedObjects, error) = dataDao.listEntities("MobilePhone")
