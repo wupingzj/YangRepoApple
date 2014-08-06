@@ -13,12 +13,12 @@
 		3935251F1990E21900298ED0 /* BusinessEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935251E1990E21900298ED0 /* BusinessEntity.swift */; };
 		393525211990E48200298ED0 /* BusinessEntityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393525201990E48200298ED0 /* BusinessEntityTest.swift */; };
 		393841F019720A0D00060A6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393841EF19720A0D00060A6E /* AppDelegate.swift */; };
-		393841F419720A0D00060A6E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393841F319720A0D00060A6E /* SecondViewController.swift */; };
 		393841F719720A0D00060A6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 393841F519720A0D00060A6E /* Main.storyboard */; };
 		393841F919720A0D00060A6E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 393841F819720A0D00060A6E /* Images.xcassets */; };
 		3938420519720A0D00060A6E /* QiuTuiJianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3938420419720A0D00060A6E /* QiuTuiJianTests.swift */; };
 		39B1D5E31981B462000BE637 /* DataServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E21981B462000BE637 /* DataServiceTest.swift */; };
 		39BE31A5198BB5B000758D4B /* DataDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE31A4198BB5B000758D4B /* DataDaoTests.swift */; };
+		39F56A3A199241550009FF94 /* SeekTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F56A39199241550009FF94 /* SeekTableVC.swift */; };
 		39FEFDEF1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */; };
 		39FEFDF71979DBA500415EC0 /* FavoriteTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */; };
 		39FEFDF91979DECB00415EC0 /* ShareTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDF81979DECB00415EC0 /* ShareTableVC.swift */; };
@@ -58,7 +58,6 @@
 		393841EA19720A0D00060A6E /* QiuTuiJian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QiuTuiJian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		393841EE19720A0D00060A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		393841EF19720A0D00060A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		393841F319720A0D00060A6E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		393841F619720A0D00060A6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		393841F819720A0D00060A6E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		393841FE19720A0D00060A6E /* QiuTuiJianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QiuTuiJianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +66,7 @@
 		3938420E197223FA00060A6E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		39B1D5E21981B462000BE637 /* DataServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServiceTest.swift; sourceTree = "<group>"; };
 		39BE31A4198BB5B000758D4B /* DataDaoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDaoTests.swift; sourceTree = "<group>"; };
+		39F56A39199241550009FF94 /* SeekTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekTableVC.swift; sourceTree = "<group>"; };
 		39FAA2F8198FB18600739C94 /* QiuTuiJianModel_v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v1.xcdatamodel; sourceTree = "<group>"; };
 		39FEFDEE1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel.xcdatamodel; sourceTree = "<group>"; };
 		39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableVC.swift; sourceTree = "<group>"; };
@@ -114,10 +114,10 @@
 			children = (
 				39FEFDEC1977B02800415EC0 /* Model */,
 				393841EF19720A0D00060A6E /* AppDelegate.swift */,
-				393841F319720A0D00060A6E /* SecondViewController.swift */,
-				393841F519720A0D00060A6E /* Main.storyboard */,
-				39FEFDF81979DECB00415EC0 /* ShareTableVC.swift */,
 				39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */,
+				39F56A39199241550009FF94 /* SeekTableVC.swift */,
+				39FEFDF81979DECB00415EC0 /* ShareTableVC.swift */,
+				393841F519720A0D00060A6E /* Main.storyboard */,
 				393841F819720A0D00060A6E /* Images.xcassets */,
 				393841ED19720A0D00060A6E /* Supporting Files */,
 			);
@@ -267,7 +267,7 @@
 			files = (
 				39FEFDEF1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld in Sources */,
 				39FEFDF71979DBA500415EC0 /* FavoriteTableVC.swift in Sources */,
-				393841F419720A0D00060A6E /* SecondViewController.swift in Sources */,
+				39F56A3A199241550009FF94 /* SeekTableVC.swift in Sources */,
 				39FEFDF91979DECB00415EC0 /* ShareTableVC.swift in Sources */,
 				392F43B3198D2714003C4D01 /* MobilePhone.swift in Sources */,
 				392F43B5198D2769003C4D01 /* DataDao.swift in Sources */,

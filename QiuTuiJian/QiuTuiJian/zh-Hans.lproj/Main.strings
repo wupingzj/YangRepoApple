@@ -1,6 +1,9 @@
 
 /* UINavigationItem */
+// Favorite tab navigator bar title
 "Jy0-gV-60h.title" = "求推荐";
+// Seek tab navigator bar title
+"Txe-R9-Kwh.title" = "求推荐";
 
 /* IBUITabBarItem */
 "LjZ-HA-wMK.title" = "收藏";
