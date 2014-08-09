@@ -11,6 +11,9 @@ import CoreData
 
 public class BusinessEntity: NSManagedObject {
     @NSManaged
+    public var category: String
+
+    @NSManaged
     public var name: String
     
     @NSManaged

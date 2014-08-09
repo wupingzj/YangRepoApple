@@ -12,7 +12,7 @@ import CoreData
 public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
     var dataService:DataService = DataService.sharedInstance
     
-    var managedObjectContext: NSManagedObjectContext? = nil
+    var ctx: NSManagedObjectContext? = nil
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        self.managedObjectContext = dataService.ctx
+        self.ctx = dataService.ctx
     }
     
     override public func didReceiveMemoryWarning() {
@@ -53,13 +53,28 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         return self.fetchedResultsController.sections.count
     }
     
+    // Customize the number of rows in the table view.
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
         return sectionInfo.numberOfObjects
     }
     
+    // Customize the appearance of table view cells.
+    public func configureCell(cell:UITableViewCell, atIndexPath indexPath:NSIndexPath) {
+    
+        // Configure the cell to show the book's title
+        let businessEntity:BusinessEntity = self.fetchedResultsController.objectAtIndexPath(indexPath) as BusinessEntity
+        cell.textLabel.text = businessEntity.name
+    }
+    
+    // second implemenation of configureCell - to be deleted
+    private func configureCellV2(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+        cell.textLabel.text = object.valueForKey("timeStamp").description
+    }
+    
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("BusinessEntityCell", forIndexPath: indexPath) as UITableViewCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
@@ -67,6 +82,22 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
     override public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
+    }
+    
+    override public func tableView(tableView: UITableView, titleForHeaderInSection section:NSInteger) -> String {
+        // for debugging
+        let businessEntityTmp:AnyObject = self.fetchedResultsController.sections[section]
+        println("**** titleForHeaderInSection= \(businessEntityTmp)")
+        
+    
+//        // Display the business entity' names as section headings.
+//        let businessEntity:BusinessEntity = self.fetchedResultsController.sections[section] as BusinessEntity
+//        
+//        
+//        return businessEntity.category;
+        
+        // @TODO
+        return "MyCategory - TODO"
     }
     
     override public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -84,35 +115,31 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         }
     }
     
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-        cell.textLabel.text = object.valueForKey("timeStamp").description
-    }
-    
     // #pragma mark - Fetched results controller
     var fetchedResultsController: NSFetchedResultsController {
-    if _fetchedResultsController != nil {
-        return _fetchedResultsController!
+        if _fetchedResultsController != nil {
+            return _fetchedResultsController!
         }
         
         let fetchRequest = NSFetchRequest()
         // Edit the entity name as appropriate.
-        let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: self.managedObjectContext)
+        let entity = NSEntityDescription.entityForName("BusinessEntity", inManagedObjectContext: self.ctx)
         fetchRequest.entity = entity
-        println("************* Event entity class name=\(entity.managedObjectClassName)")
+        println("************* BusinessEntity entity class name=\(entity.managedObjectClassName)")
         
         // Set the batch size to a suitable number.
-        fetchRequest.fetchBatchSize = 20
+        // @TODO how many categories to show? Consider performance
+        fetchRequest.fetchBatchSize = 50
         
         // Edit the sort key as appropriate.
-        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "category", ascending: true)
         let sortDescriptors = [sortDescriptor]
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Master")
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: nil, cacheName: "Master")
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
@@ -142,6 +169,8 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         default:
             // Move
             // Update
+            // @TODO please handle move and update events
+            println("****** section is being changed. Please handle it.")
             return
         }
     }

@@ -112,13 +112,11 @@
 		393841EC19720A0D00060A6E /* QiuTuiJian */ = {
 			isa = PBXGroup;
 			children = (
-				39FEFDEC1977B02800415EC0 /* Model */,
 				393841EF19720A0D00060A6E /* AppDelegate.swift */,
-				39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */,
-				39F56A39199241550009FF94 /* SeekTableVC.swift */,
-				39FEFDF81979DECB00415EC0 /* ShareTableVC.swift */,
 				393841F519720A0D00060A6E /* Main.storyboard */,
-				393841F819720A0D00060A6E /* Images.xcassets */,
+				39F56A3B199389940009FF94 /* ViewController */,
+				39FEFDEC1977B02800415EC0 /* Model */,
+				39EB63FB19938BCE0032AC6B /* Resource */,
 				393841ED19720A0D00060A6E /* Supporting Files */,
 			);
 			path = QiuTuiJian;
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				393841EE19720A0D00060A6E /* Info.plist */,
-				39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -153,9 +150,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		39EB63FB19938BCE0032AC6B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				393841F819720A0D00060A6E /* Images.xcassets */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		39F56A3B199389940009FF94 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */,
+				39F56A39199241550009FF94 /* SeekTableVC.swift */,
+				39FEFDF81979DECB00415EC0 /* ShareTableVC.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		39FEFDEC1977B02800415EC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */,
 				392F43B4198D2769003C4D01 /* DataDao.swift */,
 				392F43B2198D2714003C4D01 /* MobilePhone.swift */,
 				392F43B6198D279A003C4D01 /* DataService.swift */,
