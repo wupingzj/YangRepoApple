@@ -21,11 +21,24 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         
         println("I am going to start up the application")
-        
+
+        // The following code heavily depends on the storyboard defination
+        // **********************************************************
         let tabBarController = self.window!.rootViewController as UITabBarController
-        let controllers = tabBarController.childViewControllers
-        let controller = controllers[0] as FavoriteTableVC
-        //controller.managedObjectContext = dataService.managedObjectContext
+        let tabbedControllers = tabBarController.childViewControllers
+        let favoriteNavigationController: UINavigationController = tabbedControllers[0] as UINavigationController
+        let controller: FavoriteTableVC = favoriteNavigationController.childViewControllers[0] as FavoriteTableVC
+        // **********************************************************
+        
+//        outdated. Just to show how to 
+//              - print class name using object_getClassName
+//              - check class type
+//        
+//        if (controllers[0] is FavoriteTableVC) {
+//            println("The first controller is a FavoriteTableVC")
+//        } else {
+//            println("The first controller is NOT a FavoriteTableVC. It is a \(object_getClassName(a)).")
+//        }
         
         return true
     }
@@ -46,6 +59,11 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         var error: NSError? = nil
         let ctx = dataService.ctx
         if ctx != nil {
+            if ctx.hasChanges {
+                println("*** ctx has been changed*** ")
+            }
+            
+            
             if ctx.hasChanges && !ctx.save(&error) {
                 //abort()
                 

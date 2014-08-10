@@ -1,13 +1,11 @@
 
 /* UINavigationItem */
-// Favorite tab navigator bar title
-"Jy0-gV-60h.title" = "求推荐";
-// Seek tab navigator bar title
-"Txe-R9-Kwh.title" = "求推荐";
+"AO4-WX-xuY.title" = "收藏";
+"ido-qy-IDk.title" = "求推荐";
 
 /* IBUITabBarItem */
 "LjZ-HA-wMK.title" = "收藏";
-"cPa-gy-q4n.title" = "求推荐";
+"2bS-BC-Myi.title" = "求推荐";
 "BPi-tF-HDq.title" = "分享";
 "OfH-ju-COA.title" = "公告";
 
