@@ -84,20 +84,12 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         return true
     }
     
-    override public func tableView(tableView: UITableView, titleForHeaderInSection section:NSInteger) -> String {
-        // for debugging
-        let businessEntityTmp:AnyObject = self.fetchedResultsController.sections[section]
-        println("**** titleForHeaderInSection= \(businessEntityTmp)")
+    override public func tableView(tableView: UITableView, titleForHeaderInSection sectionIdx:NSInteger) -> String {
         
-    
-//        // Display the business entity' names as section headings.
-//        let businessEntity:BusinessEntity = self.fetchedResultsController.sections[section] as BusinessEntity
-//        
-//        
-//        return businessEntity.category;
+        let section:AnyObject = self.fetchedResultsController.sections[sectionIdx]
+        // println("**** title for section \(section): class= \(object_getClassName(section)).")
         
-        // @TODO
-        return "MyCategory - TODO"
+        return section.name!
     }
     
     override public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -132,14 +124,15 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         fetchRequest.fetchBatchSize = 50
         
         // Edit the sort key as appropriate.
-        let sortDescriptor = NSSortDescriptor(key: "category", ascending: true)
-        let sortDescriptors = [sortDescriptor]
+        let sortByCategory = NSSortDescriptor(key: "category", ascending: true)
+        let sortByName = NSSortDescriptor(key: "name", ascending: true)
+        let sortDescriptors = [sortByCategory, sortByName]
         
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: nil, cacheName: "Master")
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: "category", cacheName: "Master")
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         

@@ -15,7 +15,13 @@ public class DataDao {
     public init() {
     }
     
-    public func listEntities(entityName:String)  -> (managedObjects: [NSManagedObject], error: NSError?) {
+    public func getContext() -> NSManagedObjectContext {
+        let dataService: DataService = DataService.sharedInstance
+        let ctx: NSManagedObjectContext = dataService.ctx
+        return ctx
+    }
+    
+    public func listEntities(entityName:String) -> (managedObjects: [NSManagedObject], error: NSError?) {
         return listEntities(entityName, fault:false, sortByKey: "number", ascending: false, fetchBatchSize:20)
     }
     
