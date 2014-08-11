@@ -86,8 +86,7 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
     
     override public func tableView(tableView: UITableView, titleForHeaderInSection sectionIdx:NSInteger) -> String {
         
-        let section:AnyObject = self.fetchedResultsController.sections[sectionIdx]
-        // println("**** title for section \(section): class= \(object_getClassName(section)).")
+        let section:NSFetchedResultsSectionInfo = self.fetchedResultsController.sections[sectionIdx] as NSFetchedResultsSectionInfo
         
         return section.name!
     }
