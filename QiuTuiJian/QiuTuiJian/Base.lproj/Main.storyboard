@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--FavoriteTableVC-->
@@ -42,27 +44,46 @@
             </objects>
             <point key="canvasLocation" x="-127" y="326"/>
         </scene>
-        <!--View Controller-->
+        <!--BusinessEntityDetailVC-->
         <scene sceneID="4mu-5U-8Na">
             <objects>
-                <viewController id="4aK-xf-4eU" sceneMemberID="viewController">
+                <viewController id="4aK-xf-4eU" userLabel="BusinessEntityDetailVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yfe-XW-eLM"/>
                         <viewControllerLayoutGuide type="bottom" id="ngV-Gb-79O"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="izZ-qp-XBg">
+                    <view key="view" contentMode="scaleToFill" id="izZ-qp-XBg" userLabel="DetailView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxr-CO-j3b">
-                                <rect key="frame" x="61" y="185" width="42" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxr-CO-j3b">
+                                <rect key="frame" x="61" y="185" width="77" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="qI6-eO-7he"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI0-w1-IFl">
+                                <rect key="frame" x="155" y="185" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="JYo-IJ-aOd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cI0-w1-IFl" firstAttribute="leading" secondItem="zxr-CO-j3b" secondAttribute="trailing" constant="17" id="12f-bs-9NN"/>
+                            <constraint firstItem="zxr-CO-j3b" firstAttribute="leading" secondItem="izZ-qp-XBg" secondAttribute="leading" constant="61" id="Jr9-Qa-7iN"/>
+                            <constraint firstItem="zxr-CO-j3b" firstAttribute="top" secondItem="yfe-XW-eLM" secondAttribute="bottom" constant="121" id="qzO-PC-OWW"/>
+                            <constraint firstItem="cI0-w1-IFl" firstAttribute="baseline" secondItem="zxr-CO-j3b" secondAttribute="firstBaseline" id="vB3-Lb-dYA"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Detail" id="R25-gv-Kqf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ec-Um-bBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
