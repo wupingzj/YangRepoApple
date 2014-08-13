@@ -104,7 +104,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="4aK-xf-4eU" kind="show" identifier="showBusinessEntityDetail" trigger="accessoryAction" id="quV-bi-zCH"/>
+                                    <segue destination="4aK-xf-4eU" kind="show" identifier="showBusinessEntityDetail" trigger="accessoryAction" id="fOT-0J-XxC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

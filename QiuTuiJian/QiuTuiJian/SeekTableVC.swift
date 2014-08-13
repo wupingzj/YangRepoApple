@@ -39,28 +39,31 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
     
     override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("****** prepareForSegue ******")
+        println("*** sender: \(sender)")
         
         if segue.identifier == "showBusinessEntityDetail" {
-            let indexPath = self.tableView.indexPathForSelectedRow()
-            
-            println("indexPath = \(indexPath)")
-            if (indexPath == nil) {
-                println("*** ERROR: application will crash... MUST SELECT A business entity to proceed...***")
+            //let indexPath = self.tableView.indexPathForSelectedRow()
+            if let cell:UITableViewCell = sender as? UITableViewCell {
+                let indexPath = self.tableView.indexPathForCell(cell)
+                
+                println("tapped accessary button indexPath = \(indexPath)")
+                if (indexPath == nil) {
+                    println("*** ERROR: application will crash... MUST SELECT A business entity to proceed...***")
+                }
+                
+                let businessEntity:BusinessEntity = self.fetchedResultsController.objectAtIndexPath(indexPath) as BusinessEntity
+                (segue.destinationViewController as BusinessEntityDetailVC).businessEntity = businessEntity
+            } else {
+                println("*** ERROR: segue sender is nil or not a UITableViewCell **********")
             }
-            
-            let businessEntity:BusinessEntity = self.fetchedResultsController.objectAtIndexPath(indexPath) as BusinessEntity
-            (segue.destinationViewController as BusinessEntityDetailVC).businessEntity = businessEntity
         } else {
             println("*** ERROR: Unrecongnized segue name in SeekTableVC.prepareForSegue ***")
         }
     }
     
     override public func tableView(tableView: UITableView!, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath!) {
-        //super.tableView(tableView, accessoryButtonTappedForRowWithIndexPath: indexPath)
-        
         println("*** Tapped \(indexPath)")
-        
-//        [self performSegueWithIdentifier: @"EditUser" sender: [tableView cellForRowAtIndexPath: indexPath]];
+        //self.performSegueWithIdentifier("showBusinessEntityDetail", sender: tableView.cellForRowAtIndexPath: indexPath))
     }
     
     
