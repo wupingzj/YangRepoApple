@@ -47,7 +47,7 @@
         <!--BusinessEntityDetailVC-->
         <scene sceneID="4mu-5U-8Na">
             <objects>
-                <viewController id="4aK-xf-4eU" userLabel="BusinessEntityDetailVC" sceneMemberID="viewController">
+                <viewController id="4aK-xf-4eU" userLabel="BusinessEntityDetailVC" customClass="BusinessEntityDetailVC" customModule="QiuTuiJian" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yfe-XW-eLM"/>
                         <viewControllerLayoutGuide type="bottom" id="ngV-Gb-79O"/>
