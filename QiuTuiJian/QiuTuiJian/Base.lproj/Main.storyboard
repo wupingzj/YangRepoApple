@@ -148,6 +148,54 @@
             </objects>
             <point key="canvasLocation" x="-939" y="1663"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="Ytm-Id-FYU">
+            <objects>
+                <viewController title="Search" id="nbN-1C-IzA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ks-7m-76s"/>
+                        <viewControllerLayoutGuide type="bottom" id="CP5-04-PhZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vR6-kq-lpI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="layout needs to be tuned" borderStyle="roundedRect" placeholder="type to search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X0S-0m-Rsl">
+                                <rect key="frame" x="121" y="167" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="xhP-Qd-EO5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NVZ-15-llN">
+                                <rect key="frame" x="208" y="268" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search online" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dda-PH-42C">
+                                <rect key="frame" x="74" y="273" width="111" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brainstorm: 在线搜索应不应该是单独一页？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22W-h5-CbK">
+                                <rect key="frame" x="27" y="345" width="332" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X0S-0m-Rsl" firstAttribute="leading" secondItem="vR6-kq-lpI" secondAttribute="leading" constant="211" id="5sj-89-zsT"/>
+                            <constraint firstItem="X0S-0m-Rsl" firstAttribute="top" secondItem="1ks-7m-76s" secondAttribute="bottom" constant="105" id="OHf-mS-sfP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="GSM-kY-9pO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uVW-S2-QjW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1171" y="2556"/>
+        </scene>
         <!--Ad-->
         <scene sceneID="2QK-TK-zEk">
             <objects>
@@ -173,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQX-yC-3sQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1310" y="2564"/>
+            <point key="canvasLocation" x="-498" y="2564"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -188,6 +236,7 @@
                     <connections>
                         <segue destination="QOp-Yj-Kdj" kind="relationship" relationship="viewControllers" id="Ik2-Gx-qgE"/>
                         <segue destination="8VU-IB-jXC" kind="relationship" relationship="viewControllers" id="8sh-2B-WrZ"/>
+                        <segue destination="yWV-nr-YSb" kind="relationship" relationship="viewControllers" id="htM-t4-dG4"/>
                         <segue destination="PbT-B6-csG" kind="relationship" relationship="viewControllers" id="SBv-66-20V"/>
                         <segue destination="hWA-rH-4kU" kind="relationship" relationship="viewControllers" id="wmS-dU-seY"/>
                     </connections>
@@ -233,6 +282,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33g-l1-E4n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-939" y="326"/>
+        </scene>
+        <!--SearchNavController-->
+        <scene sceneID="5Fn-bS-Zxy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yWV-nr-YSb" userLabel="SearchNavController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" id="KoP-dK-4pe"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T37-9K-L6K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nbN-1C-IzA" kind="relationship" relationship="rootViewController" id="mhj-fa-YLa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HcG-2q-bud" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1983" y="2556"/>
         </scene>
     </scenes>
     <resources>

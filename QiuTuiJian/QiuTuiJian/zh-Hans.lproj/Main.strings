@@ -2,20 +2,18 @@
 /* UINavigationItem */
 "AO4-WX-xuY.title" = "收藏";
 "ido-qy-IDk.title" = "求推荐";
+"GSM-kY-9pO.title" = "搜索";
 
 /* IBUITabBarItem */
 "LjZ-HA-wMK.title" = "收藏";
 "2bS-BC-Myi.title" = "求推荐";
 "BPi-tF-HDq.title" = "分享";
 "OfH-ju-COA.title" = "公告";
+"KoP-dK-4pe.title" = "搜索";
 
 
-"KQZ-1w-vlD.text" = "第一页";
-"zEq-FU-wV5.text" = "第二页";
+/* view content items */
 "t42-GT-O1a.text" = "故事分享";
 "NnE-mP-p0x.text" = "公告板";
 
-
-"A5M-7J-77L.text" = "Loaded by the first view controller — an instance of FirstViewController — specified in the app delegate.";
-"NDk-cv-Gan.text" = "Loaded by the second view controller — an instance of SecondViewController — specified in the app delegate.";
-
+"dda-PH-42C.text" = "在线搜索";
