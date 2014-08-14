@@ -84,6 +84,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="R25-gv-Kqf"/>
+                    <connections>
+                        <outlet property="labelCategory" destination="cI0-w1-IFl" id="afn-An-B97"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ec-Um-bBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,31 +10,33 @@ import UIKit
 
 class BusinessEntityDetailVC: UIViewController {
     
+    @IBOutlet var labelCategory: UILabel!
+    
     // selected business entity to show details
     var businessEntity: BusinessEntity? {
         didSet {
-            // Update the view.
-            self.configureView()
+            // You CAN NOT update view at this stage
+            // That's because the IBOutlet has NOT been weaved yet and is still nil!
+            //self.configureView()
         }
     }
     
     func configureView() {
         // Update the user interface for the detail item.
-//        if let detail: BusinessEntity = self.businessEntity {
-//            println()
-//            if let label = self.detailDescriptionLabel {
-//                label.text = detail.valueForKey("timeStamp").description
-//            }
-//        }
-        
-        
-        println("*** configuring the business entity \(businessEntity) ***")
+        if let businessEntity: BusinessEntity = self.businessEntity {
+            println("*** configuring the business entity \(businessEntity) ***")
+            
+            labelCategory.text = businessEntity.category
+        } else {
+            println("*** ERROR (programming): How come the busiess entity is not passed t the detail screen ***")
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.configureView()
     }
 
     override func didReceiveMemoryWarning() {
