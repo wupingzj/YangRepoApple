@@ -68,6 +68,7 @@
 		393DEF11199B462700549587 /* BusinessEntityDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessEntityDetailVC.swift; sourceTree = "<group>"; };
 		39B1D5E21981B462000BE637 /* DataServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServiceTest.swift; sourceTree = "<group>"; };
 		39BE31A4198BB5B000758D4B /* DataDaoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDaoTests.swift; sourceTree = "<group>"; };
+		39EE7BD719A4A783000DCCE5 /* QiuTuiJianModel_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v3.xcdatamodel; sourceTree = "<group>"; };
 		39F56A39199241550009FF94 /* SeekTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekTableVC.swift; sourceTree = "<group>"; };
 		39FAA2F8198FB18600739C94 /* QiuTuiJianModel_v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v1.xcdatamodel; sourceTree = "<group>"; };
 		39FEFDEE1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel.xcdatamodel; sourceTree = "<group>"; };
@@ -521,11 +522,12 @@
 		39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				39EE7BD719A4A783000DCCE5 /* QiuTuiJianModel_v3.xcdatamodel */,
 				393525221990F40800298ED0 /* QiuTuiJianModel_v2.xcdatamodel */,
 				39FAA2F8198FB18600739C94 /* QiuTuiJianModel_v1.xcdatamodel */,
 				39FEFDEE1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodel */,
 			);
-			currentVersion = 393525221990F40800298ED0 /* QiuTuiJianModel_v2.xcdatamodel */;
+			currentVersion = 39EE7BD719A4A783000DCCE5 /* QiuTuiJianModel_v3.xcdatamodel */;
 			path = QiuTuiJianModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
