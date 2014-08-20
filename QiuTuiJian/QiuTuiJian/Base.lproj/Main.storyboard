@@ -118,6 +118,7 @@
                     <navigationItem key="navigationItem" title="Detail" id="R25-gv-Kqf"/>
                     <connections>
                         <outlet property="labelCategory" destination="cI0-w1-IFl" id="Uq5-ss-3ph"/>
+                        <outlet property="labelName" destination="2Kl-8M-uq6" id="Fb0-ej-9hG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ec-Um-bBq" userLabel="First Responder" sceneMemberID="firstResponder"/>

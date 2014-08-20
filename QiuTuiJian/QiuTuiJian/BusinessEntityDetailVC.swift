@@ -12,6 +12,8 @@ class BusinessEntityDetailVC: UIViewController {
     
     @IBOutlet var labelCategory: UILabel!
     
+    @IBOutlet var labelName: UILabel!
+    
     // selected business entity to show details
     var businessEntity: BusinessEntity? {
         didSet {
@@ -27,6 +29,8 @@ class BusinessEntityDetailVC: UIViewController {
             println("*** configuring the business entity \(businessEntity) ***")
             
             labelCategory.text = businessEntity.category
+            labelName.text = businessEntity.name
+            
         } else {
             println("*** ERROR (programming): How come the busiess entity is not passed t the detail screen ***")
         }
