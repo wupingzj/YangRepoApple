@@ -11,9 +11,9 @@
     <entity name="MobilePhone" representedClassName="QiuTuiJian.MobilePhone" syncable="YES">
         <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneModel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="User" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -24,9 +24,9 @@
     <fetchRequest name="FetchRequest" entity="Event"/>
     <configuration name="Testing"/>
     <elements>
-        <element name="BusinessEntity" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Event" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MobilePhone" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BusinessEntity" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Event" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="MobilePhone" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="105"/>
     </elements>
 </model>
