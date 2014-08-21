@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		392D96DA19A60D13008BC8A8 /* AdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D96D919A60D13008BC8A8 /* AdVC.swift */; };
 		392F43B3198D2714003C4D01 /* MobilePhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B2198D2714003C4D01 /* MobilePhone.swift */; };
 		392F43B5198D2769003C4D01 /* DataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B4198D2769003C4D01 /* DataDao.swift */; };
 		392F43B7198D279A003C4D01 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B6198D279A003C4D01 /* DataService.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		392D96D919A60D13008BC8A8 /* AdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdVC.swift; sourceTree = "<group>"; };
 		392F43B2198D2714003C4D01 /* MobilePhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobilePhone.swift; sourceTree = "<group>"; };
 		392F43B4198D2769003C4D01 /* DataDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDao.swift; sourceTree = "<group>"; };
 		392F43B6198D279A003C4D01 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				39F56A39199241550009FF94 /* SeekTableVC.swift */,
 				39FEFDF81979DECB00415EC0 /* ShareTableVC.swift */,
 				393DEF11199B462700549587 /* BusinessEntityDetailVC.swift */,
+				392D96D919A60D13008BC8A8 /* AdVC.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				392F43B5198D2769003C4D01 /* DataDao.swift in Sources */,
 				393841F019720A0D00060A6E /* AppDelegate.swift in Sources */,
 				3935251F1990E21900298ED0 /* BusinessEntity.swift in Sources */,
+				392D96DA19A60D13008BC8A8 /* AdVC.swift in Sources */,
 				392F43B7198D279A003C4D01 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
