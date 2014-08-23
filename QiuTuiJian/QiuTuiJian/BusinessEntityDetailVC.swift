@@ -10,6 +10,10 @@ import UIKit
 
 class BusinessEntityDetailVC: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet var labelCategory: UILabel!
     
     @IBOutlet var labelName: UILabel!
@@ -48,6 +52,12 @@ class BusinessEntityDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+//        self.scrollView.layoutIfNeeded()
+//        self.scrollView.contentSize = self.contentView.bounds.size
+    }
 
     /*
     // MARK: - Navigation
