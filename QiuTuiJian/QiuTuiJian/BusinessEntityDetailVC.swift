@@ -58,6 +58,18 @@ class BusinessEntityDetailVC: UIViewController {
 //        self.scrollView.layoutIfNeeded()
 //        self.scrollView.contentSize = self.contentView.bounds.size
     }
+    
+    // actions
+    @IBAction func call(sender: UIBarButtonItem) {
+        println("Just made a phone call")
+        
+        //http://stackoverflow.com/questions/6101286/making-a-button-call-a-phone-number-in-ios
+        let app: UIApplication = UIApplication.sharedApplication()
+        app.openURL(NSURL.URLWithString("tel:0412345678"))
+        
+        println("Just made a phone call")
+        
+    }
 
     /*
     // MARK: - Navigation

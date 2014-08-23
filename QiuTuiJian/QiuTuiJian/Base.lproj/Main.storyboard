@@ -243,7 +243,11 @@
                                     <constraint firstAttribute="height" constant="44" id="yfS-kW-xC9"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Call" width="120" id="o9B-fw-JhV"/>
+                                    <barButtonItem title="Call" width="120" id="o9B-fw-JhV">
+                                        <connections>
+                                            <action selector="call:" destination="4aK-xf-4eU" id="kdd-Ma-xDd"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="LMX-OD-7zS"/>
                                     <barButtonItem title="Review" width="117" id="5Vt-Hg-ggy"/>
                                 </items>
