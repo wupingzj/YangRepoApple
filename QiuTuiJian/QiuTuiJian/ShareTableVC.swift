@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
-public class ShareTableVC: UITableViewController {
+public class ShareTableVC: UITableViewController, NSFetchedResultsControllerDelegate  {
+    var dataService:DataService = DataService.sharedInstance
+    
+    var managedObjectContext: NSManagedObjectContext? = nil
 
 //    init(style: UITableViewStyle) {
 //        super.init(style: style)
@@ -30,61 +34,131 @@ public class ShareTableVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // #pragma mark - Table view data source
-
-    override public func numberOfSectionsInTableView(tableView: UITableView?) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+    // #pragma mark - Table View
+    
+    override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.fetchedResultsController.sections.count
     }
-
-    override public func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
+    
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
+        return sectionInfo.numberOfObjects
     }
-
-    /*
-    override func tableView(tableView: UITableView?, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+    
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView?, canEditRowAtIndexPath indexPath: NSIndexPath?) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
+    
+    override public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView?, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath?) {
+    
+    override public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            let context = self.fetchedResultsController.managedObjectContext
+            context.deleteObject(self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject)
+            
+            var error: NSError? = nil
+            if !context.save(&error) {
+                // Replace this implementation with code to handle the error appropriately.
+                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                println("Unresolved error \(error), \(error!.description)")
+                abort()
+            }
+        }
+    }
+    
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
+        cell.textLabel.text = object.valueForKey("timeStamp").description
+    }
+    
+    // #pragma mark - Fetched results controller
+    var fetchedResultsController: NSFetchedResultsController {
+    if _fetchedResultsController != nil {
+        return _fetchedResultsController!
+        }
+        
+        let fetchRequest = NSFetchRequest()
+        // Edit the entity name as appropriate.
+        let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: self.managedObjectContext)
+        fetchRequest.entity = entity
+        println("************* Event entity class name=\(entity.managedObjectClassName)")
+        
+        // Set the batch size to a suitable number.
+        fetchRequest.fetchBatchSize = 20
+        
+        // Edit the sort key as appropriate.
+        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: false)
+        let sortDescriptors = [sortDescriptor]
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Edit the section name key path and cache name if appropriate.
+        // nil for section name key path means "no sections".
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Master")
+        aFetchedResultsController.delegate = self
+        _fetchedResultsController = aFetchedResultsController
+        
+        var error: NSError? = nil
+        if !_fetchedResultsController!.performFetch(&error) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            //println("Unresolved error \(error), \(error.userInfo)")
+            println("Unresolved error \(error), \(error!.description)")
+            abort()
+        }
+        
+        return _fetchedResultsController!
+    }
+    var _fetchedResultsController: NSFetchedResultsController? = nil
+    
+    public func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    public func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        switch type {
+        case NSFetchedResultsChangeType.Insert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        case NSFetchedResultsChangeType.Delete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
+        default:
+            // Move
+            // Update
+            return
+        }
+    }
+    
+    public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath) {
+        switch type {
+        case NSFetchedResultsChangeType.Insert:
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        case NSFetchedResultsChangeType.Delete:
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        case NSFetchedResultsChangeType.Update:
+            self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
+        case NSFetchedResultsChangeType.Move:
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+        default:
+            return
+        }
     }
-    */
+    
+    public func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
+    }
+
+    
 
     /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView?, moveRowAtIndexPath fromIndexPath: NSIndexPath?, toIndexPath: NSIndexPath?) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
+     Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView?, canMoveRowAtIndexPath indexPath: NSIndexPath?) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
+         Return NO if you do not want the item to be re-orderable.
         return true
     }
     */

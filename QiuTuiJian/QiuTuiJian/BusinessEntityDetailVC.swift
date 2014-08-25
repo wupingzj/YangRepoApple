@@ -61,12 +61,15 @@ class BusinessEntityDetailVC: UIViewController {
     
     // actions
     @IBAction func call(sender: UIBarButtonItem) {
-        println("Just made a phone call")
-        
-        //http://stackoverflow.com/questions/6101286/making-a-button-call-a-phone-number-in-ios
+        // Reference: http://stackoverflow.com/questions/5028329/ios-4-2-return-to-app-after-phone-call
         let app: UIApplication = UIApplication.sharedApplication()
-        app.openURL(NSURL.URLWithString("tel:0412345678"))
+        app.openURL(NSURL.URLWithString("telprompt:0401482083"))
+
+        // Note1: the call is aynchronous. So, the application continues while calling.
+        // the application will applicationWillResignActive and then applicationDidEnterBackground.
         
+        // Note2: when telprompt protocol is used, the appcalition automatically resumes after call finishes
+        //        However, if tel protocol is used, the application will NOT resume.
         println("Just made a phone call")
         
     }
