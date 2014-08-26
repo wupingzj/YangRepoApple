@@ -42,11 +42,10 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         println("*** sender: \(sender)")
         
         if segue.identifier == "showBusinessEntityDetail" {
-            //let indexPath = self.tableView.indexPathForSelectedRow()
             if let cell:UITableViewCell = sender as? UITableViewCell {
-                let indexPath = self.tableView.indexPathForCell(cell)
-                
-                println("tapped accessary button indexPath = \(indexPath)")
+//                let indexPath = self.tableView.indexPathForCell(cell)
+//                println("tapped accessary button indexPath = \(indexPath)")
+                let indexPath = self.tableView.indexPathForSelectedRow()
                 if (indexPath == nil) {
                     println("*** ERROR: application will crash... MUST SELECT A business entity to proceed...***")
                 }

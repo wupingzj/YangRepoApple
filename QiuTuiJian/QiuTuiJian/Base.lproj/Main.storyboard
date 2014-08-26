@@ -285,13 +285,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationLevel="1" indentationWidth="10" reuseIdentifier="BusinessEntityCell" id="6zd-to-fcE">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="detailButton" indentationLevel="1" indentationWidth="10" reuseIdentifier="BusinessEntityCell" id="6zd-to-fcE">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6zd-to-fcE" id="w9R-Mf-qnJ">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="4aK-xf-4eU" kind="show" identifier="showBusinessEntityDetail" trigger="accessoryAction" id="fOT-0J-XxC"/>
+                                    <segue destination="4aK-xf-4eU" kind="show" identifier="showBusinessEntityDetail" id="FbW-Co-oDT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
