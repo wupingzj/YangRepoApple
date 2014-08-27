@@ -58,9 +58,10 @@ class BusinessEntityDetailVC: UIViewController {
 //        self.scrollView.layoutIfNeeded()
 //        self.scrollView.contentSize = self.contentView.bounds.size
     }
-    
+
     // actions
-    @IBAction func call(sender: UIBarButtonItem) {
+    @IBAction func call(sender: UIButton) {
+        println("Making a call ...")
         // Reference: http://stackoverflow.com/questions/5028329/ios-4-2-return-to-app-after-phone-call
         let app: UIApplication = UIApplication.sharedApplication()
         app.openURL(NSURL.URLWithString("telprompt:0401482083"))
@@ -72,6 +73,15 @@ class BusinessEntityDetailVC: UIViewController {
         //        However, if tel protocol is used, the application will NOT resume.
         println("Just made a phone call")
         
+    }
+    
+    
+    @IBAction func sendEmail(sender: UIButton) {
+        // TODO 
+        println("Sending an email ...")
+        let app: UIApplication = UIApplication.sharedApplication()
+        app.openURL(NSURL.URLWithString("email:test@yangahha.com"))
+        println("Just sent an email")
     }
 
     /*
