@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
     </dependencies>
     <scenes>
@@ -284,8 +283,15 @@
                     <navigationItem key="navigationItem" title="Detail" id="R25-gv-Kqf"/>
                     <connections>
                         <outlet property="contentView" destination="IwR-dx-SLq" id="NEG-Zf-kgB"/>
+                        <outlet property="labelAddress1" destination="RMo-J8-d69" id="oCW-gq-eJx"/>
+                        <outlet property="labelAddress2" destination="ncr-Iy-Nnb" id="G9X-5z-wZi"/>
                         <outlet property="labelCategory" destination="cI0-w1-IFl" id="Uq5-ss-3ph"/>
+                        <outlet property="labelCity" destination="47k-ao-Bhx" id="hSN-9I-Zkc"/>
+                        <outlet property="labelCountry" destination="KWt-fD-tKh" id="BKf-o5-RQh"/>
+                        <outlet property="labelEmail" destination="LuR-Xc-P1L" id="S2F-aD-2XW"/>
+                        <outlet property="labelMobile" destination="a0h-Tw-bOT" id="Vuv-B1-L7d"/>
                         <outlet property="labelName" destination="2Kl-8M-uq6" id="Fb0-ej-9hG"/>
+                        <outlet property="labelState" destination="D9N-u1-14J" id="cmE-OH-NCe"/>
                         <outlet property="scrollView" destination="veb-WG-N85" id="bIh-Vx-xaw"/>
                     </connections>
                 </viewController>

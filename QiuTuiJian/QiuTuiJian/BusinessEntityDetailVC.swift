@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class BusinessEntityDetailVC: UIViewController {
+class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -17,6 +18,20 @@ class BusinessEntityDetailVC: UIViewController {
     @IBOutlet var labelCategory: UILabel!
     
     @IBOutlet var labelName: UILabel!
+    
+    @IBOutlet var labelAddress1: UILabel!
+    
+    @IBOutlet var labelAddress2: UILabel!
+    
+    @IBOutlet var labelCity: UILabel!
+    
+    @IBOutlet var labelState: UILabel!
+    
+    @IBOutlet var labelCountry: UILabel!
+    
+    @IBOutlet var labelMobile: UILabel!
+    
+    @IBOutlet var labelEmail: UILabel!
     
     // selected business entity to show details
     var businessEntity: BusinessEntity? {
@@ -34,6 +49,13 @@ class BusinessEntityDetailVC: UIViewController {
             
             labelCategory.text = businessEntity.category
             labelName.text = businessEntity.name
+            labelAddress1.text = "TODO_Address1"
+            labelAddress2.text = "TODO_Address2"
+            labelCity.text = "TODO_City"
+            labelCountry.text = "TODO_Country"
+            labelState.text = "TODO_State"
+            labelMobile.text = "TODO_Mobile"
+            labelEmail.text = "TODO_Email"
             
         } else {
             println("*** ERROR (programming): How come the busiess entity is not passed t the detail screen ***")
@@ -61,10 +83,14 @@ class BusinessEntityDetailVC: UIViewController {
 
     // actions
     @IBAction func call(sender: UIButton) {
-        println("Making a call ...")
+        
         // Reference: http://stackoverflow.com/questions/5028329/ios-4-2-return-to-app-after-phone-call
+        let mobileString:String = "telprompt:" + labelMobile.text
+        println("Making a call to \(mobileString) ...")
+        
+        
         let app: UIApplication = UIApplication.sharedApplication()
-        app.openURL(NSURL.URLWithString("telprompt:0401482083"))
+        app.openURL(NSURL.URLWithString(mobileString))
 
         // Note1: the call is aynchronous. So, the application continues while calling.
         // the application will applicationWillResignActive and then applicationDidEnterBackground.
@@ -75,15 +101,54 @@ class BusinessEntityDetailVC: UIViewController {
         
     }
     
-    
     @IBAction func sendEmail(sender: UIButton) {
-        // TODO 
-        println("Sending an email ...")
+        let emailString:String = "email:" + labelEmail.text
+        println("Sending an email to \(emailString) ...")
         let app: UIApplication = UIApplication.sharedApplication()
-        app.openURL(NSURL.URLWithString("email:test@yangahha.com"))
+        //app.openURL(NSURL.URLWithString(emailString))
+        
+        let mcVC: MFMailComposeViewController  = MFMailComposeViewController()
+        mcVC.mailComposeDelegate = self
+        mcVC.setSubject("TestSubject")
+        mcVC.setMessageBody("TestBody", isHTML: true)
+        mcVC.setToRecipients(["KevinPingWu@gmail.com"])
+        
+        self.presentViewController(mcVC, animated: true, completion: nil)
         println("Just sent an email")
     }
 
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        println("Mail \(result)");
+        
+        // Ref: http://stackoverflow.com/questions/25099153/xcode-6-beta-4-messagecomposeresult-is-not-convertible-to-optionalnilcompariso
+        // The code below doesn't compile, but actually it is a bug in XCode bridging.
+        
+//        switch result
+//        {
+//            case MFMailComposeResultCancelled:
+//                println("Mail cancelled");
+//                break;
+//            case MFMailComposeResultSaved:
+//                println("Mail saved");
+//                break;
+//            case MFMailComposeResultSent:
+//                println("Mail sent");
+//                break;
+//            case MFMailComposeResultFailed:
+//                println("Mail sent failure: \(error.localizedDescription)");
+//                break;
+//            default:
+//                break;
+//        }
+        
+        // Close the Mail Interface
+        self.dismissViewControllerAnimated(true, completion:nil);
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
