@@ -54,8 +54,11 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
             labelCity.text = "TODO_City"
             labelCountry.text = "TODO_Country"
             labelState.text = "TODO_State"
+            // The phone number needs to be normailzed so that no need to show country code if locally
             labelMobile.text = "TODO_Mobile"
             labelEmail.text = "TODO_Email"
+
+            // TODO - show a local indicator if distance is not far away
             
         } else {
             println("*** ERROR (programming): How come the busiess entity is not passed t the detail screen ***")
@@ -149,6 +152,12 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
         
     }
     
+@IBAction func addToFavorite(sender: UIBarButtonItem) {
+}
+
+@IBAction func writeReview(sender: UIBarButtonItem) {
+}
+
     /*
     // MARK: - Navigation
 
