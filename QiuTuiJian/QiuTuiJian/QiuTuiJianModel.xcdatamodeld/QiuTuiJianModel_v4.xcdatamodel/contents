@@ -15,6 +15,11 @@
         <attribute name="phoneModel" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Phone" syncable="YES">
+        <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="User" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,5 +33,6 @@
         <element name="Event" positionX="0" positionY="0" width="128" height="60"/>
         <element name="Mobile" positionX="0" positionY="0" width="128" height="118"/>
         <element name="User" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Phone" positionX="0" positionY="36" width="128" height="88"/>
     </elements>
 </model>

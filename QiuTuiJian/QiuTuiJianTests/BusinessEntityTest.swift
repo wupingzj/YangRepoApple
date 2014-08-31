@@ -32,7 +32,7 @@ class BusinessEntityTest: XCTestCase {
         XCTAssertNil(error, "Failed to get all business entities")
     }
     
-    func testCreateEntity() {
+    func xtestCreateEntity() {
         println("Creating busines entities...")
 
         let dataDao: DataDao = DataDao()
@@ -50,6 +50,24 @@ class BusinessEntityTest: XCTestCase {
         self.createNewEntity(category3, name: "老刘搬家", mobile: "0430000001")
         self.createNewEntity(category3, name: "东北搬家", mobile: "0430000002")
         self.createNewEntity(category3, name: "快捷搬家", mobile: "0430000003")
+        
+        var error: NSError? = dataDao.saveContext()
+        if let err = error {
+            println("Failed to save data context. \(err.userInfo)")
+        }
+        
+        XCTAssert(true, "Failed to create new BusinessEntity s")
+    }
+    
+    func xtestDeleteAllData() {
+        println("Creating more busines entities...")
+        
+        let dataDao: DataDao = DataDao()
+        
+        let category1 : String = "Builder"
+        self.createNewEntity(category1, name: "Tony Smith", mobile: "0440000001")
+        self.createNewEntity(category1, name: "Johnson Fox", mobile: "0440000002")
+        
         
         var error: NSError? = dataDao.saveContext()
         if let err = error {

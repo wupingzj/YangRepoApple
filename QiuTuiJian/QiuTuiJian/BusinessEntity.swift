@@ -9,15 +9,12 @@
 import Foundation
 import CoreData
 
-public class BusinessEntity: NSManagedObject {
+public class BusinessEntity: AbstractEntity {
     @NSManaged
     public var category: String
 
     @NSManaged
     public var name: String
-    
-    @NSManaged
-    public var uuid: String
     
     public class func createEntity() -> BusinessEntity {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx

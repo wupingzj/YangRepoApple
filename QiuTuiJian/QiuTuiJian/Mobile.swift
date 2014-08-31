@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public class Mobile: NSManagedObject{
+public class Mobile: AbstractEntity {
     @NSManaged
     public var countryCode:String
     
@@ -39,12 +39,12 @@ public class Mobile: NSManagedObject{
         // If you do set the value for some fields, the value of these fields will NOT be retrieved from database.
     }
     
-    public func initData() {
-        // ONLY INIT data for creation!!!
+    public override func awakeFromInsert() {
+        super.awakeFromInsert()
         countryCode = "64"
         areaCode = "4"
-        number = "12345678"
-        phoneModel = "iPhone 5"
+        //number = "12345678"
+        //phoneModel = "iPhone 5"
     }
     
     public class func createEntity() -> Mobile {

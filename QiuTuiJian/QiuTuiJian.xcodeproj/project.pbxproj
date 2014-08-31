@@ -18,6 +18,7 @@
 		3938420519720A0D00060A6E /* QiuTuiJianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3938420419720A0D00060A6E /* QiuTuiJianTests.swift */; };
 		393DEF12199B462700549587 /* BusinessEntityDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393DEF11199B462700549587 /* BusinessEntityDetailVC.swift */; };
 		3944B3BF19B2D6B100C269E4 /* Mobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B3BE19B2D6B100C269E4 /* Mobile.swift */; };
+		3944B3C219B2EDFC00C269E4 /* AbstractEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B3C119B2EDFC00C269E4 /* AbstractEntity.swift */; };
 		39B1D5E31981B462000BE637 /* DataServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E21981B462000BE637 /* DataServiceTest.swift */; };
 		39BE31A5198BB5B000758D4B /* DataDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE31A4198BB5B000758D4B /* DataDaoTests.swift */; };
 		39F56A3A199241550009FF94 /* SeekTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F56A39199241550009FF94 /* SeekTableVC.swift */; };
@@ -83,6 +84,7 @@
 		393DEF11199B462700549587 /* BusinessEntityDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessEntityDetailVC.swift; sourceTree = "<group>"; };
 		3944B3BE19B2D6B100C269E4 /* Mobile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mobile.swift; sourceTree = "<group>"; };
 		3944B3C019B2D88000C269E4 /* QiuTuiJianModel_v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v4.xcdatamodel; sourceTree = "<group>"; };
+		3944B3C119B2EDFC00C269E4 /* AbstractEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractEntity.swift; sourceTree = "<group>"; };
 		39B1D5E21981B462000BE637 /* DataServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServiceTest.swift; sourceTree = "<group>"; };
 		39BE31A4198BB5B000758D4B /* DataDaoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDaoTests.swift; sourceTree = "<group>"; };
 		39EE7BD719A4A783000DCCE5 /* QiuTuiJianModel_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v3.xcdatamodel; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				3944B3BE19B2D6B100C269E4 /* Mobile.swift */,
 				392F43B6198D279A003C4D01 /* DataService.swift */,
 				3935251E1990E21900298ED0 /* BusinessEntity.swift */,
+				3944B3C119B2EDFC00C269E4 /* AbstractEntity.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				39FEFDF71979DBA500415EC0 /* FavoriteTableVC.swift in Sources */,
 				39F56A3A199241550009FF94 /* SeekTableVC.swift in Sources */,
 				3944B3BF19B2D6B100C269E4 /* Mobile.swift in Sources */,
+				3944B3C219B2EDFC00C269E4 /* AbstractEntity.swift in Sources */,
 				39FEFDF91979DECB00415EC0 /* ShareTableVC.swift in Sources */,
 				393DEF12199B462700549587 /* BusinessEntityDetailVC.swift in Sources */,
 				392F43B5198D2769003C4D01 /* DataDao.swift in Sources */,
