@@ -34,8 +34,8 @@ public class DataDao {
         
         let fetchRequest = NSFetchRequest(entityName: entityName)
         //let fetchRequest = NSFetchRequest()
-        //let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: ctx)
-        //fetchRequest.entity = mobilePhoneED
+        //let MobileED: NSEntityDescription = NSEntityDescription.entityForName(entityName, inManagedObjectContext: ctx)
+        //fetchRequest.entity = MobileED
         
         
         // Set faulting behavior
@@ -62,9 +62,9 @@ public class DataDao {
         }
 
         var error: NSError? = nil
-        // To make the class downcast possible, the MobilePhone entity must be mapped to QiuTuiJianTests.MobilePhone in the data model
+        // To make the class downcast possible, the Mobile entity must be mapped to QiuTuiJianTests.Mobile in the data model
         // I.E., the model class in Test Target
-        //var mobilePhones: MobilePhone[] = ctx.executeFetchRequest(fetchRequest, error: &error) as MobilePhone[]
+        //var Mobiles: Mobile[] = ctx.executeFetchRequest(fetchRequest, error: &error) as Mobile[]
         var managedObjects: [NSManagedObject] = ctx.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]
         
         if let actualError = error {

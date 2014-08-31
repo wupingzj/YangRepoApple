@@ -32,24 +32,24 @@ class BusinessEntityTest: XCTestCase {
         XCTAssertNil(error, "Failed to get all business entities")
     }
     
-    func xtestCreateEntity() {
+    func testCreateEntity() {
         println("Creating busines entities...")
 
         let dataDao: DataDao = DataDao()
         
         let category1 : String = "Mortgage Broker"
-        self.createNewEntity(category1, name: "Kai Wang")
-        self.createNewEntity(category1, name: "Vivian")
-        self.createNewEntity(category1, name: "Jack Xu")
+        self.createNewEntity(category1, name: "Kai Wang", mobile: "0400000001")
+        self.createNewEntity(category1, name: "Vivian", mobile: "0400000002")
+        self.createNewEntity(category1, name: "Jack Xu", mobile: "0400000003")
 
         let category2 : String = "Solicitor"
-        self.createNewEntity(category2, name: "Albert Ma")
-        self.createNewEntity(category2, name: "Teresa")
+        self.createNewEntity(category2, name: "Albert Ma", mobile: "0420000001")
+        self.createNewEntity(category2, name: "Teresa", mobile: "0420000002")
         
         let category3 : String = "Home Mover"
-        self.createNewEntity(category3, name: "老刘搬家")
-        self.createNewEntity(category3, name: "东北搬家")
-        self.createNewEntity(category3, name: "快捷搬家")
+        self.createNewEntity(category3, name: "老刘搬家", mobile: "0430000001")
+        self.createNewEntity(category3, name: "东北搬家", mobile: "0430000002")
+        self.createNewEntity(category3, name: "快捷搬家", mobile: "0430000003")
         
         var error: NSError? = dataDao.saveContext()
         if let err = error {
@@ -59,7 +59,7 @@ class BusinessEntityTest: XCTestCase {
         XCTAssert(true, "Failed to create new BusinessEntity s")
     }
     
-    private func createNewEntity(category:String, name: String) -> BusinessEntity{
+    private func createNewEntity(category:String, name: String, mobile: String) -> BusinessEntity{
         let newBusinessEntity: BusinessEntity = BusinessEntity.createEntity()
         
         newBusinessEntity.category = category

@@ -1,5 +1,5 @@
 //
-//  MobilePhone.swift
+//  Mobile.swift
 //  QiuTuiJian
 //
 //  Created by Ping on 27/07/2014.
@@ -9,28 +9,28 @@
 import Foundation
 import CoreData
 
-public class MobilePhone: NSManagedObject{
+public class Mobile: NSManagedObject{
     @NSManaged
     public var countryCode:String
     
     @NSManaged
     public var areaCode:String
-
+    
     // phone number
     @NSManaged
     public var number:String
-
+    
     // phone model
     @NSManaged
     public var phoneModel:String
     
     public init(entity: NSEntityDescription!, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
-
+        
         //println("**** My class is \(self.entity.managedObjectClassName)")
         
         // *********** IMPORTANT: *****************
-        // YOU SHOULD NOT do anything in this minit method. 
+        // YOU SHOULD NOT do anything in this minit method.
         // Otherwise, problem could be introduced into undo and redo behavior.
         // Read method documentation
         
@@ -41,17 +41,17 @@ public class MobilePhone: NSManagedObject{
     
     public func initData() {
         // ONLY INIT data for creation!!!
-            countryCode = "64"
-            areaCode = "4"
-            number = "12345678"
-            phoneModel = "iPhone 5"
+        countryCode = "64"
+        areaCode = "4"
+        number = "12345678"
+        phoneModel = "iPhone 5"
     }
     
-    public class func createEntity() -> MobilePhone {
+    public class func createEntity() -> Mobile {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx
-        let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName("MobilePhone", inManagedObjectContext: ctx)
-        let newMobilePhone = MobilePhone(entity: mobilePhoneED, insertIntoManagedObjectContext: ctx)
+        let MobileED: NSEntityDescription = NSEntityDescription.entityForName("Mobile", inManagedObjectContext: ctx)
+        let newMobile = Mobile(entity: MobileED, insertIntoManagedObjectContext: ctx)
         
-        return newMobilePhone
+        return newMobile
     }
 }

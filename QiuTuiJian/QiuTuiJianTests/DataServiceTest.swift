@@ -40,22 +40,22 @@ class DataServiceTest: XCTestCase {
 //    }
     
 //    func insertNewObject(ctx: NSManagedObjectContext) {
-//        let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName("MobilePhone", inManagedObjectContext: ctx)
-////        let aMobilePhone = NSEntityDescription.insertNewObjectForEntityForName(mobilePhoneED.name, inManagedObjectContext: ctx) as NSManagedObject
-////        println("mobilePhoneED.name is \(mobilePhoneED.name)")
-////        println("mobilePhoneED.managedObjectClassName is \(mobilePhoneED.managedObjectClassName)")
+//        let MobileED: NSEntityDescription = NSEntityDescription.entityForName("Mobile", inManagedObjectContext: ctx)
+////        let aMobile = NSEntityDescription.insertNewObjectForEntityForName(MobileED.name, inManagedObjectContext: ctx) as NSManagedObject
+////        println("MobileED.name is \(MobileED.name)")
+////        println("MobileED.managedObjectClassName is \(MobileED.managedObjectClassName)")
 //        
-//        let newMobilePhone = MobilePhone(entity: mobilePhoneED, insertIntoManagedObjectContext: ctx)
+//        let newMobile = Mobile(entity: MobileED, insertIntoManagedObjectContext: ctx)
 //        
 //        // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-//        //newMobilePhone.setValue("65", forKey: "countryCode")
-//        newMobilePhone.initData()
-//        //newMobilePhone.countryCode = "64"
-//        //newMobilePhone.areaCode="4"
-//        newMobilePhone.number="00000002"
-//        newMobilePhone.phoneModel="iPhone 4S"
-////        println("************* MobilePhone =\(newMobilePhone.entity)")
-//        println("************* MobilePhone =\(newMobilePhone)")
+//        //newMobile.setValue("65", forKey: "countryCode")
+//        newMobile.initData()
+//        //newMobile.countryCode = "64"
+//        //newMobile.areaCode="4"
+//        newMobile.number="00000002"
+//        newMobile.phoneModel="iPhone 4S"
+////        println("************* Mobile =\(newMobile.entity)")
+//        println("************* Mobile =\(newMobile)")
 //        
 //        // Save the context.
 //        var error: NSError? = nil
@@ -71,15 +71,15 @@ class DataServiceTest: XCTestCase {
 //        }
 //    }
     
-//    func XtestGetMobilePhone() {
+//    func XtestGetMobile() {
 //        let dataService: DataService = DataService.sharedInstance
 //        let ctx: NSManagedObjectContext = dataService.ctx
 //        XCTAssertNotNil(ctx, "ManagedObjectContext ctx is nil")
 //        
-//        let fetchRequest = NSFetchRequest(entityName: "MobilePhone")
+//        let fetchRequest = NSFetchRequest(entityName: "Mobile")
 //        //let fetchRequest = NSFetchRequest()
-//        //let mobilePhoneED: NSEntityDescription = NSEntityDescription.entityForName("MobilePhone", inManagedObjectContext: ctx)
-//        //fetchRequest.entity = mobilePhoneED
+//        //let MobileED: NSEntityDescription = NSEntityDescription.entityForName("Mobile", inManagedObjectContext: ctx)
+//        //fetchRequest.entity = MobileED
 //        
 //        
 //        // disable faulting
@@ -98,10 +98,10 @@ class DataServiceTest: XCTestCase {
 ////        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: ctx, sectionNameKeyPath: nil, cacheName: "Master")
 ////        
 //        var error: NSError? = nil
-//        // To make the class downcast possible, the MobilePhone entity must be mapped to QiuTuiJianTests.MobilePhone in the data model
+//        // To make the class downcast possible, the Mobile entity must be mapped to QiuTuiJianTests.Mobile in the data model
 //        // I.E., the model class in Test Target
-//        var mobilePhones: [MobilePhone] = ctx.executeFetchRequest(fetchRequest, error: &error) as [MobilePhone]
-//        //var mobilePhones: AnyObject[] = ctx.executeFetchRequest(fetchRequest, error: &error)
+//        var Mobiles: [Mobile] = ctx.executeFetchRequest(fetchRequest, error: &error) as [Mobile]
+//        //var Mobiles: AnyObject[] = ctx.executeFetchRequest(fetchRequest, error: &error)
 //        
 //        println("************** error= \(error)")
 //        if (error != nil) {
@@ -109,11 +109,11 @@ class DataServiceTest: XCTestCase {
 //            
 //            XCTAssertNotNil(false, "Failed to save managed object context")
 //        } else {
-//            println("There are totally \(mobilePhones.count) mobile phones in store.")
+//            println("There are totally \(Mobiles.count) mobile phones in store.")
 //            
-//            var mobilePhone: MobilePhone? = nil
-//            for mobilePhone in mobilePhones {
-//                println("mobile phone: \(mobilePhone) ")
+//            var Mobile: Mobile? = nil
+//            for Mobile in Mobiles {
+//                println("mobile phone: \(Mobile) ")
 //            }
 //        }
 //        
