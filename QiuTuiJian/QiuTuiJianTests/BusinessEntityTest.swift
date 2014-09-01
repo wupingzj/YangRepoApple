@@ -12,7 +12,7 @@ import QiuTuiJian
 import CoreData
 
 class BusinessEntityTest: XCTestCase {
-    func testListEntities() {
+    func xtestListEntities() {
         var dataDao: DataDao = DataDao()
 
         let (managedObjects, error) = dataDao.listEntities("BusinessEntity", fault:false, sortByKey: "name", ascending: false, fetchBatchSize:20)
@@ -54,9 +54,9 @@ class BusinessEntityTest: XCTestCase {
         var error: NSError? = dataDao.saveContext()
         if let err = error {
             println("Failed to save data context. \(err.userInfo)")
+            
+            XCTAssert(false, "Failed to create new BusinessEntity s")
         }
-        
-        XCTAssert(true, "Failed to create new BusinessEntity s")
     }
     
     func xtestDeleteAllData() {
@@ -71,6 +71,7 @@ class BusinessEntityTest: XCTestCase {
         
         var error: NSError? = dataDao.saveContext()
         if let err = error {
+            //The cocoa error 1570 means that mandatory fields are not filled in
             println("Failed to save data context. \(err.userInfo)")
         }
         
@@ -79,26 +80,17 @@ class BusinessEntityTest: XCTestCase {
     
     private func createNewEntity(category:String, name: String, mobile: String, email: String) -> BusinessEntity{
         let newBusinessEntity: BusinessEntity = BusinessEntity.createEntity()
-        
-        //The cocoa error 1570 means that mandatory fields are not filled in
-        //newBusinessEntity.createdDate = NSDate()
+
         newBusinessEntity.category = category
         newBusinessEntity.name = name
         newBusinessEntity.email = email
-        
-        //automatically generate uuid
-        //newBusinessEntity.uuid = NSUUID.UUID().UUIDString
-        
-        //newBusinessEntity.setValue("65", forKey: "countryCode")
         
         let newMobile: Mobile = Mobile.createEntity()
         newMobile.number = mobile
 
         // link BusinessEntity and Mobile
         newBusinessEntity.mobile = newMobile
-        
 
-        
         return newBusinessEntity
     }
     

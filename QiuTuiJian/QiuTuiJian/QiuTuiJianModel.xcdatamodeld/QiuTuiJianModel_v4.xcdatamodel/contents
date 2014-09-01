@@ -8,7 +8,7 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="String" syncable="YES"/>
-        <relationship name="mobile" maxCount="1" deletionRule="Nullify" destinationEntity="Mobile" inverseName="businessEntity" inverseEntity="Mobile" syncable="YES"/>
+        <relationship name="mobile" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Mobile" inverseName="businessEntity" inverseEntity="Mobile" syncable="YES"/>
     </entity>
     <entity name="Event" syncable="YES">
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
@@ -16,7 +16,7 @@
     <entity name="Mobile" representedClassName="QiuTuiJian.Mobile" syncable="YES">
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneModel" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="businessEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessEntity" inverseName="mobile" inverseEntity="BusinessEntity" syncable="YES"/>
+        <relationship name="businessEntity" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessEntity" inverseName="mobile" inverseEntity="BusinessEntity" syncable="YES"/>
     </entity>
     <entity name="User" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>

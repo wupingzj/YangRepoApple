@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+// The following objc annotation simply allows this entity to be referenced in object-C code. But it needs a bridging code to make it work
+//@objc(BusinessEntity)
 public class BusinessEntity: AbstractEntity {
     @NSManaged
     public var category: String
@@ -29,6 +31,7 @@ public class BusinessEntity: AbstractEntity {
     override public func awakeFromInsert() {
         super.awakeFromInsert()
         
+        // createdDate cannot be initialized in AbstractEntity
         self.uuid = NSUUID.UUID().UUIDString
         self.createdDate = NSDate()
     }
