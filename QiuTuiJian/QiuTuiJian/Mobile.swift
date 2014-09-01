@@ -5,17 +5,12 @@
 //  Created by Ping on 27/07/2014.
 //  Copyright (c) 2014 Yang Ltd. All rights reserved.
 //
+//  Mobile phone details
 
 import Foundation
 import CoreData
 
 public class Mobile: AbstractEntity {
-    @NSManaged
-    public var countryCode:String
-    
-    @NSManaged
-    public var areaCode:String
-    
     // phone number
     @NSManaged
     public var number:String
@@ -23,6 +18,8 @@ public class Mobile: AbstractEntity {
     // phone model
     @NSManaged
     public var phoneModel:String
+    
+    @NSManaged var businessEntity: BusinessEntity
     
     public init(entity: NSEntityDescription!, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -41,8 +38,6 @@ public class Mobile: AbstractEntity {
     
     public override func awakeFromInsert() {
         super.awakeFromInsert()
-        countryCode = "64"
-        areaCode = "4"
         //number = "12345678"
         //phoneModel = "iPhone 5"
     }

@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="ModelVersionIDv3" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6208.6" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="BusinessEntity" representedClassName="QiuTuiJian.BusinessEntity" syncable="YES">
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="AbstractEntity" representedClassName="QiuTuiJian.AbstractEntity" isAbstract="YES" syncable="YES">
+        <attribute name="createdDate" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="BusinessEntity" representedClassName="QiuTuiJian.BusinessEntity" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="category" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" syncable="YES"/>
+        <relationship name="mobile" maxCount="1" deletionRule="Nullify" destinationEntity="Mobile" inverseName="businessEntity" inverseEntity="Mobile" syncable="YES"/>
     </entity>
     <entity name="Event" syncable="YES">
         <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="Mobile" representedClassName="QiuTuiJian.Mobile" syncable="YES">
-        <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneModel" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="Phone" syncable="YES">
-        <attribute name="areaCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="businessEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessEntity" inverseName="mobile" inverseEntity="BusinessEntity" syncable="YES"/>
     </entity>
     <entity name="User" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -29,10 +27,10 @@
     <fetchRequest name="FetchRequest" entity="Event"/>
     <configuration name="Testing"/>
     <elements>
-        <element name="BusinessEntity" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="BusinessEntity" positionX="0" positionY="0" width="128" height="118"/>
         <element name="Event" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="Mobile" positionX="0" positionY="0" width="128" height="118"/>
+        <element name="Mobile" positionX="0" positionY="0" width="128" height="88"/>
         <element name="User" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="Phone" positionX="0" positionY="36" width="128" height="88"/>
+        <element name="AbstractEntity" positionX="9" positionY="54" width="128" height="58"/>
     </elements>
 </model>

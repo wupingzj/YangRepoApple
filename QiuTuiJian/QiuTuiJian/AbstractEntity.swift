@@ -12,12 +12,16 @@ import CoreData
 
 public class AbstractEntity: NSManagedObject {
     @NSManaged
-    public var uuid: String
+    public var createdDate: NSDate
     
     // INIT data for creation. It's called only once in whole life-cycle.
     override public func awakeFromInsert() {
         super.awakeFromInsert()
         
-        self.uuid = NSUUID.UUID().UUIDString
+//        self.createdDate = NSDate()
     }
+    
+//    public func setCreatedDate(date: NSDate) {
+//        createdDate = date
+//    }
 }

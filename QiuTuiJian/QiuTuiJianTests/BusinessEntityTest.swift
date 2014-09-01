@@ -38,18 +38,18 @@ class BusinessEntityTest: XCTestCase {
         let dataDao: DataDao = DataDao()
         
         let category1 : String = "Mortgage Broker"
-        self.createNewEntity(category1, name: "Kai Wang", mobile: "0400000001")
-        self.createNewEntity(category1, name: "Vivian", mobile: "0400000002")
-        self.createNewEntity(category1, name: "Jack Xu", mobile: "0400000003")
+        self.createNewEntity(category1, name: "Kai Wang", mobile: "0400000001", email: "test@yangahha.com")
+        self.createNewEntity(category1, name: "Vivian", mobile: "0400000002", email: "test@yangahha.com")
+        self.createNewEntity(category1, name: "Jack Xu", mobile: "0400000003", email: "test@yangahha.com")
 
         let category2 : String = "Solicitor"
-        self.createNewEntity(category2, name: "Albert Ma", mobile: "0420000001")
-        self.createNewEntity(category2, name: "Teresa", mobile: "0420000002")
+        self.createNewEntity(category2, name: "Albert Ma", mobile: "0420000001", email: "test@yangahha.com")
+        self.createNewEntity(category2, name: "Teresa", mobile: "0420000002", email: "test@yangahha.com")
         
         let category3 : String = "Home Mover"
-        self.createNewEntity(category3, name: "老刘搬家", mobile: "0430000001")
-        self.createNewEntity(category3, name: "东北搬家", mobile: "0430000002")
-        self.createNewEntity(category3, name: "快捷搬家", mobile: "0430000003")
+        self.createNewEntity(category3, name: "老刘搬家", mobile: "0430000001", email: "test@yangahha.com")
+        self.createNewEntity(category3, name: "东北搬家", mobile: "0430000002", email: "test@yangahha.com")
+        self.createNewEntity(category3, name: "快捷搬家", mobile: "0430000003", email: "test@yangahha.com")
         
         var error: NSError? = dataDao.saveContext()
         if let err = error {
@@ -65,8 +65,8 @@ class BusinessEntityTest: XCTestCase {
         let dataDao: DataDao = DataDao()
         
         let category1 : String = "Builder"
-        self.createNewEntity(category1, name: "Tony Smith", mobile: "0440000001")
-        self.createNewEntity(category1, name: "Johnson Fox", mobile: "0440000002")
+        self.createNewEntity(category1, name: "Tony Smith", mobile: "0440000001", email: "test@yangahha.com")
+        self.createNewEntity(category1, name: "Johnson Fox", mobile: "0440000002", email: "test@yangahha.com")
         
         
         var error: NSError? = dataDao.saveContext()
@@ -77,16 +77,28 @@ class BusinessEntityTest: XCTestCase {
         XCTAssert(true, "Failed to create new BusinessEntity s")
     }
     
-    private func createNewEntity(category:String, name: String, mobile: String) -> BusinessEntity{
+    private func createNewEntity(category:String, name: String, mobile: String, email: String) -> BusinessEntity{
         let newBusinessEntity: BusinessEntity = BusinessEntity.createEntity()
         
+        //The cocoa error 1570 means that mandatory fields are not filled in
+        //newBusinessEntity.createdDate = NSDate()
         newBusinessEntity.category = category
         newBusinessEntity.name = name
+        newBusinessEntity.email = email
         
         //automatically generate uuid
-        newBusinessEntity.uuid = NSUUID.UUID().UUIDString
+        //newBusinessEntity.uuid = NSUUID.UUID().UUIDString
         
         //newBusinessEntity.setValue("65", forKey: "countryCode")
+        
+        let newMobile: Mobile = Mobile.createEntity()
+        newMobile.number = mobile
+
+        // link BusinessEntity and Mobile
+        newBusinessEntity.mobile = newMobile
+        
+
+        
         return newBusinessEntity
     }
     
