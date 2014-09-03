@@ -22,10 +22,20 @@ public class BusinessEntity: AbstractEntity {
     public var uuid: String
     
     @NSManaged
-    public var mobile: Mobile
+    public var phone: String?
     
     @NSManaged
-    public var email: String
+    public var email: String?
+    
+    // relationships
+    @NSManaged
+    public var address: Address
+    
+    @NSManaged
+    public var businessPerson: BusinessPerson?
+    
+    @NSManaged
+    public var performance: Performance?
     
     // INIT data for creation. It's called only once in whole life-cycle.
     override public func awakeFromInsert() {

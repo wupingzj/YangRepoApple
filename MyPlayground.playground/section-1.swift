@@ -2,23 +2,29 @@
 
 import Cocoa
 
-var a : String? = nil
-a == nil
-!a
-a = nil
-
-NSSearchPathDirectory.DocumentDirectory
-NSSearchPathDirectory.DocumentationDirectory
-
-NSSearchPathDirectory.DocumentDirectory.hashValue
-NSSearchPathDirectory.DocumentationDirectory.hashValue
+var x : UInt32 = UINT32_MAX
+x = 1
 
 
-NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+//var a : String? = nil
+//a == nil
+//!a
+//a = nil
 
-urls.count
-urls[urls.endIndex-1] as NSURL
+//NSSearchPathDirectory.DocumentDirectory
+//NSSearchPathDirectory.DocumentationDirectory
+//
+//NSSearchPathDirectory.DocumentDirectory.hashValue
+//NSSearchPathDirectory.DocumentationDirectory.hashValue
+//
+//
+//NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+//let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+//
+//urls.count
+//urls[urls.endIndex-1] as NSURL
 
+//let a:Int16 = Int16.max
 
+//println("\(a)")
 

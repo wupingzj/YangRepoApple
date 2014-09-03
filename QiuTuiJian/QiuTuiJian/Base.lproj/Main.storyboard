@@ -500,6 +500,7 @@
                     <tabBarItem key="tabBarItem" title="Ad" id="OfH-ju-COA"/>
                     <connections>
                         <outlet property="contentView" destination="trR-jh-Yn7" id="M04-mv-2M3"/>
+                        <outlet property="dataLoadResult" destination="HRE-ul-KcF" id="F4Z-Lb-OAt"/>
                         <outlet property="scrollView" destination="Rwu-wP-xzN" id="Ytf-hv-KDC"/>
                     </connections>
                 </viewController>

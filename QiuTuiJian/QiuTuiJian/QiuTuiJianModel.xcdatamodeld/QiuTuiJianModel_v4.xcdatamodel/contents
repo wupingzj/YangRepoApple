@@ -3,34 +3,75 @@
     <entity name="AbstractEntity" representedClassName="QiuTuiJian.AbstractEntity" isAbstract="YES" syncable="YES">
         <attribute name="createdDate" attributeType="Date" syncable="YES"/>
     </entity>
+    <entity name="Address" representedClassName="QiuTuiJian.Address" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="city" attributeType="String" syncable="YES"/>
+        <attribute name="country" attributeType="String" syncable="YES"/>
+        <attribute name="isPostalAddress" attributeType="Boolean" syncable="YES"/>
+        <attribute name="postCode" attributeType="String" syncable="YES"/>
+        <attribute name="state" attributeType="String" syncable="YES"/>
+        <attribute name="street" attributeType="String" syncable="YES"/>
+        <attribute name="streetNumber" attributeType="String" syncable="YES"/>
+        <attribute name="suburb" attributeType="String" syncable="YES"/>
+        <relationship name="businessEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessEntity" inverseName="address" inverseEntity="BusinessEntity" syncable="YES"/>
+    </entity>
     <entity name="BusinessEntity" representedClassName="QiuTuiJian.BusinessEntity" parentEntity="AbstractEntity" syncable="YES">
         <attribute name="category" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="String" syncable="YES"/>
-        <relationship name="mobile" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Mobile" inverseName="businessEntity" inverseEntity="Mobile" syncable="YES"/>
+        <relationship name="address" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="businessEntity" inverseEntity="Address" syncable="YES"/>
+        <relationship name="businessPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessPerson" inverseName="businessEntity" inverseEntity="BusinessPerson" syncable="YES"/>
+        <relationship name="performance" maxCount="1" deletionRule="Cascade" destinationEntity="Performance" inverseName="businessEntity" inverseEntity="Performance" syncable="YES"/>
     </entity>
-    <entity name="Event" syncable="YES">
-        <attribute name="timeStamp" optional="YES" attributeType="Date" syncable="YES"/>
+    <entity name="BusinessPerson" representedClassName="QiuTuiJian.BusinessPerson" parentEntity="Person" syncable="YES">
+        <attribute name="anonymous" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="businessEntity" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessEntity" inverseName="businessPerson" inverseEntity="BusinessEntity" syncable="YES"/>
+    </entity>
+    <entity name="Event" representedClassName="QiuTuiJian.Event" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <attribute name="type" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Mobile" representedClassName="QiuTuiJian.Mobile" syncable="YES">
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phoneModel" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="businessEntity" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessEntity" inverseName="mobile" inverseEntity="BusinessEntity" syncable="YES"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="mobile" inverseEntity="Person" syncable="YES"/>
     </entity>
-    <entity name="User" syncable="YES">
-        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mobileId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    <entity name="Performance" representedClassName="QiuTuiJian.Performance" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="rank" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="star" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="businessEntity" maxCount="1" deletionRule="Deny" destinationEntity="BusinessEntity" inverseName="performance" inverseEntity="BusinessEntity" syncable="YES"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Review" inverseName="performance" inverseEntity="Review" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="QiuTuiJian.Person" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" syncable="YES"/>
+        <relationship name="mobile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mobile" inverseName="owner" inverseEntity="Mobile" syncable="YES"/>
+    </entity>
+    <entity name="Review" representedClassName="QiuTuiJian.Review" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="helpful" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="performance" maxCount="1" deletionRule="Nullify" destinationEntity="Performance" inverseName="reviews" inverseEntity="Performance" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="reviews" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="QiuTuiJian.User" parentEntity="Person" syncable="YES">
+        <attribute name="anonymous" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Review" inverseName="user" inverseEntity="Review" syncable="YES"/>
     </entity>
     <fetchRequest name="FetchRequest" entity="Event"/>
     <configuration name="Testing"/>
     <elements>
-        <element name="BusinessEntity" positionX="0" positionY="0" width="128" height="118"/>
-        <element name="Event" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="Mobile" positionX="0" positionY="0" width="128" height="88"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="105"/>
-        <element name="AbstractEntity" positionX="9" positionY="54" width="128" height="58"/>
+        <element name="AbstractEntity" positionX="189" positionY="-567" width="128" height="58"/>
+        <element name="Address" positionX="-2" positionY="72" width="128" height="178"/>
+        <element name="BusinessEntity" positionX="63" positionY="-136" width="128" height="163"/>
+        <element name="BusinessPerson" positionX="-279" positionY="-58" width="128" height="73"/>
+        <element name="Event" positionX="547" positionY="-387" width="128" height="73"/>
+        <element name="Mobile" positionX="-452" positionY="-270" width="128" height="88"/>
+        <element name="Performance" positionX="223" positionY="104" width="128" height="105"/>
+        <element name="Person" positionX="-153" positionY="-297" width="128" height="118"/>
+        <element name="Review" positionX="466" positionY="122" width="128" height="103"/>
+        <element name="User" positionX="538" positionY="-270" width="128" height="73"/>
     </elements>
 </model>
