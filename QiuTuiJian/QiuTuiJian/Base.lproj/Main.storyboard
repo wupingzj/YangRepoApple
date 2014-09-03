@@ -482,6 +482,15 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFC-kk-iFD">
+                                        <rect key="frame" x="20" y="124" width="93" height="30"/>
+                                        <state key="normal" title="List Test Data">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="listBusinessEntities:" destination="hWA-rH-4kU" eventType="touchUpInside" id="ek7-fE-GMD"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Y0h-iR-83a" firstAttribute="top" secondItem="Rwu-wP-xzN" secondAttribute="top" constant="20" symbolic="YES" id="rJo-3j-EdD"/>

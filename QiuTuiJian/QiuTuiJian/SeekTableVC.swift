@@ -75,7 +75,9 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
     // Customize the number of rows in the table view.
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
-        return sectionInfo.numberOfObjects
+        //return sectionInfo.numberOfObjects
+        // only show two promoted business entities
+        return 2
     }
     
     // Customize the appearance of table view cells.
@@ -139,12 +141,16 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         
         // Set the batch size to a suitable number.
         // @TODO how many categories to show? Consider performance
-        fetchRequest.fetchBatchSize = 50
+        //fetchRequest.fetchBatchSize = 50
+        fetchRequest.fetchBatchSize = 2
+        // fetchLimit controlls the total number of returned records
+        //fetchRequest.fetchLimit = 2
         
         // Edit the sort key as appropriate.
         let sortByCategory = NSSortDescriptor(key: "category", ascending: true)
+        let sortByPromotionRank = NSSortDescriptor(key: "promotionRank", ascending: false)
         let sortByName = NSSortDescriptor(key: "name", ascending: true)
-        let sortDescriptors = [sortByCategory, sortByName]
+        let sortDescriptors = [sortByCategory, sortByPromotionRank, sortByName]
         
         fetchRequest.sortDescriptors = sortDescriptors
         

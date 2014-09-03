@@ -46,4 +46,8 @@ class AdVC: UIViewController {
         }
     }
     
+    @IBAction func listBusinessEntities(sender: UIButton) {
+        let dataLoader: DataLoader = DataLoader()
+        dataLoader.listEntities()
+    }
 }

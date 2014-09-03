@@ -19,6 +19,7 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="promotionRank" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="address" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="businessEntity" inverseEntity="Address" syncable="YES"/>
         <relationship name="businessPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessPerson" inverseName="businessEntity" inverseEntity="BusinessPerson" syncable="YES"/>
@@ -65,7 +66,7 @@
     <elements>
         <element name="AbstractEntity" positionX="189" positionY="-567" width="128" height="58"/>
         <element name="Address" positionX="-2" positionY="72" width="128" height="178"/>
-        <element name="BusinessEntity" positionX="63" positionY="-136" width="128" height="163"/>
+        <element name="BusinessEntity" positionX="63" positionY="-136" width="128" height="180"/>
         <element name="BusinessPerson" positionX="-279" positionY="-58" width="128" height="73"/>
         <element name="Event" positionX="547" positionY="-387" width="128" height="73"/>
         <element name="Mobile" positionX="-452" positionY="-270" width="128" height="88"/>
