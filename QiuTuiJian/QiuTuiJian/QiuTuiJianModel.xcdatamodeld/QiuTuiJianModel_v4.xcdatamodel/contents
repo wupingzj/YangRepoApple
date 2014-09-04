@@ -24,6 +24,7 @@
         <relationship name="address" maxCount="1" deletionRule="Cascade" destinationEntity="Address" inverseName="businessEntity" inverseEntity="Address" syncable="YES"/>
         <relationship name="businessPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessPerson" inverseName="businessEntity" inverseEntity="BusinessPerson" syncable="YES"/>
         <relationship name="performance" maxCount="1" deletionRule="Cascade" destinationEntity="Performance" inverseName="businessEntity" inverseEntity="Performance" syncable="YES"/>
+        <relationship name="promotion" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Promotion" inverseName="businessEntity" inverseEntity="Promotion" syncable="YES"/>
     </entity>
     <entity name="BusinessPerson" representedClassName="QiuTuiJian.BusinessPerson" parentEntity="Person" syncable="YES">
         <attribute name="anonymous" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -51,6 +52,12 @@
         <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="mobile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mobile" inverseName="owner" inverseEntity="Mobile" syncable="YES"/>
     </entity>
+    <entity name="Promotion" parentEntity="AbstractEntity" syncable="YES">
+        <attribute name="rank" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="businessEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BusinessEntity" inverseName="promotion" inverseEntity="BusinessEntity" syncable="YES"/>
+    </entity>
     <entity name="Review" representedClassName="QiuTuiJian.Review" parentEntity="AbstractEntity" syncable="YES">
         <attribute name="helpful" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
@@ -65,8 +72,8 @@
     <configuration name="Testing"/>
     <elements>
         <element name="AbstractEntity" positionX="189" positionY="-567" width="128" height="58"/>
-        <element name="Address" positionX="-2" positionY="72" width="128" height="178"/>
-        <element name="BusinessEntity" positionX="63" positionY="-136" width="128" height="180"/>
+        <element name="Address" positionX="52" positionY="119" width="128" height="178"/>
+        <element name="BusinessEntity" positionX="63" positionY="-136" width="128" height="193"/>
         <element name="BusinessPerson" positionX="-279" positionY="-58" width="128" height="73"/>
         <element name="Event" positionX="547" positionY="-387" width="128" height="73"/>
         <element name="Mobile" positionX="-452" positionY="-270" width="128" height="88"/>
@@ -74,5 +81,6 @@
         <element name="Person" positionX="-153" positionY="-297" width="128" height="118"/>
         <element name="Review" positionX="466" positionY="122" width="128" height="103"/>
         <element name="User" positionX="538" positionY="-270" width="128" height="73"/>
+        <element name="Promotion" positionX="-279" positionY="135" width="128" height="103"/>
     </elements>
 </model>

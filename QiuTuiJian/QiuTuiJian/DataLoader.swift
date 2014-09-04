@@ -128,6 +128,7 @@ class DataLoader {
         let newBusinessEntity: BusinessEntity = BusinessEntity.createEntity()
         
         newBusinessEntity.category = category
+        newBusinessEntity.phone = phone
         newBusinessEntity.name = name
         newBusinessEntity.email = email
         newBusinessEntity.promotionRank = promotionRank
