@@ -48,15 +48,15 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
             println("*** configuring the business entity \(businessEntity) ***")
             
             labelCategory.text = businessEntity.category
-            labelName.text = businessEntity.name
+            labelName.text = businessEntity.getContactName()
             labelAddress1.text = "TODO_Address1"
             labelAddress2.text = "TODO_Address2"
             labelCity.text = "TODO_City"
             labelCountry.text = "TODO_Country"
             labelState.text = "TODO_State"
             // The phone number needs to be normailzed so that no need to show country code if locally
-            labelMobile.text = "TODO_Mobile"
-            labelEmail.text = "TODO_Email"
+            labelMobile.text = businessEntity.getContactPhone()
+            labelEmail.text = businessEntity.email
 
             // TODO - show a local indicator if distance is not far away
             

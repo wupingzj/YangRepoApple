@@ -57,4 +57,29 @@ public class BusinessEntity: AbstractEntity {
         
         return newBusinessEntity
     }
+    
+    // This must be telephone
+    public func getNormalizedPhone() -> String? {
+        if phone != nil {
+            return self.phone
+        }
+        
+        return nil
+    }
+
+    public func getContactPhone() -> String? {
+        if phone {
+            return self.getNormalizedPhone()
+        }
+        
+        if businessPerson {
+            return businessPerson!.mobile.getNormalizedNumber()
+        }
+        
+        return nil
+    }
+    
+    public func getContactName() -> String? {
+        return name
+    }
 }

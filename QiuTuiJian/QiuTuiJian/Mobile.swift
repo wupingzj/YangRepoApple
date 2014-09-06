@@ -49,4 +49,9 @@ public class Mobile: AbstractEntity {
         
         return newMobile
     }
+    
+    public func getNormalizedNumber() -> String {
+        // TODO normalize the mobile phone number
+        return number;
+    }
 }
