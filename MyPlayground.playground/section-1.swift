@@ -5,6 +5,18 @@ import Cocoa
 var x : UInt32 = UINT32_MAX
 x = 1
 
+var y: String?
+if y {
+    x = 0
+}
+
+y = "HHHH"
+if y {
+    x += 1
+} else {
+    x = 3
+}
+
 
 //var a : String? = nil
 //a == nil
