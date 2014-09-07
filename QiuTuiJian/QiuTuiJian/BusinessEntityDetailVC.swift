@@ -45,7 +45,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
             let msg: String = "*** No busiess entity to display ***"
             println(msg)
             let errorMsgLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 600, 20))
-            //errorMsgLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            errorMsgLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
             errorMsgLabel.text = msg
             contentView.addSubview(errorMsgLabel)
 
@@ -60,7 +60,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
             contentView.addSubview(screenLabel)
             
             var  viewsDictionary: Dictionary<String, UILabel> = ["sizeLabel":sizeLabel, "screenLabel":screenLabel]
-            var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[sizeLabel]-30-[screenLabel]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+            var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[sizeLabel]-230-[screenLabel]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
             
             //let constraints = [contraint1];
             self.contentView.addConstraints(constraints)

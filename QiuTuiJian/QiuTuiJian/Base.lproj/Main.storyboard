@@ -68,14 +68,13 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="IwR-dx-SLq" firstAttribute="top" secondItem="veb-WG-N85" secondAttribute="top" id="HWl-Na-qDl"/>
-                                    <constraint firstItem="IwR-dx-SLq" firstAttribute="trailing" secondItem="veb-WG-N85" secondAttribute="trailing" id="M2D-LE-Tgo"/>
-                                    <constraint firstItem="IwR-dx-SLq" firstAttribute="leading" secondItem="veb-WG-N85" secondAttribute="leading" id="NVt-8q-YXT"/>
-                                    <constraint firstItem="IwR-dx-SLq" firstAttribute="centerX" secondItem="veb-WG-N85" secondAttribute="centerX" id="ru6-rg-s05"/>
-                                    <constraint firstAttribute="bottom" secondItem="IwR-dx-SLq" secondAttribute="bottom" constant="300" id="yRk-JH-rgE"/>
+                                    <constraint firstItem="IwR-dx-SLq" firstAttribute="top" secondItem="veb-WG-N85" secondAttribute="top" id="WOy-Es-VRw"/>
+                                    <constraint firstItem="IwR-dx-SLq" firstAttribute="leading" secondItem="veb-WG-N85" secondAttribute="leading" id="avf-Yy-a81"/>
+                                    <constraint firstAttribute="bottom" secondItem="IwR-dx-SLq" secondAttribute="bottom" constant="300" id="g3e-md-MAe"/>
+                                    <constraint firstAttribute="trailing" secondItem="IwR-dx-SLq" secondAttribute="trailing" id="xwr-YX-2Xe"/>
                                 </constraints>
                             </scrollView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gc-ja-GDW">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gc-ja-GDW" userLabel="DetailsToolbar">
                                 <rect key="frame" x="0.0" y="507" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="yfS-kW-xC9"/>
@@ -97,12 +96,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="veb-WG-N85" firstAttribute="top" secondItem="izZ-qp-XBg" secondAttribute="top" id="24s-VI-8LM"/>
                             <constraint firstItem="7gc-ja-GDW" firstAttribute="trailing" secondItem="izZ-qp-XBg" secondAttribute="trailing" constant="-20" symbolic="YES" id="4Ay-HL-eiG"/>
-                            <constraint firstItem="veb-WG-N85" firstAttribute="top" secondItem="izZ-qp-XBg" secondAttribute="top" id="CBG-r8-Rth"/>
-                            <constraint firstItem="veb-WG-N85" firstAttribute="leading" secondItem="7gc-ja-GDW" secondAttribute="leading" id="Z4h-e8-VQq"/>
+                            <constraint firstAttribute="bottom" secondItem="veb-WG-N85" secondAttribute="bottom" id="OsS-nk-xlC"/>
                             <constraint firstItem="7gc-ja-GDW" firstAttribute="leading" secondItem="izZ-qp-XBg" secondAttribute="leading" constant="20" symbolic="YES" id="brm-qz-aGy"/>
                             <constraint firstItem="ngV-Gb-79O" firstAttribute="top" secondItem="7gc-ja-GDW" secondAttribute="bottom" id="j1m-hH-NoX"/>
-                            <constraint firstItem="veb-WG-N85" firstAttribute="bottom" secondItem="izZ-qp-XBg" secondAttribute="bottom" id="vxK-Tr-yzs"/>
+                            <constraint firstItem="veb-WG-N85" firstAttribute="leading" secondItem="7gc-ja-GDW" secondAttribute="leading" id="un1-0m-O4Q"/>
+                            <constraint firstItem="veb-WG-N85" firstAttribute="trailing" secondItem="7gc-ja-GDW" secondAttribute="trailing" id="vQn-4g-u36"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="R25-gv-Kqf"/>
