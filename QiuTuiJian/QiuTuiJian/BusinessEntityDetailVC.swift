@@ -15,61 +15,112 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet var labelCategory: UILabel!
-    
-    @IBOutlet var labelName: UILabel!
-    
-    @IBOutlet var labelAddress1: UILabel!
-    
-    @IBOutlet var labelAddress2: UILabel!
-    
-    @IBOutlet var labelCity: UILabel!
-    
-    @IBOutlet var labelState: UILabel!
-    
-    @IBOutlet var labelCountry: UILabel!
-    
-    @IBOutlet var labelMobile: UILabel!
-    
-    @IBOutlet var labelEmail: UILabel!
-    
+//    @IBOutlet var labelCategory: UILabel!
+//    
+//    @IBOutlet var labelName: UILabel!
+//    
+//    @IBOutlet var labelAddress1: UILabel!
+//    
+//    @IBOutlet var labelAddress2: UILabel!
+//    
+//    @IBOutlet var labelCity: UILabel!
+//    
+//    @IBOutlet var labelState: UILabel!
+//    
+//    @IBOutlet var labelCountry: UILabel!
+//    
+    var labelMobile: UILabel!
+
+    var labelEmail: UILabel!
+//
+//    @IBOutlet var addressView: UIView!
+
     // selected business entity to show details
-    var businessEntity: BusinessEntity? {
-        didSet {
-            // You CAN NOT update view at this stage
-            // That's because the IBOutlet has NOT been weaved yet and is still nil!
-            //self.configureView()
-        }
-    }
+    var businessEntity: BusinessEntity?
     
     func configureView() {
+        businessEntity = nil
+        
+        if !self.businessEntity {
+            let msg: String = "*** No busiess entity to display ***"
+            println(msg)
+            let errorMsgLabel: UILabel = UILabel(frame: CGRectMake(0, 0, 600, 20))
+            //errorMsgLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            errorMsgLabel.text = msg
+            contentView.addSubview(errorMsgLabel)
+
+            let sizeLabel: UILabel = UILabel(frame: CGRectMake(0, 40, 600, 20))
+            sizeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            sizeLabel.text = "width \(self.contentView.frame.width), height=\(self.contentView.frame.height)"
+            contentView.addSubview(sizeLabel)
+
+            let screenLabel: UILabel = UILabel(frame: CGRectMake(0, 60, 600, 20))
+            screenLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            screenLabel.text = "width \(self.view.frame.width), height=\(self.view.frame.height)"
+            contentView.addSubview(screenLabel)
+            
+            var  viewsDictionary: Dictionary<String, UILabel> = ["sizeLabel":sizeLabel, "screenLabel":screenLabel]
+            var constraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[sizeLabel]-30-[screenLabel]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+            
+            //let constraints = [contraint1];
+            self.contentView.addConstraints(constraints)
+            self.contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            //self.scrollView.addConstraints(constraints)
+            
+            return
+        }
+        
         // Update the user interface for the detail item.
         if let businessEntity: BusinessEntity = self.businessEntity {
             println("*** configuring the business entity \(businessEntity) ***")
             
-            labelCategory.text = businessEntity.category
-            labelName.text = businessEntity.getContactName()
-            labelAddress1.text = "TODO_Address1"
-            labelAddress2.text = "TODO_Address2"
-            labelCity.text = "TODO_City"
-            labelCountry.text = "TODO_Country"
-            labelState.text = "TODO_State"
+            //labelCategory.text = businessEntity.category
+            //            labelName.text = businessEntity.getContactName()
+            //            labelAddress1.text = "TODO_Address1"
+            //            labelAddress2.text = "TODO_Address2"
+            //            labelCity.text = "TODO_City"
+            //            labelCountry.text = "TODO_Country"
+            //            labelState.text = "TODO_State"
             // The phone number needs to be normailzed so that no need to show country code if locally
-            labelMobile.text = businessEntity.getContactPhone()
-            labelEmail.text = businessEntity.email
-
-            // TODO - show a local indicator if distance is not far away
+            //labelMobile.text = businessEntity.getContactPhone()
+            //labelEmail.text = businessEntity.email
             
+            let addressView: UIView = UIView(frame: CGRectMake(0, 0, 300, 80))
+            addressView.backgroundColor = UIColor.grayColor()
+            
+            var addressLine1: UILabel = UILabel(frame: CGRectMake(20, 4, 200, 20))
+            addressLine1.text = "Address Line 1"
+            addressLine1.backgroundColor = UIColor.greenColor()
+            addressView.addSubview(addressLine1)
+    
+            var addressLine2: UILabel = UILabel(frame: CGRectMake(20, 24, 300, 20))
+            addressLine2.text = "Address Line 2"
+            addressView.addSubview(addressLine2)
+    
+            var city: UILabel = UILabel(frame: CGRectMake(20, 44, 300, 20))
+            city.text = "city"
+            addressView.addSubview(city)
+            
+            contentView.addSubview(addressView)
         } else {
             println("*** ERROR (programming): How come the busiess entity is not passed t the detail screen ***")
         }
     }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.configureView()
+        
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "orientationChanged", name: "UIDeviceOrientationDidChangeNotificaion", object: nil)
+    }
+    
+    public func orientationChanged(notification: NSNotification) {
+        println("RECEIVE ORIENTATION notification")
     }
 
     override func didReceiveMemoryWarning() {
