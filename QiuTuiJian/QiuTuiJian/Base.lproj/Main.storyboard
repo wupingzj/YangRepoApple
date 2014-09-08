@@ -59,19 +59,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IwR-dx-SLq" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="600" id="TMw-Bg-2X2"/>
-                                            <constraint firstAttribute="height" constant="300" id="ZeH-el-fja"/>
+                                            <constraint firstAttribute="height" constant="400" id="P3X-J2-DQZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="IwR-dx-SLq" firstAttribute="top" secondItem="veb-WG-N85" secondAttribute="top" id="WOy-Es-VRw"/>
                                     <constraint firstItem="IwR-dx-SLq" firstAttribute="leading" secondItem="veb-WG-N85" secondAttribute="leading" id="avf-Yy-a81"/>
-                                    <constraint firstAttribute="bottom" secondItem="IwR-dx-SLq" secondAttribute="bottom" constant="300" id="g3e-md-MAe"/>
-                                    <constraint firstAttribute="trailing" secondItem="IwR-dx-SLq" secondAttribute="trailing" id="xwr-YX-2Xe"/>
+                                    <constraint firstAttribute="bottom" secondItem="IwR-dx-SLq" secondAttribute="bottom" constant="200" id="stk-4A-8aG"/>
+                                    <constraint firstItem="IwR-dx-SLq" firstAttribute="centerX" secondItem="veb-WG-N85" secondAttribute="centerX" id="wID-t2-0NH"/>
+                                    <constraint firstItem="IwR-dx-SLq" firstAttribute="trailing" secondItem="veb-WG-N85" secondAttribute="trailing" id="xwr-YX-2Xe"/>
                                 </constraints>
                             </scrollView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gc-ja-GDW" userLabel="DetailsToolbar">
@@ -98,7 +98,7 @@
                         <constraints>
                             <constraint firstItem="veb-WG-N85" firstAttribute="top" secondItem="izZ-qp-XBg" secondAttribute="top" id="24s-VI-8LM"/>
                             <constraint firstItem="7gc-ja-GDW" firstAttribute="trailing" secondItem="izZ-qp-XBg" secondAttribute="trailing" constant="-20" symbolic="YES" id="4Ay-HL-eiG"/>
-                            <constraint firstAttribute="bottom" secondItem="veb-WG-N85" secondAttribute="bottom" id="OsS-nk-xlC"/>
+                            <constraint firstItem="veb-WG-N85" firstAttribute="bottom" secondItem="izZ-qp-XBg" secondAttribute="bottom" id="OsS-nk-xlC"/>
                             <constraint firstItem="7gc-ja-GDW" firstAttribute="leading" secondItem="izZ-qp-XBg" secondAttribute="leading" constant="20" symbolic="YES" id="brm-qz-aGy"/>
                             <constraint firstItem="ngV-Gb-79O" firstAttribute="top" secondItem="7gc-ja-GDW" secondAttribute="bottom" id="j1m-hH-NoX"/>
                             <constraint firstItem="veb-WG-N85" firstAttribute="leading" secondItem="7gc-ja-GDW" secondAttribute="leading" id="un1-0m-O4Q"/>
