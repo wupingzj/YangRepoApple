@@ -42,17 +42,28 @@ class BusinessEntityLayoutFactory {
 //        The constrains are not in effect and so greyed out
         
 //        let sizeLabel: UILabel = UILabel(frame: CGRectMake(leading, 8*top_space, 600, 20))
+        let sizeLabel: UILabel = UILabel()
+
 //        sizeLabel.text = "width \(self.contentView.frame.width), height=\(self.contentView.frame.height)"
-//        sizeLabel.text = "width \(errorMsg.contentSize.width), height=\(errorMsg.contentSize.height)"
-//        contentView.addSubview(sizeLabel)
-//        
-//
-//        var viewsDictionary: Dictionary = ["sizeLabel":sizeLabel, "contentView":contentView, "errorMsg":errorMsg]
-//        var constraintsH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-50-[errorMsg]-50-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
-//        var constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[errorMsg]-20-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
-//        
-//        self.contentView.addConstraints(constraintsH)
-//        self.contentView.addConstraints(constraintsV)
+        sizeLabel.text = "width \(errorMsg.contentSize.width), height=\(errorMsg.contentSize.height) abcd cefkljlk f ljdfladjsf  aksdfajdfa;sfdhk; hadsfha;sfha;dfa;dsnf;a jfdasdfnkasnfaksdjn kadfskjfdakjf7777777"
+        sizeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        contentView.addSubview(sizeLabel)
+        
+
+        var viewsDictionary: Dictionary = ["sizeLabel":sizeLabel, "contentView":contentView, "errorMsg":errorMsg]
+        var constraintsH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-50-[sizeLabel]-50-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+//        var constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[sizeLabel]-20-|", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        var constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-120-[sizeLabel]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        
+        var constraintsSizeH = NSLayoutConstraint.constraintsWithVisualFormat("H:[sizeLabel(>=50)]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        var constraintsSizeV = NSLayoutConstraint.constraintsWithVisualFormat("V:[sizeLabel(20)]", options: NSLayoutFormatOptions(0), metrics: nil, views: viewsDictionary)
+        
+        self.contentView.addConstraints(constraintsH)
+        self.contentView.addConstraints(constraintsV)
+        
+        sizeLabel.addConstraints(constraintsSizeV)
+        sizeLabel.addConstraints(constraintsSizeH)
     }
     
     func getContentView() -> UIView {
