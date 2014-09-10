@@ -31,6 +31,7 @@
 		39B1D5E31981B462000BE637 /* DataServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E21981B462000BE637 /* DataServiceTest.swift */; };
 		39BE31A5198BB5B000758D4B /* DataDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE31A4198BB5B000758D4B /* DataDaoTests.swift */; };
 		39CA066B19BB160700BE5153 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA066A19BB160700BE5153 /* AddressView.swift */; };
+		39E14EC019C07DC700BE9608 /* ConstraintCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E14EBF19C07DC700BE9608 /* ConstraintCreator.swift */; };
 		39F56A3A199241550009FF94 /* SeekTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F56A39199241550009FF94 /* SeekTableVC.swift */; };
 		39FEFDEF1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */; };
 		39FEFDF71979DBA500415EC0 /* FavoriteTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */; };
@@ -107,6 +108,7 @@
 		39B1D5E21981B462000BE637 /* DataServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServiceTest.swift; sourceTree = "<group>"; };
 		39BE31A4198BB5B000758D4B /* DataDaoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDaoTests.swift; sourceTree = "<group>"; };
 		39CA066A19BB160700BE5153 /* AddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		39E14EBF19C07DC700BE9608 /* ConstraintCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintCreator.swift; sourceTree = "<group>"; };
 		39EE7BD719A4A783000DCCE5 /* QiuTuiJianModel_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v3.xcdatamodel; sourceTree = "<group>"; };
 		39F56A39199241550009FF94 /* SeekTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekTableVC.swift; sourceTree = "<group>"; };
 		39FAA2F8198FB18600739C94 /* QiuTuiJianModel_v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v1.xcdatamodel; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				3982A9B119BDBF1C0017DAED /* BusinessEntityLayoutFactory.swift */,
+				39E14EBF19C07DC700BE9608 /* ConstraintCreator.swift */,
 			);
 			name = BusinessEntityDetails;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				3944B3C219B2EDFC00C269E4 /* AbstractEntity.swift in Sources */,
 				39222D0C19B66CBF005B12A9 /* DataLoader.swift in Sources */,
 				39FEFDF91979DECB00415EC0 /* ShareTableVC.swift in Sources */,
+				39E14EC019C07DC700BE9608 /* ConstraintCreator.swift in Sources */,
 				393DEF12199B462700549587 /* BusinessEntityDetailVC.swift in Sources */,
 				392F43B5198D2769003C4D01 /* DataDao.swift in Sources */,
 				39CA066B19BB160700BE5153 /* AddressView.swift in Sources */,
