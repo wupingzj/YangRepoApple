@@ -79,7 +79,11 @@ public class BusinessEntity: AbstractEntity {
         return nil
     }
     
-    public func getContactName() -> String? {
-        return name
+    public func getContactName() -> String {
+        if businessPerson {
+            return businessPerson!.getNormalizedName()
+        } else {
+            return name
+        }
     }
 }

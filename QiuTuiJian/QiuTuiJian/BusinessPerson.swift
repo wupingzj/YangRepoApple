@@ -32,7 +32,7 @@ public class BusinessPerson: Person {
         return newEntity
     }
     
-    public func xgetNormalizedName() -> String {
+    public func getNormalizedName() -> String {
         return self.firstName + " " + self.lastName
     }
 }
