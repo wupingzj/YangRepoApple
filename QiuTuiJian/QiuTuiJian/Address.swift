@@ -56,4 +56,12 @@ public class Address: AbstractEntity {
         
         return newEntity
     }
+    
+    func getLine1() -> String {
+        return streetNumber + " " + street
+    }
+    
+    func getLine2() -> String {
+        return suburb
+    }
 }
