@@ -22,10 +22,10 @@ public class Person: AbstractEntity {
     public var lastName: String
     
     @NSManaged
-    public var email: String
+    public var email: String?
     
     @NSManaged
-    public var mobile: Mobile
+    public var mobile: Mobile?
     
 //    public override func awakeFromInsert() {
 //        super.awakeFromInsert()

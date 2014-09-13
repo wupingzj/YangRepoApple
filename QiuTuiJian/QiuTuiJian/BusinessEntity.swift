@@ -67,13 +67,11 @@ public class BusinessEntity: AbstractEntity {
         return nil
     }
 
-    public func getContactPhone() -> String? {
-        if phone {
-            return self.getNormalizedPhone()
-        }
-        
+    public func getMobile() -> String? {
         if businessPerson {
-            return businessPerson!.mobile.getNormalizedNumber()
+            if businessPerson!.mobile {
+                return businessPerson!.mobile!.getNormalizedNumber()
+            }
         }
         
         return nil
@@ -81,7 +79,7 @@ public class BusinessEntity: AbstractEntity {
     
     public func getContactName() -> String {
         if businessPerson {
-            return businessPerson!.getNormalizedName()
+            return businessPerson!.getNormalizedName() + "/" + name
         } else {
             return name
         }

@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 
 class BusinessEntityLayoutFactory {
-    private var businessEntity: BusinessEntity?
+    private var selectedBusinessEntity: BusinessEntity?
     private var contentView: UIView
     private var contentViewsDictionary: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
     private var metricsDictionary: Dictionary<String, AnyObject> = ["labelWidth":80.0, "textWidth":100.0, "labelHeight":20.0]
+    var labelFormatV: String = "Not Initiliazed"
+    var textFormatV: String = "Not Initiliazed"
     
     private let leading: CGFloat = 20
     private let trailing: CGFloat = 20
@@ -21,7 +23,7 @@ class BusinessEntityLayoutFactory {
     
     
     init(businessEntity: BusinessEntity?, contentView: UIView) {
-        self.businessEntity = businessEntity
+        self.selectedBusinessEntity = businessEntity
         self.contentView = contentView
         
         self.contentViewsDictionary["contentView"] = contentView
@@ -52,21 +54,73 @@ class BusinessEntityLayoutFactory {
     func showBusinessEntityDetails() {
         //self.contentView.backgroundColor = UIColor.greenColor()
 
-        if let businessEntity = self.businessEntity {
+        if let businessEntity = self.selectedBusinessEntity {
+            var formatH: [String] = []
+            
             println("*** configuring the business entity \(businessEntity) ***")
+            
+            labelFormatV = "V:|"
+            textFormatV = "V:|"
 
+            // category
+    println("contentViewsDictionaryA=\(contentViewsDictionary.count)")
+//            showDictionary(contentViewsDictionary)
             let categoryLabel: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "categoryLabel", labelText: "Category:")
+    println("contentViewsDictionaryB=\(contentViewsDictionary.count)")
+//            showDictionary(contentViewsDictionary)
             let category: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "category", labelText: businessEntity.category)
+    println("contentViewsDictionaryC=\(contentViewsDictionary.count)")
+//            showDictionary(contentViewsDictionary)
+            
+            formatH.append("H:|-[categoryLabel(labelWidth)]-[category(>=textWidth)]-|")
+//            constraintCreator.addConstraint("H:|-[categoryLabel(labelWidth)]-[category(>=textWidth)]-|", options: NSLayoutFormatOptions(0))
+            addToLabelFormatV("categoryLabel")
+            addToTextFormatV("category")
 
+            // name
             let nameLabel: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "nameLabel", labelText: "Name:")
-            let name: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "name", labelText: businessEntity.name)
+            let name: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "name", labelText: businessEntity.getContactName())
+            formatH.append("H:|-[nameLabel(labelWidth)]-[name(>=textWidth)]-|")
+//            constraintCreator.addConstraint("H:|-[nameLabel(labelWidth)]-[name(>=textWidth)]-|", options: NSLayoutFormatOptions(0))
+            addToLabelFormatV("nameLabel")
+            addToTextFormatV("name")
 
+            
+            // phone
+            if businessEntity.phone {
+                let phoneLabel: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "phoneLabel", labelText: "Phone:")
+                let phone: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "phone", labelText: businessEntity.phone!)
+                formatH.append("H:|-[phoneLabel(labelWidth)]-[phone(>=textWidth)]-|")
+//                constraintCreator.addConstraint("H:|-[phoneLabel(labelWidth)]-[phone(>=textWidth)]-|", options: NSLayoutFormatOptions(0))
+                addToLabelFormatV("phoneLabel")
+                addToTextFormatV("phone")
+            }
+            
+            // mobile
+            if let mobileNumber:String? = businessEntity.getMobile() {
+                let mobileLabel: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "mobileLabel", labelText: "Mobile:")
+                let mobile: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "mobile", labelText: businessEntity.getContactName())
+                formatH.append("H:|-[mobileLabel(labelWidth)]-[mobile(>=textWidth)]-|")
+//                constraintCreator.addConstraint("H:|-[mobileLabel(labelWidth)]-[mobile(>=textWidth)]-|", options: NSLayoutFormatOptions(0))
+                addToLabelFormatV("mobileLabel")
+                addToTextFormatV("mobile")
+            }
+ 
+            //labelFormatV = labelFormatV + "-|"
+            //textFormatV = textFormatV + "-|"
+            println("labelFormatV=\(labelFormatV)")
+            println("textFormatV=\(textFormatV)")
             let constraintCreator: ConstraintCreator = ConstraintCreator(view: self.contentView, metrics: metricsDictionary, views: contentViewsDictionary)
-            constraintCreator.addConstraint("H:|-[categoryLabel(labelWidth)]-[category(>=textWidth)]-|", options: NSLayoutFormatOptions(0))
-            constraintCreator.addConstraint("H:|-[nameLabel(labelWidth)]-[name(>=textWidth)]-|", options: NSLayoutFormatOptions(0))
+            
+            constraintCreator.addConstraints(formatH, options: NSLayoutFormatOptions(0))
+            
+            constraintCreator.addConstraint(labelFormatV, options: NSLayoutFormatOptions(0))
+            constraintCreator.addConstraint(textFormatV, options: NSLayoutFormatOptions(0))
+            
+            
 
-            constraintCreator.addConstraint("V:|-[categoryLabel(labelHeight)]-[nameLabel(labelHeight)]", options: NSLayoutFormatOptions(0))
-            constraintCreator.addConstraint("V:|-[category(labelHeight)]-[name(labelHeight)]", options: NSLayoutFormatOptions(0))
+//            constraintCreator.addConstraint("V:|-[categoryLabel(labelHeight)]-[nameLabel(labelHeight)]", options: NSLayoutFormatOptions(0))
+//            constraintCreator.addConstraint("V:|-[category(labelHeight)]-[name(labelHeight)]", options: NSLayoutFormatOptions(0))
 
             //labelCategory.text = businessEntity.category
             //            labelName.text = businessEntity.getContactName()
@@ -91,6 +145,22 @@ class BusinessEntityLayoutFactory {
     //        self.contentView.addSubview(phoneLable)
         }
     }
+    
+    private func showDictionary(dictionary: Dictionary<String, AnyObject>) {
+        for (key, value) in dictionary {
+            println("key=\(key), value=\(value)")
+        }
+        
+    }
+    
+    private func addToLabelFormatV(label: String) {
+        labelFormatV = labelFormatV + "-[" + label + "(labelHeight)]"
+    }
+    
+    private func addToTextFormatV(text: String) {
+        textFormatV = textFormatV + "-[" + text + "(labelHeight)]"
+    }
+
     
     private func createAddressView() -> UIView {
         let addressView: UIView = UIView()
