@@ -16,6 +16,7 @@
     </entity>
     <entity name="BusinessEntity" representedClassName="QiuTuiJian.BusinessEntity" parentEntity="AbstractEntity" syncable="YES">
         <attribute name="category" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
@@ -73,14 +74,14 @@
     <elements>
         <element name="AbstractEntity" positionX="189" positionY="-567" width="128" height="58"/>
         <element name="Address" positionX="52" positionY="119" width="128" height="178"/>
-        <element name="BusinessEntity" positionX="63" positionY="-136" width="128" height="193"/>
+        <element name="BusinessEntity" positionX="63" positionY="-136" width="128" height="210"/>
         <element name="BusinessPerson" positionX="-279" positionY="-58" width="128" height="73"/>
         <element name="Event" positionX="547" positionY="-387" width="128" height="73"/>
         <element name="Mobile" positionX="-452" positionY="-270" width="128" height="88"/>
         <element name="Performance" positionX="223" positionY="104" width="128" height="105"/>
         <element name="Person" positionX="-153" positionY="-297" width="128" height="118"/>
+        <element name="Promotion" positionX="-279" positionY="135" width="128" height="103"/>
         <element name="Review" positionX="466" positionY="122" width="128" height="103"/>
         <element name="User" positionX="538" positionY="-270" width="128" height="73"/>
-        <element name="Promotion" positionX="-279" positionY="135" width="128" height="103"/>
     </elements>
 </model>

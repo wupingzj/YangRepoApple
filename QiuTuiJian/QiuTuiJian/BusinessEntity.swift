@@ -40,6 +40,9 @@ public class BusinessEntity: AbstractEntity {
     @NSManaged
     public var promotionRank: UInt16
     
+    @NSManaged
+    public var desc: String?
+    
     // INIT data for creation. It's called only once in whole life-cycle.
     override public func awakeFromInsert() {
         super.awakeFromInsert()

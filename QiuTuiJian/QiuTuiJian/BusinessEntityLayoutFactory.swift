@@ -129,6 +129,15 @@ class BusinessEntityLayoutFactory {
                 addToLabelFormatV("uuidLabel", gap: "180.0")
                 addToTextFormatV("uuid", gap: "180.0")
             }
+            
+            if let description = businessEntity.desc {
+                let descLabel: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "descLabel", labelText: "Description:")
+                let desc: UILabel = createLabel(self.contentView, viewDictionary: &contentViewsDictionary, labelName: "desc", labelText: description)
+                formatH.append("H:|-[descLabel(labelWidth)]-[desc(>=textWidth)]-|")
+                addToLabelFormatV("descLabel")
+                addToTextFormatV("desc")
+            }
+
 
 
             println("labelFormatV=\(labelFormatV)")

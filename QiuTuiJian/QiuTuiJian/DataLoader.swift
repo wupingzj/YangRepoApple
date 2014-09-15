@@ -68,12 +68,14 @@ class DataLoader {
         businessEntity1.address = address1
         let performance1: Performance = self.createPerformance(1, star: 3)
         businessEntity1.performance = performance1
+        businessEntity1.desc = "This is a description about this business entity, whatever it could be. Such as professional area, parking, open hours, performance etc"
         
         let businessEntity2: BusinessEntity = self.createBusinessEntity(category1, phone: nil, name: "Vivian", email: "test2@yangahha.com", promotionRank: 0)
         let address2: Address = createAddress("2", street: "Culworth Avenue", suburb: "Killara", city: "Sydney", country: "Australia", state: "NSW", postCode: "2071", isPostalAddress: false)
         businessEntity2.address = address2
         let performance2: Performance = self.createPerformance(1, star: 3)
         businessEntity2.performance = performance2
+        businessEntity2.desc = "Another description. a description about this business entity, whatever it could be. Such as professional area, parking, open hours, performance etc"
         
         let businessEntity3: BusinessEntity = self.createBusinessEntity(category1, phone:"0200000003", name: "Jack Xu", email: nil, promotionRank: 1)
         let address3: Address = createAddress("3", street: "Culworth Avenue", suburb: "Killara", city: "Sydney", country: "Australia", state: "NSW", postCode: "2071", isPostalAddress: false)
@@ -88,6 +90,7 @@ class DataLoader {
         businessEntity4.address = address4
         let performance4: Performance = self.createPerformance(1, star: 3)
         businessEntity4.performance = performance4
+        businessEntity4.desc = "This is a description about this business entity, whatever it could be. Such as professional area, parking, open hours, performance etc"
         
         let businessEntity5: BusinessEntity = self.createBusinessEntity(category2, phone:"0200000005", name: "Teresa", email: "test5@yangahha.com", promotionRank: 0)
         let address5: Address = createAddress("5", street: "Culworth Avenue", suburb: "Killara", city: "Sydney", country: "Australia", state: "NSW", postCode: "2071", isPostalAddress: false)
