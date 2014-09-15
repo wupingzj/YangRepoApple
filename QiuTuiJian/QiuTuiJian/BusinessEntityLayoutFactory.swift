@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class BusinessEntityLayoutFactory {
+    private var businessEntityDetailVC: UIViewController
     private var selectedBusinessEntity: BusinessEntity?
     private var contentView: UIView
     private var contentViewsDictionary: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
@@ -22,12 +23,12 @@ class BusinessEntityLayoutFactory {
     private let top_space: CGFloat = 20
     
     
-    init(businessEntity: BusinessEntity?, contentView: UIView) {
+    init(businessEntityDetailVC: UIViewController, businessEntity: BusinessEntity?, contentView: UIView) {
+        self.businessEntityDetailVC = businessEntityDetailVC
         self.selectedBusinessEntity = businessEntity
         self.contentView = contentView
         
         self.contentViewsDictionary["contentView"] = contentView
-
     }
     
     public func showBusinessEntityMissingMessage() {
@@ -86,6 +87,8 @@ class BusinessEntityLayoutFactory {
                 formatH.append("H:|-[phoneLabel(labelWidth)]-[phone(>=textWidth)]-|")
                 addToLabelFormatV("phoneLabel")
                 addToTextFormatV("phone")
+                
+                registerAction(phone, action:"callPhone")
             }
             
             // mobile
@@ -95,6 +98,8 @@ class BusinessEntityLayoutFactory {
                 formatH.append("H:|-[mobileLabel(labelWidth)]-[mobile(>=textWidth)]-|")
                 addToLabelFormatV("mobileLabel")
                 addToTextFormatV("mobile")
+                
+                registerAction(mobile, action:"callMobile")
             }
 
             // email
@@ -104,6 +109,8 @@ class BusinessEntityLayoutFactory {
                 formatH.append("H:|-[emailLabel(labelWidth)]-[email(>=textWidth)]-|")
                 addToLabelFormatV("emailLabel")
                 addToTextFormatV("email")
+                
+                registerAction(email, action:"sendEmail")
             }
 
             // address
@@ -130,20 +137,6 @@ class BusinessEntityLayoutFactory {
             constraintCreator.addConstraints(formatH, options: NSLayoutFormatOptions(0))
             constraintCreator.addConstraint(labelFormatV, options: NSLayoutFormatOptions(0))
             constraintCreator.addConstraint(textFormatV, options: NSLayoutFormatOptions(0))
-            
-            
-
-    //        let emailLable = UILabel(frame: CGRectMake(20, 0, 40, 20))
-    //        emailLable.text = "This is my email address"
-    //        emailLable.backgroundColor = UIColor.redColor()
-    //        //emailLable.setTranslatesAutoresizingMaskIntoConstraints(false)
-    //        self.contentView.addSubview(emailLable)
-    //        
-    //        let phoneLable = UILabel(frame: CGRectMake(20, 200, 40, 20))
-    //        phoneLable.text = "phone number"
-    //        phoneLable.backgroundColor = UIColor.grayColor()
-    //        //phoneLable.setTranslatesAutoresizingMaskIntoConstraints(false)
-    //        self.contentView.addSubview(phoneLable)
         }
     }
     
@@ -221,5 +214,12 @@ class BusinessEntityLayoutFactory {
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         return label
+    }
+
+    private func registerAction(view: UIView, action: String) {
+        let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self.businessEntityDetailVC, action: Selector(action))
+        view.userInteractionEnabled = true
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
     }
 }

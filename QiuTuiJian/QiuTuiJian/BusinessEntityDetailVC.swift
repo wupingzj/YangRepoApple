@@ -15,12 +15,8 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     
     @IBOutlet weak var contentView: UIView!
     
-    var labelMobile: UILabel!
-
-    var labelEmail: UILabel!
-
     // selected business entity to show details
-    var businessEntity: BusinessEntity?
+    var selectedBusinessEntity: BusinessEntity?
     
 
     override func viewDidLoad() {
@@ -34,14 +30,17 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     func configureView() {
-        let layoutFactory: BusinessEntityLayoutFactory = BusinessEntityLayoutFactory(businessEntity: businessEntity, contentView: self.contentView)
+        let layoutFactory: BusinessEntityLayoutFactory = BusinessEntityLayoutFactory(businessEntityDetailVC: self, businessEntity: selectedBusinessEntity, contentView: self.contentView)
         
         //businessEntity = nil //test missing error message
-        if self.businessEntity {
+        if self.selectedBusinessEntity {
             layoutFactory.showBusinessEntityDetails()
         } else {
             layoutFactory.showBusinessEntityMissingMessage()
         }
+        
+        // call it to release memory as layoutFactory has strong reference to this view controller
+        //layoutFactory = nil
     }
 
     
@@ -62,39 +61,63 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     }
 
     // actions
-    @IBAction func call(sender: UIButton) {
-        
-        // Reference: http://stackoverflow.com/questions/5028329/ios-4-2-return-to-app-after-phone-call
-        let mobileString:String = "telprompt:" + labelMobile.text
-        println("Making a call to \(mobileString) ...")
-        
-        
-        let app: UIApplication = UIApplication.sharedApplication()
-        app.openURL(NSURL.URLWithString(mobileString))
-
-        // Note1: the call is aynchronous. So, the application continues while calling.
-        // the application will applicationWillResignActive and then applicationDidEnterBackground.
-        
-        // Note2: when telprompt protocol is used, the appcalition automatically resumes after call finishes
-        //        However, if tel protocol is used, the application will NOT resume.
-        println("Just made a phone call")
-        
+    func callPhone() {
+        println("Making a call to ...")
+        if let businessEntity = self.selectedBusinessEntity {
+            // Reference: http://stackoverflow.com/questions/5028329/ios-4-2-return-to-app-after-phone-call
+            let phoneSting:String = "telprompt:" + businessEntity.getNormalizedPhone()!
+            println("call... phone \(phoneSting) ...")
+            
+            
+            let app: UIApplication = UIApplication.sharedApplication()
+            app.openURL(NSURL.URLWithString(phoneSting))
+            
+            // Note1: the call is aynchronous. So, the application continues while calling.
+            // the application will applicationWillResignActive and then applicationDidEnterBackground.
+            
+            // Note2: when telprompt protocol is used, the appcalition automatically resumes after call finishes
+            //        However, if tel protocol is used, the application will NOT resume.
+            println("Just called phone.")
+        }
     }
     
-    @IBAction func sendEmail(sender: UIButton) {
-        let emailString:String = "email:" + labelEmail.text
-        println("Sending an email to \(emailString) ...")
-        let app: UIApplication = UIApplication.sharedApplication()
-        //app.openURL(NSURL.URLWithString(emailString))
-        
-        let mcVC: MFMailComposeViewController  = MFMailComposeViewController()
-        mcVC.mailComposeDelegate = self
-        mcVC.setSubject("TestSubject")
-        mcVC.setMessageBody("TestBody", isHTML: true)
-        mcVC.setToRecipients(["KevinPingWu@gmail.com"])
-        
-        self.presentViewController(mcVC, animated: true, completion: nil)
-        println("Just sent an email")
+    func callMobile() {
+        if let businessEntity = self.selectedBusinessEntity {
+            // Reference: http://stackoverflow.com/questions/5028329/ios-4-2-return-to-app-after-phone-call
+            let mobileString:String = "telprompt:" + businessEntity.getMobile()!
+            println("call... mobile \(mobileString) ...")
+            
+            
+            let app: UIApplication = UIApplication.sharedApplication()
+            app.openURL(NSURL.URLWithString(mobileString))
+            
+            // Note1: the call is aynchronous. So, the application continues while calling.
+            // the application will applicationWillResignActive and then applicationDidEnterBackground.
+            
+            // Note2: when telprompt protocol is used, the appcalition automatically resumes after call finishes
+            //        However, if tel protocol is used, the application will NOT resume.
+            println("Just called mobile.")
+        }
+    }
+    
+    func sendEmail() {
+        if let businessEntity = self.selectedBusinessEntity {
+            if businessEntity.email {
+                let emailString:String = "email:" + businessEntity.email!
+                println("Sending an email to \(emailString) ...")
+                let app: UIApplication = UIApplication.sharedApplication()
+                //app.openURL(NSURL.URLWithString(emailString))
+                
+                let mcVC: MFMailComposeViewController  = MFMailComposeViewController()
+                mcVC.mailComposeDelegate = self
+                mcVC.setSubject("TestSubject")
+                mcVC.setMessageBody("TestBody", isHTML: true)
+                mcVC.setToRecipients([businessEntity.email!])
+                
+                self.presentViewController(mcVC, animated: true, completion: nil)
+                println("Just sent an email")
+            }
+        }
     }
 
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {

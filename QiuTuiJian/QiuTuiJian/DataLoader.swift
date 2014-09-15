@@ -101,9 +101,13 @@ class DataLoader {
         businessEntity6.address = address6
         let performance6: Performance = self.createPerformance(1, star: 3)
         businessEntity6.performance = performance6
+        let mobile: Mobile = createMobile("0401482083", phoneModel: "Samsun Galaxy II")
+        let businessPerson: BusinessPerson = createBusinessPerson(false, firstName: "MingDon", lastName: "Liu", email: nil, mobile: mobile)
+        businessEntity6.businessPerson = businessPerson
         
-        let businessEntity7: BusinessEntity = self.createBusinessEntity(category3, phone:"0200000007", name: "东北搬家", email: "test7@yangahha.com", promotionRank: 0)
-        let address7: Address = createAddress("7", street: "Culworth Avenue", suburb: "Killara", city: "Sydney", country: "Australia", state: "NSW", postCode: "2071", isPostalAddress: false)
+        
+        let businessEntity7: BusinessEntity = self.createBusinessEntity(category3, phone:"0298807688", name: "Better Medicine Family Practice", email: nil, promotionRank: 0)
+        let address7: Address = createAddress("Suite 5", street: "303 Pacific Highway", suburb: "Lindfield", city: "Sydney", country: "Australia", state: "NSW", postCode: "2070", isPostalAddress: false)
         businessEntity7.address = address7
         let performance7: Performance = self.createPerformance(1, star: 3)
         businessEntity7.performance = performance7
@@ -160,11 +164,15 @@ class DataLoader {
         return newPerformance
     }
     
-    private func createPerson() {
+    private func createBusinessPerson(anonymous: Bool, firstName: String, lastName: String, email: String?, mobile: Mobile?) -> BusinessPerson {
+        let newBusinessPerson: BusinessPerson = BusinessPerson.createEntity()
+        newBusinessPerson.anonymous = false
+        newBusinessPerson.firstName = firstName
+        newBusinessPerson.lastName = lastName
+        newBusinessPerson.email = email
+        newBusinessPerson.mobile = mobile
         
-    }
-    private func createBusinessPerson(anonymous: Bool, person: Person) {
-        
+        return newBusinessPerson
     }
     
     private func createMobile(number: String, phoneModel: String) -> Mobile {

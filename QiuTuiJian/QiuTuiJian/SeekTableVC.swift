@@ -51,7 +51,7 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
                 }
                 
                 let businessEntity:BusinessEntity = self.fetchedResultsController.objectAtIndexPath(indexPath) as BusinessEntity
-                (segue.destinationViewController as BusinessEntityDetailVC).businessEntity = businessEntity
+                (segue.destinationViewController as BusinessEntityDetailVC).selectedBusinessEntity = businessEntity
             } else {
                 println("*** ERROR: segue sender is nil or not a UITableViewCell **********")
             }
