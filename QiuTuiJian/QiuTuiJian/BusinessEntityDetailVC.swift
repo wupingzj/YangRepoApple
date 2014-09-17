@@ -17,10 +17,13 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     
     // selected business entity to show details
     var selectedBusinessEntity: BusinessEntity?
-    
 
+    var layoutFactory: BusinessEntityLayoutFactory?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        layoutFactory = BusinessEntityLayoutFactory(businessEntityDetailVC: self, businessEntity: selectedBusinessEntity, contentView: self.contentView)
 
         // Do any additional setup after loading the view.
         self.configureView()
@@ -30,17 +33,12 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     func configureView() {
-        let layoutFactory: BusinessEntityLayoutFactory = BusinessEntityLayoutFactory(businessEntityDetailVC: self, businessEntity: selectedBusinessEntity, contentView: self.contentView)
-        
         //businessEntity = nil //test missing error message
         if self.selectedBusinessEntity {
-            layoutFactory.showBusinessEntityDetails()
+            layoutFactory!.showBusinessEntityDetails()
         } else {
-            layoutFactory.showBusinessEntityMissingMessage()
+            layoutFactory!.showBusinessEntityMissingMessage()
         }
-        
-        // call it to release memory as layoutFactory has strong reference to this view controller
-        //layoutFactory = nil
     }
 
     
@@ -55,9 +53,11 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-//        self.scrollView.layoutIfNeeded()
-//        self.scrollView.contentSize = self.contentView.bounds.size
+
+        //self.scrollView.layoutIfNeeded()
+
+        // adjust bounds accoring to orientation changes
+        layoutFactory!.adjustViewBounds()
     }
 
     // actions
@@ -105,8 +105,6 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
             if businessEntity.email {
                 let emailString:String = "email:" + businessEntity.email!
                 println("Sending an email to \(emailString) ...")
-                let app: UIApplication = UIApplication.sharedApplication()
-                //app.openURL(NSURL.URLWithString(emailString))
                 
                 let mcVC: MFMailComposeViewController  = MFMailComposeViewController()
                 mcVC.mailComposeDelegate = self
