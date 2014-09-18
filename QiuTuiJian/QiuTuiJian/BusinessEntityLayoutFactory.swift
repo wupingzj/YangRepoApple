@@ -49,30 +49,32 @@ class BusinessEntityLayoutFactory {
     }
     
     func showBusinessEntityDetails() {
-        //self.contentView.backgroundColor = UIColor.greenColor()
+        // This view is very dynamic. Mixed-layout mechanisms are used to generate dyanmic views and orientation
+        // The contentView relies on auto resizeing to constraints
+        // The subviews are purely programatically aligned using layout format constraints
+        
         if let businessEntity = self.selectedBusinessEntity {
             println("*** configuring the business entity \(businessEntity) ***")
-            //    showDictionary(contentViewsDictionary)
+            
+            var startY = CGFloat(0)
             
             // basics
-            let basicsView: UIView = createBasicsView(x: 0, y: 0)
+            let basicsView: UIView = createBasicsView(x: 0, y: startY)
             adjustableViews.append(basicsView)
-            let basicsViewHeight = basicsView.bounds.height
             
             // address
-            let startY = basicsView.bounds.height + standardLineGap
+            startY += basicsView.bounds.height
             let addressView: UIView = createAddressView(x: 0, y: startY)
             adjustableViews.append(addressView)
             
-            //var formatH: [String] = []
-            //formatH.append("H:|-[basicsView]-|")
-            //formatH.append("H:|-[addressView]-|")
-            //var formatV: String = "V:|-[basicsView]-[addressView]"
-
-            //let constraintCreator: ConstraintCreator = ConstraintCreator(view: self.contentView, metrics: metricsDictionary, views: contentViewsDictionary)
-            //constraintCreator.addConstraints(formatH, options: NSLayoutFormatOptions(0))
-            //constraintCreator.addConstraint(formatV, options: NSLayoutFormatOptions(0))
+            // optional description
+            startY += addressView.bounds.height
+            let descView: UIView? = createDescriptionView(x: 0, y: startY)
+            if descView {
+                adjustableViews.append(descView!)
+            }
         }
+        //self.contentView.backgroundColor = UIColor.greenColor()
     }
     
     public func adjustViewBounds() {
@@ -181,8 +183,8 @@ class BusinessEntityLayoutFactory {
         }
 
         
-        // uuid - for debugging
-        if true {
+        // uuid - enable for debugging
+        if false {
             let uuidLabel: UILabel = createLabel(basicsView, viewDictionary: &basicsViewDictionary, labelName: "uuidLabel", labelText: "uuid:")
             let uuid: UILabel = createLabel(basicsView, viewDictionary: &basicsViewDictionary, labelName: "uuid", labelText: businessEntity.uuid)
             formatH.append("H:|-[uuidLabel(labelWidth)]-[uuid(>=textWidth)]-|")
@@ -191,17 +193,6 @@ class BusinessEntityLayoutFactory {
             ++lineCount
         }
         
-        if let description = businessEntity.desc {
-            let descLabel: UILabel = createLabel(basicsView, viewDictionary: &basicsViewDictionary, labelName: "descLabel", labelText: "Description:")
-            let desc: UILabel = createLabel(basicsView, viewDictionary: &basicsViewDictionary, labelName: "desc", labelText: description)
-            formatH.append("H:|-[descLabel(labelWidth)]-[desc(>=textWidth)]-|")
-            appendToFormatV(&labelFormatV, label: "descLabel")
-            appendToFormatV(&textFormatV, label: "desc")
-            ++lineCount
-        }
-
-
-
         println("labelFormatV=\(labelFormatV)")
         println("textFormatV=\(textFormatV)")
         let constraintCreator: ConstraintCreator = ConstraintCreator(view: basicsView, metrics: metricsDictionary, views: basicsViewDictionary)
@@ -273,12 +264,71 @@ class BusinessEntityLayoutFactory {
         var formatV: String = "V:|-[addressLine1(labelHeight)]-[addressLine2(labelHeight)]-[city(labelHeight)]-[state(labelHeight)]-[country(labelHeight)]-[postCode(labelHeight)]"
         constraintCreator.addConstraint(formatV, options: NSLayoutFormatOptions(0))
 
-        
-        
-        
-
         return addressView
     }
+    
+    
+    // create basic details view of the business entity
+    private func createDescriptionView(#x: CGFloat, y: CGFloat) -> UIView? {
+        let businessEntity: BusinessEntity = selectedBusinessEntity!
+
+        if !businessEntity.desc {
+                return nil
+        }
+        
+        let descView: UIView = UIView()
+        self.contentView.addSubview(descView)
+        self.contentViewsDictionary["descView"] = descView
+        descView.backgroundColor = UIColor.grayColor()
+        
+        var descViewDictionary: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
+        
+        // Better be integer but CGFloat saves the hassle of data type conversion
+        var lineCount = CGFloat(0)
+        
+        var formatH: [String] = []
+        var labelFormatV = "V:|"
+        var textFormatV = "V:|"
+        
+        if let description = businessEntity.desc {
+            let descLabel: UILabel = createLabel(descView, viewDictionary: &descViewDictionary, labelName: "descLabel", labelText: "Description:")
+            let desc: UILabel = createLabel(descView, viewDictionary: &descViewDictionary, labelName: "desc", labelText: description)
+            formatH.append("H:|-[descLabel(labelWidth)]-[desc(>=textWidth)]-|")
+            appendToFormatV(&labelFormatV, label: "descLabel")
+            appendToFormatV(&textFormatV, label: "desc")
+            ++lineCount
+        }
+        
+        println("labelFormatV=\(labelFormatV)")
+        println("textFormatV=\(textFormatV)")
+        let constraintCreator: ConstraintCreator = ConstraintCreator(view: descView, metrics: metricsDictionary, views: descViewDictionary)
+        constraintCreator.addConstraints(formatH, options: NSLayoutFormatOptions(0))
+        constraintCreator.addConstraint(labelFormatV, options: NSLayoutFormatOptions(0))
+        constraintCreator.addConstraint(textFormatV, options: NSLayoutFormatOptions(0))
+        
+        
+        // calculate total view height
+        let viewHeight: CGFloat = lineCount * (metricsDictionary["labelHeight"]! + standardLineGap)
+        println("lineCount=\(lineCount), viewHeight=\(viewHeight)")
+        
+        let bounds = UIScreen.mainScreen().bounds
+        
+        // set view bounds
+        descView.frame = CGRect(x: x, y: y, width: bounds.width, height: viewHeight)
+        
+        //        println("UIScreen.mainScreen().bounds.height=\(bounds.height)")
+        //        println("UIScreen.mainScreen().bounds.width=\(bounds.width)")
+        //        println("descView.frame.height=\(descView.frame.height)")
+        //        println("descView.frame.width=\(descView.frame.width)")
+        //        println("descView.frame.size=\(descView.frame.size)")
+        //        println("descView.bounds.width=\(descView.bounds.width)")
+        //        println("descView.bounds.height=\(descView.bounds.height)")
+        //        println("descView.bounds.size=\(descView.bounds.size)")
+        
+        return descView
+    }
+    
+    
     
     // the viewDictionary is added with the newly created label
     // Parameter:   labelName is the label name in the viewDictionary

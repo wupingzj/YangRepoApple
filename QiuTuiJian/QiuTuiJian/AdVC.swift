@@ -19,7 +19,7 @@ class AdVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dataLoadResult.text = "Click button to load data"
+        dataLoadResult.text = "Click button to load data. Restart app to show created data"
     }
 
     override func viewDidLayoutSubviews() {

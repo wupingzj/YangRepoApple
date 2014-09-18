@@ -55,9 +55,9 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
         super.viewWillLayoutSubviews()
 
         // view.layoutIfNeeded()
-        let bounds = UIScreen.mainScreen().bounds
-        println("adjustViewBounds: UIScreen.mainScreen().bounds.height=\(bounds.height)")
-        println("adjustViewBounds: UIScreen.mainScreen().bounds.width=\(bounds.width)")
+//        let bounds = UIScreen.mainScreen().bounds
+//        println("adjustViewBounds: UIScreen.mainScreen().bounds.height=\(bounds.height)")
+//        println("adjustViewBounds: UIScreen.mainScreen().bounds.width=\(bounds.width)")
 
 
         // adjust bounds accoring to orientation changes
