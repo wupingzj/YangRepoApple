@@ -13,8 +13,10 @@ class BusinessEntityLayoutFactory {
     private var businessEntityDetailVC: UIViewController
     private var selectedBusinessEntity: BusinessEntity?
     private var contentView: UIView
+    
     private var contentViewsDictionary: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
-    private var metricsDictionary: Dictionary<String, AnyObject> = ["labelWidth":80.0, "textWidth":100.0, "labelHeight":20.0]
+    private var metricsDictionary: Dictionary<String, CGFloat> = ["labelWidth":80.0, "textWidth":100.0, "labelHeight":20.0]
+    private let standardLineGap = CGFloat(8.0)
     private var adjustableViews: [UIView] = []
     
     init(businessEntityDetailVC: UIViewController, businessEntity: BusinessEntity?, contentView: UIView) {
@@ -53,12 +55,14 @@ class BusinessEntityLayoutFactory {
             //    showDictionary(contentViewsDictionary)
             
             // basics
-            let basicsView: UIView = createBasicsView()
+            let basicsView: UIView = createBasicsView(x: 0, y: 0)
             adjustableViews.append(basicsView)
+            let basicsViewHeight = basicsView.bounds.height
             
             // address
-            //let addressView: UIView = createAddressView()
-            //adjustableViews.append(addressView)
+            let startY = basicsView.bounds.height + standardLineGap
+            let addressView: UIView = createAddressView(x: 0, y: startY)
+            adjustableViews.append(addressView)
             
             //var formatH: [String] = []
             //formatH.append("H:|-[basicsView]-|")
@@ -78,14 +82,13 @@ class BusinessEntityLayoutFactory {
     }
     
     public func adjustViewBounds(view: UIView) {
-        let bounds = UIScreen.mainScreen().bounds
-        println("UIScreen.mainScreen().bounds.height=\(bounds.height)")
-        println("UIScreen.mainScreen().bounds.width=\(bounds.width)")
-
         // adjust width only
-        let currentX = view.bounds.origin.x
-        let currentY = view.bounds.origin.y
-        let currentHeight = view.bounds.height
+        let bounds = UIScreen.mainScreen().bounds
+        
+        let currentX = view.frame.origin.x
+        let currentY = view.frame.origin.y
+        let currentHeight = view.frame.height
+        
         view.frame = CGRect(x: currentX, y: currentY, width: bounds.width, height: currentHeight)
     }
     
@@ -101,7 +104,7 @@ class BusinessEntityLayoutFactory {
     }
     
     // create basic details view of the business entity
-    private func createBasicsView() -> UIView {
+    private func createBasicsView(#x: CGFloat, y: CGFloat) -> UIView {
         let businessEntity: BusinessEntity = selectedBusinessEntity!
         let basicsView: UIView = UIView()
         self.contentView.addSubview(basicsView)
@@ -112,6 +115,9 @@ class BusinessEntityLayoutFactory {
         var basicsViewDictionary: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
 
         //*****
+        // Better be integer but CGFloat saves the hassle of data type conversion
+        var lineCount = CGFloat(0)
+        
         var formatH: [String] = []
         var labelFormatV = "V:|"
         var textFormatV = "V:|"
@@ -122,6 +128,7 @@ class BusinessEntityLayoutFactory {
         formatH.append("H:|-[categoryLabel(labelWidth)]-[category(>=textWidth)]-|")
         appendToFormatV(&labelFormatV, label: "categoryLabel")
         appendToFormatV(&textFormatV, label: "category")
+        ++lineCount
 
 
         // name
@@ -130,6 +137,7 @@ class BusinessEntityLayoutFactory {
         formatH.append("H:|-[nameLabel(labelWidth)]-[name(>=textWidth)]-|")
         appendToFormatV(&labelFormatV, label: "nameLabel")
         appendToFormatV(&textFormatV, label: "name")
+        ++lineCount
 
 
         
@@ -140,6 +148,7 @@ class BusinessEntityLayoutFactory {
             formatH.append("H:|-[phoneLabel(labelWidth)]-[phone(>=textWidth)]-|")
             appendToFormatV(&labelFormatV, label: "phoneLabel")
             appendToFormatV(&textFormatV, label: "phone")
+            ++lineCount
 
             
             registerAction(phone, action:"callPhone")
@@ -152,6 +161,7 @@ class BusinessEntityLayoutFactory {
             formatH.append("H:|-[mobileLabel(labelWidth)]-[mobile(>=textWidth)]-|")
             appendToFormatV(&labelFormatV, label: "mobileLabel")
             appendToFormatV(&textFormatV, label: "mobile")
+            ++lineCount
 
             
             registerAction(mobile, action:"callMobile")
@@ -164,6 +174,7 @@ class BusinessEntityLayoutFactory {
             formatH.append("H:|-[emailLabel(labelWidth)]-[email(>=textWidth)]-|")
             appendToFormatV(&labelFormatV, label: "emailLabel")
             appendToFormatV(&textFormatV, label: "email")
+            ++lineCount
 
             
             registerAction(email, action:"sendEmail")
@@ -177,6 +188,7 @@ class BusinessEntityLayoutFactory {
             formatH.append("H:|-[uuidLabel(labelWidth)]-[uuid(>=textWidth)]-|")
             appendToFormatV(&labelFormatV, label: "uuidLabel")
             appendToFormatV(&textFormatV, label: "uuid")
+            ++lineCount
         }
         
         if let description = businessEntity.desc {
@@ -185,6 +197,7 @@ class BusinessEntityLayoutFactory {
             formatH.append("H:|-[descLabel(labelWidth)]-[desc(>=textWidth)]-|")
             appendToFormatV(&labelFormatV, label: "descLabel")
             appendToFormatV(&textFormatV, label: "desc")
+            ++lineCount
         }
 
 
@@ -196,19 +209,18 @@ class BusinessEntityLayoutFactory {
         constraintCreator.addConstraint(labelFormatV, options: NSLayoutFormatOptions(0))
         constraintCreator.addConstraint(textFormatV, options: NSLayoutFormatOptions(0))
         
-        let bounds = UIScreen.mainScreen().bounds
-        println("UIScreen.mainScreen().bounds.height=\(bounds.height)")
-        println("UIScreen.mainScreen().bounds.width=\(bounds.width)")
         
-        basicsView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 180)
+        // calculate total view height
+        let viewHeight: CGFloat = lineCount * (metricsDictionary["labelHeight"]! + standardLineGap)
+        println("lineCount=\(lineCount), viewHeight=\(viewHeight)")
 
-//        println("contentView.frame.height=\(contentView.frame.height)")
-//        println("basicsView.frame.width=\(contentView.frame.width)")
-//        println("basicsView.frame.size=\(contentView.frame.size)")
-//        println("basicsView.bounds.width=\(contentView.bounds.width)")
-//        println("basicsView.bounds.height=\(contentView.bounds.height)")
-//        println("contentView.bounds.size=\(contentView.bounds.size)")
-//        
+        let bounds = UIScreen.mainScreen().bounds
+
+        // set view bounds
+        basicsView.frame = CGRect(x: x, y: y, width: bounds.width, height: viewHeight)
+
+//        println("UIScreen.mainScreen().bounds.height=\(bounds.height)")
+//        println("UIScreen.mainScreen().bounds.width=\(bounds.width)")
 //        println("basicsView.frame.height=\(basicsView.frame.height)")
 //        println("basicsView.frame.width=\(basicsView.frame.width)")
 //        println("basicsView.frame.size=\(basicsView.frame.size)")
@@ -216,13 +228,18 @@ class BusinessEntityLayoutFactory {
 //        println("basicsView.bounds.height=\(basicsView.bounds.height)")
 //        println("basicsView.bounds.size=\(basicsView.bounds.size)")
 
-        
         return basicsView
     }
-    
-    private func createAddressView() -> UIView {
+
+    private func createAddressView(#x: CGFloat, y:CGFloat) -> UIView {
         let businessEntity: BusinessEntity = selectedBusinessEntity!
         let addressView: UIView = UIView()
+        
+        let bounds = UIScreen.mainScreen().bounds
+        println("address.x=\(x)")
+        println("address.y=\(y)")
+        addressView.frame = CGRect(x: x, y: y, width: bounds.width, height: 180)
+        
         self.contentView.addSubview(addressView)
         //addressView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.contentViewsDictionary["addressView"] = addressView
@@ -256,11 +273,9 @@ class BusinessEntityLayoutFactory {
         var formatV: String = "V:|-[addressLine1(labelHeight)]-[addressLine2(labelHeight)]-[city(labelHeight)]-[state(labelHeight)]-[country(labelHeight)]-[postCode(labelHeight)]"
         constraintCreator.addConstraint(formatV, options: NSLayoutFormatOptions(0))
 
-        let bounds = UIScreen.mainScreen().bounds
-        println("UIScreen.mainScreen().bounds.height=\(bounds.height)")
-        println("UIScreen.mainScreen().bounds.width=\(bounds.width)")
         
-        addressView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 180)
+        
+        
 
         return addressView
     }

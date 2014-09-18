@@ -85,7 +85,7 @@ class DataLoader {
         
         let category2 : String = "Solicitor"
         
-        let businessEntity4: BusinessEntity = self.createBusinessEntity(category2, phone:"0200000004", name: "Albert Ma", email: "test4@yangahha.com", promotionRank: 0)
+        let businessEntity4: BusinessEntity = self.createBusinessEntity(category2, phone:"0200000004", name: "Albert Ma", email: "kevinpingwu@gmail.com", promotionRank: 0)
         let address4: Address = createAddress("4", street: "Culworth Avenue", suburb: "Killara", city: "Sydney", country: "Australia", state: "NSW", postCode: "2071", isPostalAddress: false)
         businessEntity4.address = address4
         let performance4: Performance = self.createPerformance(1, star: 3)

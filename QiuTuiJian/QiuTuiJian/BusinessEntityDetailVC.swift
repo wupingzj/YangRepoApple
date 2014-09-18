@@ -51,14 +51,23 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
 
-        //self.scrollView.layoutIfNeeded()
+        // view.layoutIfNeeded()
+        let bounds = UIScreen.mainScreen().bounds
+        println("adjustViewBounds: UIScreen.mainScreen().bounds.height=\(bounds.height)")
+        println("adjustViewBounds: UIScreen.mainScreen().bounds.width=\(bounds.width)")
+
 
         // adjust bounds accoring to orientation changes
         layoutFactory!.adjustViewBounds()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+
 
     // actions
     func callPhone() {
