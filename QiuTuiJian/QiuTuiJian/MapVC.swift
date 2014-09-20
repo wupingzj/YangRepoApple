@@ -33,7 +33,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
     
     // show specified location on map
     private func showLocationOnMap() {
-        mapView.showsUserLocation = true
+        self.mapView.showsUserLocation = true
         
 //        ref: https://www.youtube.com/watch?v=uB100xVS_Yc
 
@@ -48,30 +48,43 @@ class MapVC: UIViewController, MKMapViewDelegate {
         
         var zoomRegion: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
         
-        mapView.setRegion(zoomRegion, animated: true)
+        self.mapView.setRegion(zoomRegion, animated: true)
+        
+        // place a mark
+        //let placeMark: CLPlacemark =
 
         // annotate the location
         var annotation: MKPointAnnotation = MKPointAnnotation()
         annotation.coordinate = location
         annotation.title = "Killara railway station"
         annotation.subtitle = "A lovely railway station!"
+        self.mapView.addAnnotation(annotation)
     }
     
     // show user's current location
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        mapView.showsUserLocation = true
+        self.mapView.showsUserLocation = true
         
         let userLocation: CLLocationCoordinate2D = userLocation.coordinate
         let zoomRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(userLocation, 2500, 2500)
         
-        mapView.setRegion(zoomRegion, animated: true)
+        self.mapView.setRegion(zoomRegion, animated: true)
         
         // annotate the location
         var annotation: MKPointAnnotation = MKPointAnnotation()
         annotation.coordinate = userLocation
         annotation.title = "You are here!"
         annotation.subtitle = "Have fun!"
+        
+        self.mapView.addAnnotation(annotation)
     }
+    
+    // Reference
+    // Search location : Search bar
+    // http://youtu.be/U_sq4XYK8WQ
+    // https://www.youtube.com/watch?v=U_sq4XYK8WQ
+    
+    // CLGeocoder to search places
     
     /*
     // MARK: - Navigation
