@@ -33,6 +33,8 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     func configureView() {
+        Utils.sharedInstance.displaySystemInfo()
+        
         //businessEntity = nil //test missing error message
         if self.selectedBusinessEntity {
             layoutFactory!.showBusinessEntityDetails()

@@ -210,15 +210,6 @@ class BusinessEntityLayoutFactory {
         // set view bounds
         basicsView.frame = CGRect(x: x, y: y, width: bounds.width, height: viewHeight)
 
-//        println("UIScreen.mainScreen().bounds.height=\(bounds.height)")
-//        println("UIScreen.mainScreen().bounds.width=\(bounds.width)")
-//        println("basicsView.frame.height=\(basicsView.frame.height)")
-//        println("basicsView.frame.width=\(basicsView.frame.width)")
-//        println("basicsView.frame.size=\(basicsView.frame.size)")
-//        println("basicsView.bounds.width=\(basicsView.bounds.width)")
-//        println("basicsView.bounds.height=\(basicsView.bounds.height)")
-//        println("basicsView.bounds.size=\(basicsView.bounds.size)")
-
         return basicsView
     }
 
@@ -227,8 +218,6 @@ class BusinessEntityLayoutFactory {
         let addressView: UIView = UIView()
         
         let bounds = UIScreen.mainScreen().bounds
-        println("address.x=\(x)")
-        println("address.y=\(y)")
         addressView.frame = CGRect(x: x, y: y, width: bounds.width, height: 180)
         
         self.contentView.addSubview(addressView)
@@ -240,7 +229,6 @@ class BusinessEntityLayoutFactory {
         
         // address label
         let addressLabel: UILabel = createLabel(addressView, viewDictionary: &addressViewDictionary, labelName: "addressLabel", labelText: "Address:")
-//        addressLabel.backgroundColor = UIColor.redColor()
         
         // address detail
         let addressLine1: UILabel = createLabel(addressView, viewDictionary: &addressViewDictionary, labelName: "addressLine1", labelText: businessEntity.address.getLine1())

@@ -15,6 +15,7 @@
 		39222D0A19B5D9CE005B12A9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39222D0919B5D9CE005B12A9 /* Address.swift */; };
 		39222D0C19B66CBF005B12A9 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39222D0B19B66CBF005B12A9 /* DataLoader.swift */; };
 		39222D0E19B6F041005B12A9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39222D0D19B6F041005B12A9 /* Event.swift */; };
+		3924E2D519CC493600F7CBA9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E2D419CC493600F7CBA9 /* Utils.swift */; };
 		392D96DA19A60D13008BC8A8 /* AdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D96D919A60D13008BC8A8 /* AdVC.swift */; };
 		392F43B5198D2769003C4D01 /* DataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B4198D2769003C4D01 /* DataDao.swift */; };
 		392F43B7198D279A003C4D01 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B6198D279A003C4D01 /* DataService.swift */; };
@@ -85,6 +86,7 @@
 		39222D0919B5D9CE005B12A9 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		39222D0B19B66CBF005B12A9 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		39222D0D19B6F041005B12A9 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		3924E2D419CC493600F7CBA9 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		392D96D919A60D13008BC8A8 /* AdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdVC.swift; sourceTree = "<group>"; };
 		392F43B4198D2769003C4D01 /* DataDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDao.swift; sourceTree = "<group>"; };
 		392F43B6198D279A003C4D01 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3924E2D319CC48F800F7CBA9 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				3924E2D419CC493600F7CBA9 /* Utils.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		393841E119720A0D00060A6E = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +172,7 @@
 				39FEFDEC1977B02800415EC0 /* Model */,
 				39EB63FB19938BCE0032AC6B /* Resource */,
 				393841ED19720A0D00060A6E /* Supporting Files */,
+				3924E2D319CC48F800F7CBA9 /* Utility */,
 			);
 			path = QiuTuiJian;
 			sourceTree = "<group>";
@@ -373,6 +384,7 @@
 				392D96DA19A60D13008BC8A8 /* AdVC.swift in Sources */,
 				392F43B7198D279A003C4D01 /* DataService.swift in Sources */,
 				3982A9B219BDBF1C0017DAED /* BusinessEntityLayoutFactory.swift in Sources */,
+				3924E2D519CC493600F7CBA9 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
