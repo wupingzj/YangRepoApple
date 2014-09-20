@@ -73,6 +73,11 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
 
     // actions
     func callPhone() {
+        showMap()
+        if true {
+            return
+        }
+        
         println("Making a call to ...")
         if let businessEntity = self.selectedBusinessEntity {
             // Reference: http://stackoverflow.com/questions/5028329/ios-4-2-return-to-app-after-phone-call
@@ -167,14 +172,30 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
 @IBAction func writeReview(sender: UIBarButtonItem) {
 }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    // #pragma mark - Segues
+    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        println("****** prepareForSegue ******")
+        println("*** sender: \(sender)")
+        
+//        if segue.identifier == "segueShowMap" {
+//            println("*** Horray: show map")
+//        } else {
+//            println("*** ERROR: Unrecongnized segue name in SeekTableVC.prepareForSegue ***")
+//        }
     }
-    */
-
+    
+    public func showMap() {
+        println("*** Tapped showMap")
+        //self.performSegueWithIdentifier("segueShowMap", sender: nil)
+        
+        let mapVC: AnyObject! = self.storyboard.instantiateViewControllerWithIdentifier("mapVC")
+        if mapVC {
+            self.showViewController(mapVC as UIViewController, sender: mapVC)
+            //self.presentViewController(mapVC as UIViewController, animated: true, completion: nil)
+        } else {
+            println("Error: Failed to instantiate mapVC!")
+        }
+    }
 }

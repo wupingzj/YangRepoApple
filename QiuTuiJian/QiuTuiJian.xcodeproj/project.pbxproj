@@ -16,6 +16,7 @@
 		39222D0C19B66CBF005B12A9 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39222D0B19B66CBF005B12A9 /* DataLoader.swift */; };
 		39222D0E19B6F041005B12A9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39222D0D19B6F041005B12A9 /* Event.swift */; };
 		3924E2D519CC493600F7CBA9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E2D419CC493600F7CBA9 /* Utils.swift */; };
+		3924E2DE19CD585F00F7CBA9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E2DD19CD585F00F7CBA9 /* MapVC.swift */; };
 		392D96DA19A60D13008BC8A8 /* AdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392D96D919A60D13008BC8A8 /* AdVC.swift */; };
 		392F43B5198D2769003C4D01 /* DataDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B4198D2769003C4D01 /* DataDao.swift */; };
 		392F43B7198D279A003C4D01 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392F43B6198D279A003C4D01 /* DataService.swift */; };
@@ -87,6 +88,7 @@
 		39222D0B19B66CBF005B12A9 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		39222D0D19B6F041005B12A9 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3924E2D419CC493600F7CBA9 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		3924E2DD19CD585F00F7CBA9 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		392D96D919A60D13008BC8A8 /* AdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdVC.swift; sourceTree = "<group>"; };
 		392F43B4198D2769003C4D01 /* DataDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDao.swift; sourceTree = "<group>"; };
 		392F43B6198D279A003C4D01 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -143,6 +145,14 @@
 				3924E2D419CC493600F7CBA9 /* Utils.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		3924E2D619CD50B900F7CBA9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3924E2DD19CD585F00F7CBA9 /* MapVC.swift */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		393841E119720A0D00060A6E = {
@@ -225,6 +235,7 @@
 		39F56A3B199389940009FF94 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				3924E2D619CD50B900F7CBA9 /* Map */,
 				3982A9B019BDBECD0017DAED /* BusinessEntityDetails */,
 				39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */,
 				39F56A39199241550009FF94 /* SeekTableVC.swift */,
@@ -376,6 +387,7 @@
 				39E14EC019C07DC700BE9608 /* ConstraintCreator.swift in Sources */,
 				393DEF12199B462700549587 /* BusinessEntityDetailVC.swift in Sources */,
 				392F43B5198D2769003C4D01 /* DataDao.swift in Sources */,
+				3924E2DE19CD585F00F7CBA9 /* MapVC.swift in Sources */,
 				39CA066B19BB160700BE5153 /* AddressView.swift in Sources */,
 				39222D0019B5D3F6005B12A9 /* Performance.swift in Sources */,
 				39222D0219B5D564005B12A9 /* Review.swift in Sources */,
