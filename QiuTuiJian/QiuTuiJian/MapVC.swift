@@ -9,34 +9,46 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController, MKMapViewDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet var mapView: MKMapView!
+    
+    private var locationManager: CLLocationManager? = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.mapView.delegate = self
+//        self.mapView.showsUserLocation = true
+        
+//        startSignificantChangeUpdates()
+//        locationManager!.requestWhenInUseAuthorization()
+        // check request succeeded or rejected by user!!!
+        
 
         checkNetwork()
-        showLocationOnMap()
+        showBusinessEntityOnMap()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func checkNetwork() {
         // TODO check network
     }
     
-    // show specified location on map
-    private func showLocationOnMap() {
-        self.mapView.showsUserLocation = true
-        
-//        ref: https://www.youtube.com/watch?v=uB100xVS_Yc
+    private func startSignificantChangeUpdates() {
+        if !locationManager {
+            self.locationManager = CLLocationManager()
+            self.locationManager!.delegate = self
+        }
 
+        self.locationManager!.startMonitoringSignificantLocationChanges()
+    }
+    
+    // show specified location on map
+    private func showBusinessEntityOnMap() {
 //        Killara
         var latitude: CLLocationDegrees = -33.764522
         var longtitude: CLLocationDegrees = 151.160827
@@ -63,8 +75,12 @@ class MapVC: UIViewController, MKMapViewDelegate {
     
     // show user's current location
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        self.mapView.showsUserLocation = true
+        if true {
+            return
+        }
         
+        println("Show user's current location instead...")
+                
         let userLocation: CLLocationCoordinate2D = userLocation.coordinate
         let zoomRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(userLocation, 2500, 2500)
         
@@ -74,7 +90,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
         var annotation: MKPointAnnotation = MKPointAnnotation()
         annotation.coordinate = userLocation
         annotation.title = "You are here!"
-        annotation.subtitle = "Have fun!"
+        // annotation.subtitle = "Have fun!"
         
         self.mapView.addAnnotation(annotation)
     }
@@ -86,6 +102,12 @@ class MapVC: UIViewController, MKMapViewDelegate {
     
     // CLGeocoder to search places
     
+    // https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/MapKit/MapKit.html
+    
+    // show user location
+    // ref: https://www.youtube.com/watch?v=uB100xVS_Yc
+
+    
     /*
     // MARK: - Navigation
 
@@ -96,4 +118,18 @@ class MapVC: UIViewController, MKMapViewDelegate {
     }
     */
 
+    
+    // TODO
+    // Save battery. Ref: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html#//apple_ref/doc/uid/TP40009497-CH2-SW1
+    
+    //   1. --- when exit MapVC, call locationManager.stopMonitoringSignificantLocationChanges  to save battery power
+    
+    // Only ask for current user location, when user asks to show Where am I?
+    //     From there, steps: 
+    //          create locationManager, 
+    //          assign delegate, 
+    //          startMonitoringSignificantLocationChanges,
+    //          self.mapView.showsUserLocation = true
+    //          keep updateing user location - didUpdateUserLocation (check timestamp, check significant?)
+    
 }
