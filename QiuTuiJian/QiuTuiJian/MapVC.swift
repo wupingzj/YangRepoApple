@@ -75,6 +75,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         self.mapView.addAnnotation(annotation)
     }
     
+    private func searchBusinessLocation() -> (CLLocationDegrees?, CLLocationDegrees?) {
+        return (nil, nil)
+    }
+    
     // show user's current location
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         if true {
@@ -136,30 +140,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
     
     
     @IBAction func showPopover(sender: UIBarButtonItem) {
-        showAlertController2(sender)
+        showAlertController(sender)
     }
 
     // UIActionSheet and UIAlertView are depreciated for using UIAlertController instead
     private func showAlertController(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "MyTitle", message: "MyMsg", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let showUserLocationAction = UIAlertAction(title: "Show my location", style: UIAlertActionStyle.Default,
-            handler: { action in
-                println("Clicked showUserLocationAction")
-            })
-        
-        let showBusinessEntityLocationAction = UIAlertAction(title: "Show business location", style: UIAlertActionStyle.Default,
-            handler: { action in
-                println("Clicked show business location")
-            })
-        
-        alertController.addAction(showUserLocationAction)
-        alertController.addAction(showBusinessEntityLocationAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    private func showAlertController2(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "MyTitle", message: "MyMsg", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Action", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         let showUserLocationAction = UIAlertAction(title: "Show my location", style: UIAlertActionStyle.Default,
             handler: { action in
                 println("Clicked showUserLocationAction")
