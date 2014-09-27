@@ -55,7 +55,7 @@ public class BusinessEntity: AbstractEntity {
     // This method is for manually creating test data
     public class func createEntity() -> BusinessEntity {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx
-        let ed: NSEntityDescription = NSEntityDescription.entityForName("BusinessEntity", inManagedObjectContext: ctx)
+        let ed: NSEntityDescription = NSEntityDescription.entityForName("BusinessEntity", inManagedObjectContext: ctx)!
         let newBusinessEntity = BusinessEntity(entity: ed, insertIntoManagedObjectContext: ctx)
         
         return newBusinessEntity
@@ -71,8 +71,8 @@ public class BusinessEntity: AbstractEntity {
     }
 
     public func getMobile() -> String? {
-        if businessPerson {
-            if businessPerson!.mobile {
+        if (businessPerson != nil) {
+            if (businessPerson!.mobile != nil) {
                 return businessPerson!.mobile!.getNormalizedNumber()
             }
         }
@@ -81,7 +81,7 @@ public class BusinessEntity: AbstractEntity {
     }
     
     public func getContactName() -> String {
-        if businessPerson {
+        if (businessPerson != nil) {
             return businessPerson!.getNormalizedName() + "/" + name
         } else {
             return name

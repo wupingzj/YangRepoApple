@@ -29,12 +29,10 @@ public class DataService {
     // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
     // managed object context for frontend GUI work
     public var ctx: NSManagedObjectContext {
-        if !_ctx {
+        if _ctx == nil {
             let coordinator = self.sharedPSC
-            if coordinator != nil {
-                _ctx = NSManagedObjectContext()
-                _ctx!.persistentStoreCoordinator = coordinator
-            }
+            _ctx = NSManagedObjectContext()
+            _ctx!.persistentStoreCoordinator = coordinator
         }
         return _ctx!
     }
@@ -42,13 +40,12 @@ public class DataService {
     
     // managed object context for background communication
     public var ctxForNetwork: NSManagedObjectContext {
-    if !_ctxForNetwork {
+    if _ctxForNetwork == nil {
         let coordinator = self.sharedPSC
-        if coordinator != nil {
             _ctxForNetwork = NSManagedObjectContext()
             _ctxForNetwork!.persistentStoreCoordinator = coordinator
         }
-        }
+        
         return _ctxForNetwork!
     }
     private var _ctxForNetwork: NSManagedObjectContext? = nil
@@ -62,7 +59,7 @@ public class DataService {
     // Returns the persistent store coordinator for the application.
     // If the coordinator doesn't already exist, it is created and the application's store added to it.
     public var sharedPSC: NSPersistentStoreCoordinator {
-        if !_persistentStoreCoordinator {
+        if _persistentStoreCoordinator == nil {
             let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent("QiuTuiJianV0h.sqlite")
             println(storeURL)
             
@@ -103,6 +100,7 @@ public class DataService {
                 println("successfully added data store.")
             }
         }
+            
         return _persistentStoreCoordinator!
     }
     private var _persistentStoreCoordinator: NSPersistentStoreCoordinator? = nil
@@ -112,13 +110,13 @@ public class DataService {
     // *** object model ***
     // If the model doesn't already exist, it is created from the application's model.
     public var managedObjectModel: NSManagedObjectModel {
-        if !_managedObjectModel {
+        if _managedObjectModel == nil {
             //let modelURL = NSBundle.mainBundle().URLForResource("QiuTuiJianV0", withExtension: "momd")
             let modelURL = NSBundle.mainBundle().URLForResource("QiuTuiJianModel", withExtension: "momd")
             
             println("model location= \(modelURL)")
             
-            _managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL)
+            _managedObjectModel = NSManagedObjectModel(contentsOfURL: modelURL!)
         }
         
         return _managedObjectModel!

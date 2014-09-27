@@ -29,7 +29,7 @@ public class Review: AbstractEntity {
     
     public class func createEntity() -> Review {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx
-        let ed: NSEntityDescription = NSEntityDescription.entityForName("Review", inManagedObjectContext: ctx)
+        let ed: NSEntityDescription = NSEntityDescription.entityForName("Review", inManagedObjectContext: ctx)!
         let newEntity = Review(entity: ed, insertIntoManagedObjectContext: ctx)
         
         return newEntity

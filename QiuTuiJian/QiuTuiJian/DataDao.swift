@@ -56,7 +56,7 @@ public class DataDao {
         
         // Set the sort key
         if (sortByKey != nil && ascending != nil) {
-            let sortDescriptor = NSSortDescriptor(key: sortByKey, ascending: ascending!)
+            let sortDescriptor = NSSortDescriptor(key: sortByKey!, ascending: ascending!)
             let sortDescriptors = [sortDescriptor]
             fetchRequest.sortDescriptors = [sortDescriptor]
         }
@@ -85,7 +85,7 @@ public class DataDao {
         let ctx: NSManagedObjectContext = dataService.ctx
         
         var error: NSError? = nil
-        if (ctx != nil && ctx.hasChanges) {
+        if (ctx.hasChanges) {
             if !ctx.save(&error) {
                 if let err = error {
                     println("Error occurred while saving data: \(err) , \(err.userInfo)")

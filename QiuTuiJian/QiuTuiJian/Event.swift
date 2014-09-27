@@ -24,7 +24,7 @@ public class Event: AbstractEntity {
     
     public class func createEntity() -> Event {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx
-        let ed: NSEntityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: ctx)
+        let ed: NSEntityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: ctx)!
         let newEntity = Event(entity: ed, insertIntoManagedObjectContext: ctx)
         
         return newEntity

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
     </dependencies>
     <scenes>
@@ -43,6 +42,33 @@
             </objects>
             <point key="canvasLocation" x="-127" y="326"/>
         </scene>
+        <!--Map PopoverVC-->
+        <scene sceneID="ENC-HA-mur">
+            <objects>
+                <tableViewController storyboardIdentifier="mapPopoverVC" id="ee0-AP-bFG" customClass="MapPopoverVC" customModule="QiuTuiJian" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7eX-TC-F5h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Dlm-ri-AFs">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dlm-ri-AFs" id="eSh-Rh-36V">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ee0-AP-bFG" id="Keh-cm-wfG"/>
+                            <outlet property="delegate" destination="ee0-AP-bFG" id="6JD-Ww-eSN"/>
+                        </connections>
+                    </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="200"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dxk-54-BWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3399" y="97"/>
+        </scene>
         <!--MapVC-->
         <scene sceneID="uG2-jC-33b">
             <objects>
@@ -68,7 +94,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZlC-z1-u6s">
-                        <barButtonItem key="rightBarButtonItem" title="Show" id="XUl-x4-XVa"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XUl-x4-XVa">
+                            <connections>
+                                <action selector="showPopover:" destination="mLe-mn-S0M" id="rqS-fU-Xpz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="6To-Ny-K9M" id="JJT-g6-biz"/>
@@ -438,7 +468,6 @@
         <!--Navigation Controller-->
         <scene sceneID="rYa-NZ-sbX">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mnm-y5-Wvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WWW-qT-ucE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RtI-PY-5oN">
@@ -450,6 +479,7 @@
                         <segue destination="mLe-mn-S0M" kind="relationship" relationship="rootViewController" id="8G5-8H-gTF"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mnm-y5-Wvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2719" y="961"/>
         </scene>

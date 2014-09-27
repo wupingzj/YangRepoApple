@@ -38,7 +38,7 @@ public class Performance: AbstractEntity {
     
     public class func createEntity() -> Performance {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx
-        let ed: NSEntityDescription = NSEntityDescription.entityForName("Performance", inManagedObjectContext: ctx)
+        let ed: NSEntityDescription = NSEntityDescription.entityForName("Performance", inManagedObjectContext: ctx)!
         let newEntity = Performance(entity: ed, insertIntoManagedObjectContext: ctx)
         
         return newEntity

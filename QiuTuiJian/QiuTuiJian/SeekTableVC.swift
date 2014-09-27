@@ -47,11 +47,13 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
 //                println("tapped accessary button indexPath = \(indexPath)")
                 let indexPath = self.tableView.indexPathForSelectedRow()
                 if (indexPath == nil) {
-                    println("*** ERROR: application will crash... MUST SELECT A business entity to proceed...***")
+                    println("*** This should never happen but code here just in case for debugging.")
+                    println("*** ERROR: MUST SELECT A business entity to proceed...***")
+                    println("The details view will display an error message.")
+                } else {
+                    let businessEntity:BusinessEntity = self.fetchedResultsController.objectAtIndexPath(indexPath!) as BusinessEntity
+                    (segue.destinationViewController as BusinessEntityDetailVC).selectedBusinessEntity = businessEntity
                 }
-                
-                let businessEntity:BusinessEntity = self.fetchedResultsController.objectAtIndexPath(indexPath) as BusinessEntity
-                (segue.destinationViewController as BusinessEntityDetailVC).selectedBusinessEntity = businessEntity
             } else {
                 println("*** ERROR: segue sender is nil or not a UITableViewCell **********")
             }
@@ -60,7 +62,7 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         }
     }
     
-    override public func tableView(tableView: UITableView!, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath!) {
+    override public func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         println("*** Tapped \(indexPath)")
         //self.performSegueWithIdentifier("showBusinessEntityDetail", sender: tableView.cellForRowAtIndexPath: indexPath))
     }
@@ -69,29 +71,30 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
     // #pragma mark - Table View
     
     override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.fetchedResultsController.sections.count
+        if let sections = self.fetchedResultsController.sections {
+            return sections.count
+        } else {
+            println("ERROR@SeekTableVC: No sections found!")
+            return 0
+        }
     }
     
     // Customize the number of rows in the table view.
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
-        //return sectionInfo.numberOfObjects
+        // let sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
+        // return sectionInfo.numberOfObjects
         // only show two promoted business entities
         return 2
     }
     
     // Customize the appearance of table view cells.
     public func configureCell(cell:UITableViewCell, atIndexPath indexPath:NSIndexPath) {
-    
-        // Configure the cell to show the book's title
         let businessEntity:BusinessEntity = self.fetchedResultsController.objectAtIndexPath(indexPath) as BusinessEntity
-        cell.textLabel.text = businessEntity.name
-    }
-    
-    // second implemenation of configureCell - to be deleted
-    private func configureCellV2(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-        let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-        cell.textLabel.text = object.valueForKey("timeStamp").description
+        if let textLabel = cell.textLabel {
+            cell.textLabel!.text = businessEntity.name
+        } else {
+            println("ERROR@SeekTableVC: No text label found!")
+        }
     }
     
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -106,10 +109,13 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
     }
     
     override public func tableView(tableView: UITableView, titleForHeaderInSection sectionIdx:NSInteger) -> String {
-        
-        let section:NSFetchedResultsSectionInfo = self.fetchedResultsController.sections[sectionIdx] as NSFetchedResultsSectionInfo
-        
-        return section.name!
+        if let sections = self.fetchedResultsController.sections {
+            let sectionInfo = sections[sectionIdx] as NSFetchedResultsSectionInfo
+            return sectionInfo.name
+        } else {
+            println("ERROR@SeekTableVC: No sections found!")
+            return "N/A"
+        }
     }
     
     override public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -135,9 +141,9 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         
         let fetchRequest = NSFetchRequest()
         // Edit the entity name as appropriate.
-        let entity = NSEntityDescription.entityForName("BusinessEntity", inManagedObjectContext: self.ctx)
+        let entity = NSEntityDescription.entityForName("BusinessEntity", inManagedObjectContext: self.ctx!)
         fetchRequest.entity = entity
-        println("************* BusinessEntity entity class name=\(entity.managedObjectClassName)")
+        println("************* BusinessEntity entity class name=\(entity!.managedObjectClassName)")
         
         // Set the batch size to a suitable number.
         // @TODO how many categories to show? Consider performance
@@ -156,7 +162,7 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx, sectionNameKeyPath: "category", cacheName: "Master")
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.ctx!, sectionNameKeyPath: "category", cacheName: "Master")
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
@@ -199,7 +205,7 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
         case NSFetchedResultsChangeType.Delete:
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         case NSFetchedResultsChangeType.Update:
-            self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
+            self.configureCell(tableView.cellForRowAtIndexPath(indexPath)!, atIndexPath: indexPath)
         case NSFetchedResultsChangeType.Move:
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)

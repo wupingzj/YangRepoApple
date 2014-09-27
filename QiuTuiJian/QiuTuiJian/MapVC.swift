@@ -9,11 +9,13 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIPopoverControllerDelegate, UIActionSheetDelegate {
 
     @IBOutlet var mapView: MKMapView!
     
+    
     private var locationManager: CLLocationManager? = CLLocationManager()
+    private var popover: UIPopoverController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     }
     
     private func startSignificantChangeUpdates() {
-        if !locationManager {
+        if !(locationManager != nil) {
             self.locationManager = CLLocationManager()
             self.locationManager!.delegate = self
         }
@@ -132,4 +134,76 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     //          self.mapView.showsUserLocation = true
     //          keep updateing user location - didUpdateUserLocation (check timestamp, check significant?)
     
+    
+    @IBAction func showPopover(sender: UIBarButtonItem) {
+        showAlertController2(sender)
+    }
+
+    // UIActionSheet and UIAlertView are depreciated for using UIAlertController instead
+    private func showAlertController(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "MyTitle", message: "MyMsg", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let showUserLocationAction = UIAlertAction(title: "Show my location", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked showUserLocationAction")
+            })
+        
+        let showBusinessEntityLocationAction = UIAlertAction(title: "Show business location", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked show business location")
+            })
+        
+        alertController.addAction(showUserLocationAction)
+        alertController.addAction(showBusinessEntityLocationAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    private func showAlertController2(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "MyTitle", message: "MyMsg", preferredStyle: UIAlertControllerStyle.Alert)
+        let showUserLocationAction = UIAlertAction(title: "Show my location", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked showUserLocationAction")
+            })
+        
+        let showBusinessEntityLocationAction = UIAlertAction(title: "Show business location", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked show business location")
+            })
+        
+        let showBothAction = UIAlertAction(title: "Show both", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked show both")
+            })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alertController.addAction(showUserLocationAction)
+        alertController.addAction(showBusinessEntityLocationAction)
+        alertController.addAction(showBothAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    private func showPopover2(sender: UIBarButtonItem) {
+        println("Show popover controller")
+        
+        if !(popover != nil) {
+            let size = CGSizeMake(320, 200)
+            
+            //let mapPopoverVC: MapPopoverVC = MapPopoverVC()
+            let mapPopoverVC: MapPopoverVC = self.storyboard!.instantiateViewControllerWithIdentifier("mapPopoverVC") as MapPopoverVC
+            //            let mapPopoverVC: UIViewController = self.storyboard.instantiateViewControllerWithIdentifier("mapPopoverVC2") as UIViewController
+            mapPopoverVC.preferredContentSize = size
+            
+            self.popover = UIPopoverController(contentViewController: mapPopoverVC)
+            self.popover!.setPopoverContentSize(size, animated: true)
+        }
+        
+        self.popover!.delegate = self
+        self.popover!.presentPopoverFromBarButtonItem(sender, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+        
+        //        let frame = CGRectMake(20, 20, 100, 100)
+        //        self.popover!.presentPopoverFromRect(frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+    }
 }
