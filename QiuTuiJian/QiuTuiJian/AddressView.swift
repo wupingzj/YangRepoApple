@@ -9,12 +9,6 @@
 import UIKit
 
 class AddressView: UIView {
-
-    init(frame: CGRect) {
-        super.init(frame: frame)
-        // Initialization code
-    }
-
     override func layoutSubviews()  {
         super.layoutSubviews()
         

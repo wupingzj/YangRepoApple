@@ -27,7 +27,7 @@ class BusinessEntityLayoutFactory {
         self.contentViewsDictionary["contentView"] = contentView
     }
     
-    public func showBusinessEntityMissingMessage() {
+    func showBusinessEntityMissingMessage() {
         // errorMsgLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         let errorMsg: UITextView = UITextView()
         self.contentViewsDictionary["errorMsg"] = errorMsg
@@ -35,8 +35,10 @@ class BusinessEntityLayoutFactory {
         //let screenSize: CGSize = UIScreen.mainScreen().bounds.size
         //let cgRect = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y, errorMsg.contentSize.width, errorMsg.contentSize.height);
 
-        errorMsg.font = UIFont(name: nil, size: 20)
+        //errorMsg.font = UIFont(name: UIFont., size: 20)
+        // how to set font size with DEFAULT font name?
         errorMsg.text = "Please go back and select a business entity."
+
         self.contentView.addSubview(errorMsg)
         
         // errorMsg location
@@ -70,20 +72,20 @@ class BusinessEntityLayoutFactory {
             // optional description
             startY += addressView.bounds.height
             let descView: UIView? = createDescriptionView(x: 0, y: startY)
-            if descView {
+            if (descView != nil) {
                 adjustableViews.append(descView!)
             }
         }
         //self.contentView.backgroundColor = UIColor.greenColor()
     }
     
-    public func adjustViewBounds() {
+    func adjustViewBounds() {
         for view: UIView in adjustableViews {
             adjustViewBounds(view)
         }
     }
     
-    public func adjustViewBounds(view: UIView) {
+    private func adjustViewBounds(view: UIView) {
         // adjust width only
         let bounds = UIScreen.mainScreen().bounds
         
@@ -144,7 +146,7 @@ class BusinessEntityLayoutFactory {
 
         
         // phone
-        if businessEntity.phone {
+        if (businessEntity.phone != nil) {
             let phoneLabel: UILabel = createLabel(basicsView, viewDictionary: &basicsViewDictionary, labelName: "phoneLabel", labelText: "Phone:")
             let phone: UILabel = createLabel(basicsView, viewDictionary: &basicsViewDictionary, labelName: "phone", labelText: businessEntity.phone!)
             formatH.append("H:|-[phoneLabel(labelWidth)]-[phone(>=textWidth)]-|")
@@ -260,7 +262,7 @@ class BusinessEntityLayoutFactory {
     private func createDescriptionView(#x: CGFloat, y: CGFloat) -> UIView? {
         let businessEntity: BusinessEntity = selectedBusinessEntity!
 
-        if !businessEntity.desc {
+        if businessEntity.desc == nil {
                 return nil
         }
         

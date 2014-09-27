@@ -37,12 +37,14 @@ public class ShareTableVC: UITableViewController, NSFetchedResultsControllerDele
     // #pragma mark - Table View
     
     override public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.fetchedResultsController.sections.count
+        //return self.fetchedResultsController.sections.count
+        return 0
     }
     
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
-        return sectionInfo.numberOfObjects
+//        let sectionInfo = self.fetchedResultsController.sections[section] as NSFetchedResultsSectionInfo
+//        return sectionInfo.numberOfObjects
+        return 0
     }
     
     override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -73,7 +75,8 @@ public class ShareTableVC: UITableViewController, NSFetchedResultsControllerDele
     
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let object = self.fetchedResultsController.objectAtIndexPath(indexPath) as NSManagedObject
-        cell.textLabel.text = object.valueForKey("timeStamp").description
+        cell.textLabel!.text = "TODO"
+
     }
     
     // #pragma mark - Fetched results controller
@@ -84,9 +87,9 @@ public class ShareTableVC: UITableViewController, NSFetchedResultsControllerDele
         
         let fetchRequest = NSFetchRequest()
         // Edit the entity name as appropriate.
-        let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: self.managedObjectContext)
+        let entity = NSEntityDescription.entityForName("Event", inManagedObjectContext: self.managedObjectContext!)
         fetchRequest.entity = entity
-        println("************* Event entity class name=\(entity.managedObjectClassName)")
+        println("************* Event entity class name=\(entity!.managedObjectClassName)")
         
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 20
@@ -99,7 +102,7 @@ public class ShareTableVC: UITableViewController, NSFetchedResultsControllerDele
         
         // Edit the section name key path and cache name if appropriate.
         // nil for section name key path means "no sections".
-        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: "Master")
+        let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
         aFetchedResultsController.delegate = self
         _fetchedResultsController = aFetchedResultsController
         
@@ -140,7 +143,7 @@ public class ShareTableVC: UITableViewController, NSFetchedResultsControllerDele
         case NSFetchedResultsChangeType.Delete:
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         case NSFetchedResultsChangeType.Update:
-            self.configureCell(tableView.cellForRowAtIndexPath(indexPath), atIndexPath: indexPath)
+            self.configureCell(tableView.cellForRowAtIndexPath(indexPath)!, atIndexPath: indexPath)
         case NSFetchedResultsChangeType.Move:
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)

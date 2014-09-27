@@ -11,8 +11,8 @@ import CoreData
 
 @UIApplicationMain
 public class AppDelegate: UIResponder, UIApplicationDelegate {
-    public init() {
-        
+    public override init() {
+        super.init()
     }
                             
     public var window: UIWindow?
@@ -58,25 +58,23 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveContext() {
         var error: NSError? = nil
         let ctx = dataService.ctx
-        if ctx != nil {
-            if ctx.hasChanges {
-                println("*** ctx has been changed*** ")
+        if ctx.hasChanges {
+            println("*** ctx has been changed*** ")
+        }
+        
+        
+        if ctx.hasChanges && !ctx.save(&error) {
+            //abort()
+            
+            if let err = error {
+                println("Error occurred while saving data: \(err) , \(err.userInfo)")
+            } else {
+                println("Saved data")
             }
             
+            println("Error occurred while saving data: \(error!), \(error!.userInfo) ")
             
-            if ctx.hasChanges && !ctx.save(&error) {
-                //abort()
-                
-                if let err = error {
-                    println("Error occurred while saving data: \(err) , \(err.userInfo)")
-                } else {
-                    println("Saved data")
-                }
-                
-                println("Error occurred while saving data: \(error!), \(error!.userInfo) ")
-                
-                println("Error occurred while saving data: \(error)")
-            }
+            println("Error occurred while saving data: \(error)")
         }
     }
 }

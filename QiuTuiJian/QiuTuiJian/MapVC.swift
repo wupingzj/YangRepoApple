@@ -9,34 +9,48 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController, MKMapViewDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIPopoverControllerDelegate, UIActionSheetDelegate {
 
     @IBOutlet var mapView: MKMapView!
+    
+    
+    private var locationManager: CLLocationManager? = CLLocationManager()
+    private var popover: UIPopoverController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.mapView.delegate = self
+//        self.mapView.showsUserLocation = true
+        
+//        startSignificantChangeUpdates()
+//        locationManager!.requestWhenInUseAuthorization()
+        // check request succeeded or rejected by user!!!
+        
 
         checkNetwork()
-        showLocationOnMap()
+        showBusinessEntityOnMap()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func checkNetwork() {
         // TODO check network
     }
     
-    // show specified location on map
-    private func showLocationOnMap() {
-        self.mapView.showsUserLocation = true
-        
-//        ref: https://www.youtube.com/watch?v=uB100xVS_Yc
+    private func startSignificantChangeUpdates() {
+        if !(locationManager != nil) {
+            self.locationManager = CLLocationManager()
+            self.locationManager!.delegate = self
+        }
 
+        self.locationManager!.startMonitoringSignificantLocationChanges()
+    }
+    
+    // show specified location on map
+    private func showBusinessEntityOnMap() {
 //        Killara
         var latitude: CLLocationDegrees = -33.764522
         var longtitude: CLLocationDegrees = 151.160827
@@ -63,8 +77,12 @@ class MapVC: UIViewController, MKMapViewDelegate {
     
     // show user's current location
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        self.mapView.showsUserLocation = true
+        if true {
+            return
+        }
         
+        println("Show user's current location instead...")
+                
         let userLocation: CLLocationCoordinate2D = userLocation.coordinate
         let zoomRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(userLocation, 2500, 2500)
         
@@ -74,7 +92,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
         var annotation: MKPointAnnotation = MKPointAnnotation()
         annotation.coordinate = userLocation
         annotation.title = "You are here!"
-        annotation.subtitle = "Have fun!"
+        // annotation.subtitle = "Have fun!"
         
         self.mapView.addAnnotation(annotation)
     }
@@ -86,6 +104,12 @@ class MapVC: UIViewController, MKMapViewDelegate {
     
     // CLGeocoder to search places
     
+    // https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/MapKit/MapKit.html
+    
+    // show user location
+    // ref: https://www.youtube.com/watch?v=uB100xVS_Yc
+
+    
     /*
     // MARK: - Navigation
 
@@ -96,4 +120,90 @@ class MapVC: UIViewController, MKMapViewDelegate {
     }
     */
 
+    
+    // TODO
+    // Save battery. Ref: https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html#//apple_ref/doc/uid/TP40009497-CH2-SW1
+    
+    //   1. --- when exit MapVC, call locationManager.stopMonitoringSignificantLocationChanges  to save battery power
+    
+    // Only ask for current user location, when user asks to show Where am I?
+    //     From there, steps: 
+    //          create locationManager, 
+    //          assign delegate, 
+    //          startMonitoringSignificantLocationChanges,
+    //          self.mapView.showsUserLocation = true
+    //          keep updateing user location - didUpdateUserLocation (check timestamp, check significant?)
+    
+    
+    @IBAction func showPopover(sender: UIBarButtonItem) {
+        showAlertController2(sender)
+    }
+
+    // UIActionSheet and UIAlertView are depreciated for using UIAlertController instead
+    private func showAlertController(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "MyTitle", message: "MyMsg", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let showUserLocationAction = UIAlertAction(title: "Show my location", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked showUserLocationAction")
+            })
+        
+        let showBusinessEntityLocationAction = UIAlertAction(title: "Show business location", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked show business location")
+            })
+        
+        alertController.addAction(showUserLocationAction)
+        alertController.addAction(showBusinessEntityLocationAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    private func showAlertController2(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "MyTitle", message: "MyMsg", preferredStyle: UIAlertControllerStyle.Alert)
+        let showUserLocationAction = UIAlertAction(title: "Show my location", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked showUserLocationAction")
+            })
+        
+        let showBusinessEntityLocationAction = UIAlertAction(title: "Show business location", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked show business location")
+            })
+        
+        let showBothAction = UIAlertAction(title: "Show both", style: UIAlertActionStyle.Default,
+            handler: { action in
+                println("Clicked show both")
+            })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alertController.addAction(showUserLocationAction)
+        alertController.addAction(showBusinessEntityLocationAction)
+        alertController.addAction(showBothAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    private func showPopover2(sender: UIBarButtonItem) {
+        println("Show popover controller")
+        
+        if !(popover != nil) {
+            let size = CGSizeMake(320, 200)
+            
+            //let mapPopoverVC: MapPopoverVC = MapPopoverVC()
+            let mapPopoverVC: MapPopoverVC = self.storyboard!.instantiateViewControllerWithIdentifier("mapPopoverVC") as MapPopoverVC
+            //            let mapPopoverVC: UIViewController = self.storyboard.instantiateViewControllerWithIdentifier("mapPopoverVC2") as UIViewController
+            mapPopoverVC.preferredContentSize = size
+            
+            self.popover = UIPopoverController(contentViewController: mapPopoverVC)
+            self.popover!.setPopoverContentSize(size, animated: true)
+        }
+        
+        self.popover!.delegate = self
+        self.popover!.presentPopoverFromBarButtonItem(sender, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+        
+        //        let frame = CGRectMake(20, 20, 100, 100)
+        //        self.popover!.presentPopoverFromRect(frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+    }
 }

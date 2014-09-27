@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3914B6CE19D2A80400CC7F62 /* MapPopoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3914B6CD19D2A80400CC7F62 /* MapPopoverVC.swift */; };
 		39222D0019B5D3F6005B12A9 /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39222CFF19B5D3F6005B12A9 /* Performance.swift */; };
 		39222D0219B5D564005B12A9 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39222D0119B5D564005B12A9 /* Review.swift */; };
 		39222D0419B5D646005B12A9 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39222D0319B5D646005B12A9 /* Person.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3914B6CD19D2A80400CC7F62 /* MapPopoverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPopoverVC.swift; sourceTree = "<group>"; };
 		39222CFF19B5D3F6005B12A9 /* Performance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Performance.swift; sourceTree = "<group>"; };
 		39222D0119B5D564005B12A9 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		39222D0319B5D646005B12A9 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				3924E2DD19CD585F00F7CBA9 /* MapVC.swift */,
+				3914B6CD19D2A80400CC7F62 /* MapPopoverVC.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				39222D0219B5D564005B12A9 /* Review.swift in Sources */,
 				393841F019720A0D00060A6E /* AppDelegate.swift in Sources */,
 				3935251F1990E21900298ED0 /* BusinessEntity.swift in Sources */,
+				3914B6CE19D2A80400CC7F62 /* MapPopoverVC.swift in Sources */,
 				392D96DA19A60D13008BC8A8 /* AdVC.swift in Sources */,
 				392F43B7198D279A003C4D01 /* DataService.swift in Sources */,
 				3982A9B219BDBF1C0017DAED /* BusinessEntityLayoutFactory.swift in Sources */,

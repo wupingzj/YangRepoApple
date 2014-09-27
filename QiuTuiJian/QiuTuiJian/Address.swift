@@ -51,7 +51,7 @@ public class Address: AbstractEntity {
     
     public class func createEntity() -> Address {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx
-        let ed: NSEntityDescription = NSEntityDescription.entityForName("Address", inManagedObjectContext: ctx)
+        let ed: NSEntityDescription = NSEntityDescription.entityForName("Address", inManagedObjectContext: ctx)!
         let newEntity = Address(entity: ed, insertIntoManagedObjectContext: ctx)
         
         return newEntity

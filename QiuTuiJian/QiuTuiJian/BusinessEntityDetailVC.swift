@@ -36,7 +36,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
         Utils.sharedInstance.displaySystemInfo()
         
         //businessEntity = nil //test missing error message
-        if self.selectedBusinessEntity {
+        if (self.selectedBusinessEntity != nil) {
             layoutFactory!.showBusinessEntityDetails()
         } else {
             layoutFactory!.showBusinessEntityMissingMessage()
@@ -44,7 +44,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     }
 
     
-    public func orientationChanged(notification: NSNotification) {
+    func orientationChanged(notification: NSNotification) {
         println("RECEIVE ORIENTATION notification")
     }
 
@@ -118,7 +118,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     
     func sendEmail() {
         if let businessEntity = self.selectedBusinessEntity {
-            if businessEntity.email {
+            if (businessEntity.email != nil) {
                 let emailString:String = "email:" + businessEntity.email!
                 println("Sending an email to \(emailString) ...")
                 
@@ -173,7 +173,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
 }
 
     // #pragma mark - Segues
-    override public func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         println("****** prepareForSegue ******")
@@ -186,16 +186,12 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
 //        }
     }
     
-    public func showMap() {
+    func showMap() {
         println("*** Tapped showMap")
         //self.performSegueWithIdentifier("segueShowMap", sender: nil)
         
-        let mapVC: AnyObject! = self.storyboard.instantiateViewControllerWithIdentifier("mapVC")
-        if mapVC {
-            self.showViewController(mapVC as UIViewController, sender: mapVC)
+        let mapVC = self.storyboard!.instantiateViewControllerWithIdentifier("mapVC") as MapVC
+        self.showViewController(mapVC as UIViewController, sender: mapVC)
             //self.presentViewController(mapVC as UIViewController, animated: true, completion: nil)
-        } else {
-            println("Error: Failed to instantiate mapVC!")
-        }
     }
 }

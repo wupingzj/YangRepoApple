@@ -26,7 +26,7 @@ public class BusinessPerson: Person {
     
     public class func createEntity() -> BusinessPerson {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx
-        let ed: NSEntityDescription = NSEntityDescription.entityForName("BusinessPerson", inManagedObjectContext: ctx)
+        let ed: NSEntityDescription = NSEntityDescription.entityForName("BusinessPerson", inManagedObjectContext: ctx)!
         let newEntity = BusinessPerson(entity: ed, insertIntoManagedObjectContext: ctx)
         
         return newEntity

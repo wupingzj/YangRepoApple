@@ -21,7 +21,7 @@ public class Mobile: AbstractEntity {
     
     @NSManaged var businessEntity: BusinessEntity
     
-    public init(entity: NSEntityDescription!, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         
         //println("**** My class is \(self.entity.managedObjectClassName)")
@@ -44,7 +44,7 @@ public class Mobile: AbstractEntity {
     
     public class func createEntity() -> Mobile {
         let ctx: NSManagedObjectContext = DataService.sharedInstance.ctx
-        let MobileED: NSEntityDescription = NSEntityDescription.entityForName("Mobile", inManagedObjectContext: ctx)
+        let MobileED: NSEntityDescription = NSEntityDescription.entityForName("Mobile", inManagedObjectContext: ctx)!
         let newMobile = Mobile(entity: MobileED, insertIntoManagedObjectContext: ctx)
         
         return newMobile
