@@ -28,15 +28,10 @@ class BusinessEntityLayoutFactory {
     }
     
     func showBusinessEntityMissingMessage() {
-        // errorMsgLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         let errorMsg: UITextView = UITextView()
         self.contentViewsDictionary["errorMsg"] = errorMsg
 
-        //let screenSize: CGSize = UIScreen.mainScreen().bounds.size
-        //let cgRect = CGRectMake(contentView.frame.origin.x, contentView.frame.origin.y, errorMsg.contentSize.width, errorMsg.contentSize.height);
-
-        //errorMsg.font = UIFont(name: UIFont., size: 20)
-        // how to set font size with DEFAULT font name?
+        errorMsg.font = UIFont.systemFontOfSize(20.0)
         errorMsg.text = "Please go back and select a business entity."
 
         self.contentView.addSubview(errorMsg)

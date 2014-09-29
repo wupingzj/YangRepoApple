@@ -34,6 +34,7 @@
 		39B1D5E31981B462000BE637 /* DataServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E21981B462000BE637 /* DataServiceTest.swift */; };
 		39BE31A5198BB5B000758D4B /* DataDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE31A4198BB5B000758D4B /* DataDaoTests.swift */; };
 		39CA066B19BB160700BE5153 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA066A19BB160700BE5153 /* AddressView.swift */; };
+		39E131AA19D9760900F0EDC4 /* AddressTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E131A919D9760900F0EDC4 /* AddressTest.swift */; };
 		39E14EC019C07DC700BE9608 /* ConstraintCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E14EBF19C07DC700BE9608 /* ConstraintCreator.swift */; };
 		39F56A3A199241550009FF94 /* SeekTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F56A39199241550009FF94 /* SeekTableVC.swift */; };
 		39FEFDEF1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */; };
@@ -114,6 +115,7 @@
 		39B1D5E21981B462000BE637 /* DataServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServiceTest.swift; sourceTree = "<group>"; };
 		39BE31A4198BB5B000758D4B /* DataDaoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDaoTests.swift; sourceTree = "<group>"; };
 		39CA066A19BB160700BE5153 /* AddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
+		39E131A919D9760900F0EDC4 /* AddressTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTest.swift; sourceTree = "<group>"; };
 		39E14EBF19C07DC700BE9608 /* ConstraintCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintCreator.swift; sourceTree = "<group>"; };
 		39EE7BD719A4A783000DCCE5 /* QiuTuiJianModel_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v3.xcdatamodel; sourceTree = "<group>"; };
 		39F56A39199241550009FF94 /* SeekTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekTableVC.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		3938420119720A0D00060A6E /* QiuTuiJianTests */ = {
 			isa = PBXGroup;
 			children = (
+				39E131A819D975D300F0EDC4 /* Model */,
 				39B1D5E21981B462000BE637 /* DataServiceTest.swift */,
 				39BE31A4198BB5B000758D4B /* DataDaoTests.swift */,
 				3938420419720A0D00060A6E /* QiuTuiJianTests.swift */,
@@ -225,6 +228,14 @@
 				39E14EBF19C07DC700BE9608 /* ConstraintCreator.swift */,
 			);
 			name = BusinessEntityDetails;
+			sourceTree = "<group>";
+		};
+		39E131A819D975D300F0EDC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39E131A919D9760900F0EDC4 /* AddressTest.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		39EB63FB19938BCE0032AC6B /* Resource */ = {
@@ -410,6 +421,7 @@
 			files = (
 				393525211990E48200298ED0 /* BusinessEntityTest.swift in Sources */,
 				39BE31A5198BB5B000758D4B /* DataDaoTests.swift in Sources */,
+				39E131AA19D9760900F0EDC4 /* AddressTest.swift in Sources */,
 				3938420519720A0D00060A6E /* QiuTuiJianTests.swift in Sources */,
 				39B1D5E31981B462000BE637 /* DataServiceTest.swift in Sources */,
 			);

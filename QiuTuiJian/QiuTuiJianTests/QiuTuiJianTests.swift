@@ -27,7 +27,7 @@ class QiuTuiJianTests: XCTestCase {
         let app: UIApplication = UIApplication.sharedApplication()
         isObjectNil(Object: app, ObjectName: "app")
         
-        let delegate : UIApplicationDelegate = app.delegate
+        let delegate : UIApplicationDelegate = app.delegate!
         isObjectNil(Object: delegate, ObjectName: "delegate")
         
         let appDelegate : AppDelegate = delegate as AppDelegate

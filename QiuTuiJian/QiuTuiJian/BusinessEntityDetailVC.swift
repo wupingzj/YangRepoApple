@@ -35,7 +35,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
     func configureView() {
         Utils.sharedInstance.displaySystemInfo()
         
-        //businessEntity = nil //test missing error message
+        // self.selectedBusinessEntity = nil //test missing error message
         if (self.selectedBusinessEntity != nil) {
             layoutFactory!.showBusinessEntityDetails()
         } else {
@@ -191,6 +191,8 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
         //self.performSegueWithIdentifier("segueShowMap", sender: nil)
         
         let mapVC = self.storyboard!.instantiateViewControllerWithIdentifier("mapVC") as MapVC
+        mapVC.businessEntity = selectedBusinessEntity
+        
         self.showViewController(mapVC as UIViewController, sender: mapVC)
             //self.presentViewController(mapVC as UIViewController, animated: true, completion: nil)
     }

@@ -11,6 +11,7 @@ import Foundation
 import CoreData
 
 public class Address: AbstractEntity {
+    // To allow easy management, optional fields cannot be nil but can be empty
     @NSManaged
     public var streetNumber: String
     
@@ -63,5 +64,31 @@ public class Address: AbstractEntity {
     
     func getLine2() -> String {
         return suburb
+    }
+    
+    // Get the location string for search with Apple CLGeocoder
+    public func getLocationForSearch() -> String {
+        // contencat location details with ,
+        var location: String = ""
+        
+        append(&location, string: self.streetNumber)
+        append(&location, string: self.street)
+        append(&location, string: self.suburb)
+        append(&location, string: self.city)
+        append(&location, string: self.country)
+        append(&location, string: self.postCode)
+
+        return location
+    }
+
+    // append string to location
+    private func append(inout location: String, string: String) {
+        if !string.isEmpty {
+            if !location.isEmpty {
+                location.extend(",")
+            }
+            
+            location.extend(string)
+        }
     }
 }

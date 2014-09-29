@@ -9,13 +9,14 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIPopoverControllerDelegate, UIActionSheetDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIPopoverControllerDelegate {
 
     @IBOutlet var mapView: MKMapView!
-    
+    var businessEntity: BusinessEntity?
     
     private var locationManager: CLLocationManager? = CLLocationManager()
     private var popover: UIPopoverController?
+//    private var geocoder = CLGeocoder()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +27,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
 //        startSignificantChangeUpdates()
 //        locationManager!.requestWhenInUseAuthorization()
         // check request succeeded or rejected by user!!!
-        
 
-        checkNetwork()
         showBusinessEntityOnMap()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    private func checkNetwork() {
-        // TODO check network
     }
     
     private func startSignificantChangeUpdates() {
@@ -47,36 +42,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         }
 
         self.locationManager!.startMonitoringSignificantLocationChanges()
-    }
-    
-    // show specified location on map
-    private func showBusinessEntityOnMap() {
-//        Killara
-        var latitude: CLLocationDegrees = -33.764522
-        var longtitude: CLLocationDegrees = 151.160827
-        var location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtitude)
-
-        var latitudeDelta: CLLocationDegrees = 0.01
-        var longitudeDelta: CLLocationDegrees = 0.01
-        var span: MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
-        
-        var zoomRegion: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-        
-        self.mapView.setRegion(zoomRegion, animated: true)
-        
-        // place a mark
-        //let placeMark: CLPlacemark =
-
-        // annotate the location
-        var annotation: MKPointAnnotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = "Killara railway station"
-        annotation.subtitle = "A lovely railway station!"
-        self.mapView.addAnnotation(annotation)
-    }
-    
-    private func searchBusinessLocation() -> (CLLocationDegrees?, CLLocationDegrees?) {
-        return (nil, nil)
     }
     
     // show user's current location
@@ -141,11 +106,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
     
     @IBAction func showPopover(sender: UIBarButtonItem) {
         showAlertController(sender)
+        //doShowPopover(sender)
     }
 
     // UIActionSheet and UIAlertView are depreciated for using UIAlertController instead
     private func showAlertController(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Action", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Action", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let showUserLocationAction = UIAlertAction(title: "Show my location", style: UIAlertActionStyle.Default,
             handler: { action in
                 println("Clicked showUserLocationAction")
@@ -154,6 +120,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         let showBusinessEntityLocationAction = UIAlertAction(title: "Show business location", style: UIAlertActionStyle.Default,
             handler: { action in
                 println("Clicked show business location")
+                self.showBusinessEntityOnMap()
             })
         
         let showBothAction = UIAlertAction(title: "Show both", style: UIAlertActionStyle.Default,
@@ -171,16 +138,124 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    private func showPopover2(sender: UIBarButtonItem) {
-        println("Show popover controller")
+    // Search business location and show it on the map
+    private func showBusinessEntityOnMap() {
+        if let be = self.businessEntity {
+            searchAndShowBusinessLocation(be)
+        } else {
+            showAlertMsg("Sorry", message: "No business entity is selected yet.")
+        }
+    }
+    
+    // show a message with default style and dismiss it after clicking OK Button
+    private func showAlertMsg(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,
+            handler: { action in
+        })
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // search Apple Map for the location of the business entity and show it when it returns
+    private func searchAndShowBusinessLocation(businessEntity: BusinessEntity) {
+        checkNetwork()
         
-        if !(popover != nil) {
-            let size = CGSizeMake(320, 200)
+        // var locationToSearch: String = "6 Culworth Ave, Killara, NSW"
+        var locationToSearch: String = businessEntity.address.getLocationForSearch()
+        println("searching location for \(locationToSearch).")
+        
+        var geocoder = CLGeocoder()
+
+        println("geocoder= \(geocoder).")
+        
+        geocoder.geocodeAddressString(locationToSearch, completionHandler: { (placemarks: [AnyObject]!, error: NSError!) in
+            if error != nil {
+                self.showAlertMsg("Sorry", message: "Cannot get the location of the business service provider.")
+                return
+            }
             
+            if placemarks != nil && placemarks.count > 0 {
+                let top: CLPlacemark = placemarks[0] as CLPlacemark
+                
+                let addressStr: String = "Address = \(top.subThoroughfare), \(top.thoroughfare), \(top.locality), \(top.location)"
+                println("****** \(addressStr) ***")
+                
+                //println("*** lantitude=\(top.location.coordinate.latitude)")
+                //println("*** longtitude=\(top.location.coordinate.longitude)")
+                //var latitude: CLLocationDegrees = -33.764522
+                //var longtitude: CLLocationDegrees = 151.160827
+                
+                // pass back the search result
+                let location = top.location
+                
+                // Take action after the search returns
+                // Bear in mind that, location search is asynchronize. It might return before the completion handler is called
+                // REF: http://stackoverflow.com/questions/14346516/xcode-ios-clgeocoder-reversegeocodelocation-return-addressstring
+                let annotation = self.getAnnotation(location, businessEntity: businessEntity)
+                self.showAndAnnotateOnMap(location, annotation: annotation)
+            }
+        })
+        
+        // because location search is asynchronous, there is a good chance that this line is reached 
+        // before search is done and the locaton is nil
+        // this doesn't necessarily mean the search failed. So don't do anything here!
+        return
+    }
+    
+    // Get annotation for business entity at location
+    private func getAnnotation(location: CLLocation, businessEntity: BusinessEntity) -> MKPointAnnotation {
+        var annotation: MKPointAnnotation = MKPointAnnotation()
+        annotation.coordinate = location.coordinate
+        annotation.title = businessEntity.name
+        // annotation.subtitle = "A lovely railway station!"
+        return annotation
+    }
+    
+    // zoom to show and annotate on map
+    private func showAndAnnotateOnMap(location: CLLocation, annotation: MKPointAnnotation?) {
+        // show business on the map
+        // "Killara railway station"
+        //            var latitude: CLLocationDegrees = -33.764522
+        //            var longtitude: CLLocationDegrees = 151.160827
+        //var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longtitude)
+        
+        var latitudeDelta: CLLocationDegrees = 0.01
+        var longitudeDelta: CLLocationDegrees = 0.01
+        var span: MKCoordinateSpan = MKCoordinateSpanMake(latitudeDelta, longitudeDelta)
+        var zoomRegion: MKCoordinateRegion = MKCoordinateRegionMake(location.coordinate, span)
+        self.mapView.setRegion(zoomRegion, animated: true)
+        
+        // annotate the location
+        if (annotation != nil) {
+            self.mapView.addAnnotation(annotation)
+        }
+    }
+    
+    private func dummy() {
+        //localize placemark
+        
+//        CLPlacemark *placemark;
+//
+//        NSString *identifier = [NSLocale localeIdentifierFromComponents: [NSDictionary dictionaryWithObject: placemark.ISOcountryCode forKey: NSLocaleCountryCode]];
+//        NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+//        NSString *country = [usLocale displayNameForKey: NSLocaleIdentifier value: identifier];
+    }
+    
+    private func checkNetwork() {
+        // TODO check network
+        println("**** TODO - searching Apple Map service on internet...")
+    }
+    
+    private func doShowPopover(sender: UIBarButtonItem) {
+        println("Show popover controller")
+
+        let size = CGSizeMake(320, 1100)
+
+        if self.popover == nil {
             //let mapPopoverVC: MapPopoverVC = MapPopoverVC()
             let mapPopoverVC: MapPopoverVC = self.storyboard!.instantiateViewControllerWithIdentifier("mapPopoverVC") as MapPopoverVC
-            //            let mapPopoverVC: UIViewController = self.storyboard.instantiateViewControllerWithIdentifier("mapPopoverVC2") as UIViewController
-            mapPopoverVC.preferredContentSize = size
+            //mapPopoverVC.preferredContentSize = size
             
             self.popover = UIPopoverController(contentViewController: mapPopoverVC)
             self.popover!.setPopoverContentSize(size, animated: true)
@@ -188,6 +263,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         
         self.popover!.delegate = self
         self.popover!.presentPopoverFromBarButtonItem(sender, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+        self.popover!.setPopoverContentSize(size, animated: true)
         
         //        let frame = CGRectMake(20, 20, 100, 100)
         //        self.popover!.presentPopoverFromRect(frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)

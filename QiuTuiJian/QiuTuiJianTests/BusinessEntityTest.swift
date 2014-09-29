@@ -89,7 +89,7 @@ class BusinessEntityTest: XCTestCase {
         newMobile.number = mobile
 
         // link BusinessEntity and Mobile
-        newBusinessEntity.mobile = newMobile
+        //newBusinessEntity.mobile = newMobile
 
         return newBusinessEntity
     }
