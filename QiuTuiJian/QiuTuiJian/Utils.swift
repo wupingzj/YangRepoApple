@@ -11,6 +11,8 @@ import UIKit
 
 let utils = Utils()
 public class Utils {
+    private let osVersion = UIDevice.currentDevice().systemVersion
+    
     // Singleton
     public class var sharedInstance : Utils {
         return utils
@@ -21,11 +23,17 @@ public class Utils {
         println("systemVersion=\(currentDevice.systemVersion)")
         println("systemName=\(currentDevice.systemName)")
         println("model=\(currentDevice.model)")
-        
-        // check OS version
-        let yosemite = NSOperatingSystemVersion(majorVersion: 10, minorVersion: 10, patchVersion: 0)
-        let isAtLeastYosemite: Bool = NSProcessInfo().isOperatingSystemAtLeastVersion(yosemite) // false
-        
-        println("isAtLeastYosemite=\(isAtLeastYosemite)")
+    }
+    
+    func isIOS703() -> Bool {
+        return osVersion == "7.0.3"
+    }
+    
+    func isIOS71() -> Bool {
+        return osVersion == "7.1"
+    }
+    
+    func isIOS80() -> Bool {
+        return osVersion == "8.0"
     }
 }

@@ -15,7 +15,7 @@ class BusinessEntityLayoutFactory {
     private var contentView: UIView
     
     private var contentViewsDictionary: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
-    private var metricsDictionary: Dictionary<String, CGFloat> = ["labelWidth":80.0, "textWidth":100.0, "labelHeight":20.0]
+    private var metricsDictionary: Dictionary<String, CGFloat> = ["labelWidth":80.0, "textWidth":100.0]
     private let standardLineGap = CGFloat(8.0)
     private var adjustableViews: [UIView] = []
     
@@ -25,6 +25,14 @@ class BusinessEntityLayoutFactory {
         self.contentView = contentView
         
         self.contentViewsDictionary["contentView"] = contentView
+        
+
+        // TODO - find out the totoal height of UI components on different devices
+        if Utils.sharedInstance.isIOS703() || Utils.sharedInstance.isIOS71() {
+            // For iOS7, increase the gap
+            standardLineGap = CGFloat(12.0)
+        }
+        metricsDictionary["labelHeight"] = CGFloat(20.0)
     }
     
     func showBusinessEntityMissingMessage() {
@@ -54,13 +62,15 @@ class BusinessEntityLayoutFactory {
             println("*** configuring the business entity \(businessEntity) ***")
             
             var startY = CGFloat(0)
-            
+
             // basics
             let basicsView: UIView = createBasicsView(x: 0, y: startY)
             adjustableViews.append(basicsView)
             
             // address
             startY += basicsView.bounds.height
+            
+            
             let addressView: UIView = createAddressView(x: 0, y: startY)
             adjustableViews.append(addressView)
             

@@ -36,7 +36,10 @@
 		39CA066B19BB160700BE5153 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA066A19BB160700BE5153 /* AddressView.swift */; };
 		39E131AA19D9760900F0EDC4 /* AddressTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E131A919D9760900F0EDC4 /* AddressTest.swift */; };
 		39E14EC019C07DC700BE9608 /* ConstraintCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E14EBF19C07DC700BE9608 /* ConstraintCreator.swift */; };
+		39EFB8CC19E6628E002DC210 /* TQJOSVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EFB8CB19E6628E002DC210 /* TQJOSVersion.swift */; };
+		39EFB8CE19E8EBA3002DC210 /* QTJCompatibilityUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EFB8CD19E8EBA3002DC210 /* QTJCompatibilityUtils.swift */; };
 		39F56A3A199241550009FF94 /* SeekTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F56A39199241550009FF94 /* SeekTableVC.swift */; };
+		39F9A7D919DA978200E12905 /* MapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F9A7D819DA978200E12905 /* MapInfo.swift */; };
 		39FEFDEF1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDED1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodeld */; };
 		39FEFDF71979DBA500415EC0 /* FavoriteTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */; };
 		39FEFDF91979DECB00415EC0 /* ShareTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FEFDF81979DECB00415EC0 /* ShareTableVC.swift */; };
@@ -118,7 +121,10 @@
 		39E131A919D9760900F0EDC4 /* AddressTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTest.swift; sourceTree = "<group>"; };
 		39E14EBF19C07DC700BE9608 /* ConstraintCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintCreator.swift; sourceTree = "<group>"; };
 		39EE7BD719A4A783000DCCE5 /* QiuTuiJianModel_v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v3.xcdatamodel; sourceTree = "<group>"; };
+		39EFB8CB19E6628E002DC210 /* TQJOSVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TQJOSVersion.swift; sourceTree = "<group>"; };
+		39EFB8CD19E8EBA3002DC210 /* QTJCompatibilityUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTJCompatibilityUtils.swift; sourceTree = "<group>"; };
 		39F56A39199241550009FF94 /* SeekTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekTableVC.swift; sourceTree = "<group>"; };
+		39F9A7D819DA978200E12905 /* MapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInfo.swift; sourceTree = "<group>"; };
 		39FAA2F8198FB18600739C94 /* QiuTuiJianModel_v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel_v1.xcdatamodel; sourceTree = "<group>"; };
 		39FEFDEE1977B0B500415EC0 /* QiuTuiJianModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QiuTuiJianModel.xcdatamodel; sourceTree = "<group>"; };
 		39FEFDF61979DBA500415EC0 /* FavoriteTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableVC.swift; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				3924E2D419CC493600F7CBA9 /* Utils.swift */,
+				39EFB8CD19E8EBA3002DC210 /* QTJCompatibilityUtils.swift */,
+				39EFB8CB19E6628E002DC210 /* TQJOSVersion.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 			children = (
 				3924E2DD19CD585F00F7CBA9 /* MapVC.swift */,
 				3914B6CD19D2A80400CC7F62 /* MapPopoverVC.swift */,
+				39F9A7D819DA978200E12905 /* MapInfo.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -395,9 +404,11 @@
 				39F56A3A199241550009FF94 /* SeekTableVC.swift in Sources */,
 				39222D0619B5D7C4005B12A9 /* User.swift in Sources */,
 				3944B3BF19B2D6B100C269E4 /* Mobile.swift in Sources */,
+				39EFB8CE19E8EBA3002DC210 /* QTJCompatibilityUtils.swift in Sources */,
 				3944B3C219B2EDFC00C269E4 /* AbstractEntity.swift in Sources */,
 				39222D0C19B66CBF005B12A9 /* DataLoader.swift in Sources */,
 				39FEFDF91979DECB00415EC0 /* ShareTableVC.swift in Sources */,
+				39EFB8CC19E6628E002DC210 /* TQJOSVersion.swift in Sources */,
 				39E14EC019C07DC700BE9608 /* ConstraintCreator.swift in Sources */,
 				393DEF12199B462700549587 /* BusinessEntityDetailVC.swift in Sources */,
 				392F43B5198D2769003C4D01 /* DataDao.swift in Sources */,
@@ -410,6 +421,7 @@
 				3914B6CE19D2A80400CC7F62 /* MapPopoverVC.swift in Sources */,
 				392D96DA19A60D13008BC8A8 /* AdVC.swift in Sources */,
 				392F43B7198D279A003C4D01 /* DataService.swift in Sources */,
+				39F9A7D919DA978200E12905 /* MapInfo.swift in Sources */,
 				3982A9B219BDBF1C0017DAED /* BusinessEntityLayoutFactory.swift in Sources */,
 				3924E2D519CC493600F7CBA9 /* Utils.swift in Sources */,
 			);
@@ -558,11 +570,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QiuTuiJian/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -575,10 +589,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = QiuTuiJian/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

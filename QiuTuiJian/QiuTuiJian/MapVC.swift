@@ -16,18 +16,15 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
     
     private var locationManager: CLLocationManager? = CLLocationManager()
     private var popover: UIPopoverController?
-//    private var geocoder = CLGeocoder()
+    private var geocoder = CLGeocoder()
+    private var mapInfo = MapInfo.ShowBusinessEntity
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.mapView.delegate = self
-//        self.mapView.showsUserLocation = true
+        self.mapView.showsUserLocation = true
         
-//        startSignificantChangeUpdates()
-//        locationManager!.requestWhenInUseAuthorization()
-        // check request succeeded or rejected by user!!!
-
         showBusinessEntityOnMap()
     }
 
@@ -36,7 +33,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
     }
     
     private func startSignificantChangeUpdates() {
-        if !(locationManager != nil) {
+        if locationManager == nil {
             self.locationManager = CLLocationManager()
             self.locationManager!.delegate = self
         }
@@ -46,11 +43,16 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
     
     // show user's current location
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-        if true {
-            return
-        }
+//        if mapInfo == mapInfo.ShowUser && locationCHANGED {
+//            return
+//        }
         
-        println("Show user's current location instead...")
+        println("*** Show user's current location instead...")
+//        if true {
+//            return
+//        }
+        
+        println("Show user's current location...")
                 
         let userLocation: CLLocationCoordinate2D = userLocation.coordinate
         let zoomRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(userLocation, 2500, 2500)
@@ -60,8 +62,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         // annotate the location
         var annotation: MKPointAnnotation = MKPointAnnotation()
         annotation.coordinate = userLocation
-        annotation.title = "You are here!"
-        // annotation.subtitle = "Have fun!"
+//        annotation.title = "You are here!"
+        annotation.subtitle = "TODO - show current address"
         
         self.mapView.addAnnotation(annotation)
     }
@@ -114,18 +116,23 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         let alertController = UIAlertController(title: "Action", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         let showUserLocationAction = UIAlertAction(title: "Show my location", style: UIAlertActionStyle.Default,
             handler: { action in
-                println("Clicked showUserLocationAction")
+                if self.mapInfo != MapInfo.ShowUser {
+                    self.showUserOnMap()
+                }
             })
         
         let showBusinessEntityLocationAction = UIAlertAction(title: "Show business location", style: UIAlertActionStyle.Default,
             handler: { action in
-                println("Clicked show business location")
-                self.showBusinessEntityOnMap()
+                if self.mapInfo != MapInfo.ShowBusinessEntity {
+                    self.showBusinessEntityOnMap()
+                }
             })
         
         let showBothAction = UIAlertAction(title: "Show both", style: UIAlertActionStyle.Default,
             handler: { action in
-                println("Clicked show both")
+                if self.mapInfo != MapInfo.ShowBoth {
+                    self.showBothOnMap()
+                }
             })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
@@ -147,8 +154,20 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         }
     }
     
+    private func showUserOnMap() {
+                startSignificantChangeUpdates()
+                locationManager!.requestWhenInUseAuthorization()
+        // check request succeeded or rejected by user!!!
+        
+
+        //searchAndShowBusinessLocation()
+        // when success, change status
+        self.mapInfo = MapInfo.ShowUser
+    }
+    
     // show a message with default style and dismiss it after clicking OK Button
     private func showAlertMsg(title: String, message: String) {
+        // TODO: UIAlertController requires iOS8
         let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,
             handler: { action in
@@ -165,10 +184,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         var locationToSearch: String = businessEntity.address.getLocationForSearch()
         println("searching location for \(locationToSearch).")
         
-        var geocoder = CLGeocoder()
-
-        println("geocoder= \(geocoder).")
-        
         geocoder.geocodeAddressString(locationToSearch, completionHandler: { (placemarks: [AnyObject]!, error: NSError!) in
             if error != nil {
                 self.showAlertMsg("Sorry", message: "Cannot get the location of the business service provider.")
@@ -177,23 +192,18 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
             
             if placemarks != nil && placemarks.count > 0 {
                 let top: CLPlacemark = placemarks[0] as CLPlacemark
-                
-                let addressStr: String = "Address = \(top.subThoroughfare), \(top.thoroughfare), \(top.locality), \(top.location)"
-                println("****** \(addressStr) ***")
-                
-                //println("*** lantitude=\(top.location.coordinate.latitude)")
-                //println("*** longtitude=\(top.location.coordinate.longitude)")
-                //var latitude: CLLocationDegrees = -33.764522
-                //var longtitude: CLLocationDegrees = 151.160827
-                
-                // pass back the search result
                 let location = top.location
+                let addressStr: String = "Address = \(top.subThoroughfare), \(top.thoroughfare), \(top.locality), \(top.location)"
+                println("****** Search Result= \(addressStr) ***")
                 
                 // Take action after the search returns
                 // Bear in mind that, location search is asynchronize. It might return before the completion handler is called
                 // REF: http://stackoverflow.com/questions/14346516/xcode-ios-clgeocoder-reversegeocodelocation-return-addressstring
                 let annotation = self.getAnnotation(location, businessEntity: businessEntity)
                 self.showAndAnnotateOnMap(location, annotation: annotation)
+
+                // when success, change status
+                self.mapInfo = MapInfo.ShowBusinessEntity
             }
         })
         
@@ -201,6 +211,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         // before search is done and the locaton is nil
         // this doesn't necessarily mean the search failed. So don't do anything here!
         return
+    }
+    
+    private func showBothOnMap() {
+        // TODO
+        // when success, change status
+        self.mapInfo = MapInfo.ShowBoth
     }
     
     // Get annotation for business entity at location
@@ -250,12 +266,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
     private func doShowPopover(sender: UIBarButtonItem) {
         println("Show popover controller")
 
-        let size = CGSizeMake(320, 1100)
+        let size = CGSizeMake(150, 140)
 
         if self.popover == nil {
-            //let mapPopoverVC: MapPopoverVC = MapPopoverVC()
-            let mapPopoverVC: MapPopoverVC = self.storyboard!.instantiateViewControllerWithIdentifier("mapPopoverVC") as MapPopoverVC
-            //mapPopoverVC.preferredContentSize = size
+            let mapPopoverVC: MapPopoverVC = MapPopoverVC(style: UITableViewStyle.Plain)
+//            let mapPopoverVC: MapPopoverVC = self.storyboard!.instantiateViewControllerWithIdentifier("mapPopoverVC") as MapPopoverVC
+            mapPopoverVC.preferredContentSize = size
             
             self.popover = UIPopoverController(contentViewController: mapPopoverVC)
             self.popover!.setPopoverContentSize(size, animated: true)
@@ -263,7 +279,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         
         self.popover!.delegate = self
         self.popover!.presentPopoverFromBarButtonItem(sender, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
-        self.popover!.setPopoverContentSize(size, animated: true)
         
         //        let frame = CGRectMake(20, 20, 100, 100)
         //        self.popover!.presentPopoverFromRect(frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)

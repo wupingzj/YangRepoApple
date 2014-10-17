@@ -193,7 +193,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
         let mapVC = self.storyboard!.instantiateViewControllerWithIdentifier("mapVC") as MapVC
         mapVC.businessEntity = selectedBusinessEntity
         
-        self.showViewController(mapVC as UIViewController, sender: mapVC)
-            //self.presentViewController(mapVC as UIViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(mapVC, animated: true) // iOS7 comptible
+        // self.showViewController(mapVC as UIViewController, sender: mapVC) // iOS8 only
     }
 }
