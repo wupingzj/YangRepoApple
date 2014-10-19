@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIPopoverControllerDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, UIPopoverControllerDelegate {
 
     @IBOutlet var mapView: MKMapView!
     var businessEntity: BusinessEntity?
@@ -23,8 +23,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         super.viewDidLoad()
         
         self.mapView.delegate = self
-        self.mapView.showsUserLocation = true
-        
+        self.mapView.zoomEnabled = true
+        self.mapView.scrollEnabled = true
+
+        // when showsUserLocation is true, didUpdateUserLocation is called to send notification.
+        // when showsUserLocation is false, no notification.
+        // self.mapView.showsUserLocation = true
+
         showBusinessEntityOnMap()
     }
 
@@ -32,40 +37,17 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
         super.didReceiveMemoryWarning()
     }
     
-    private func startSignificantChangeUpdates() {
-        if locationManager == nil {
-            self.locationManager = CLLocationManager()
-            self.locationManager!.delegate = self
-        }
-
-        self.locationManager!.startMonitoringSignificantLocationChanges()
-    }
-    
     // show user's current location
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
-//        if mapInfo == mapInfo.ShowUser && locationCHANGED {
-//            return
-//        }
-        
-        println("*** Show user's current location instead...")
-//        if true {
-//            return
-//        }
-        
-        println("Show user's current location...")
-                
-        let userLocation: CLLocationCoordinate2D = userLocation.coordinate
-        let zoomRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(userLocation, 2500, 2500)
-        
-        self.mapView.setRegion(zoomRegion, animated: true)
-        
-        // annotate the location
-        var annotation: MKPointAnnotation = MKPointAnnotation()
-        annotation.coordinate = userLocation
-//        annotation.title = "You are here!"
-        annotation.subtitle = "TODO - show current address"
-        
-        self.mapView.addAnnotation(annotation)
+        println("User current location chgange notification...")
+        if mapInfo == MapInfo.ShowUser || mapInfo == MapInfo.ShowBoth {
+            println("Show user's current location")
+                    
+            let userLocation: CLLocationCoordinate2D = userLocation.coordinate
+            let zoomRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(userLocation, 2500, 2500)
+            
+            self.mapView.setRegion(zoomRegion, animated: true)
+        }
     }
     
     // Reference
@@ -79,6 +61,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
     
     // show user location
     // ref: https://www.youtube.com/watch?v=uB100xVS_Yc
+    // ref: http://www.devfright.com/mkmapview-and-mkmapview-delegate-tutorial/
 
     
     /*
@@ -135,7 +118,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
                 }
             })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel,
+            handler: { action in
+            })
         
         alertController.addAction(showUserLocationAction)
         alertController.addAction(showBusinessEntityLocationAction)
@@ -155,9 +140,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
     }
     
     private func showUserOnMap() {
-                startSignificantChangeUpdates()
-                locationManager!.requestWhenInUseAuthorization()
+        locationManager!.requestWhenInUseAuthorization()
         // check request succeeded or rejected by user!!!
+        self.mapView.showsUserLocation = true
         
 
         //searchAndShowBusinessLocation()
@@ -204,6 +189,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIP
 
                 // when success, change status
                 self.mapInfo = MapInfo.ShowBusinessEntity
+                self.mapView.showsUserLocation = false
             }
         })
         
