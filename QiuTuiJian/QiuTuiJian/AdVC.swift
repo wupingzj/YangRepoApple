@@ -50,4 +50,13 @@ class AdVC: UIViewController {
         let dataLoader: DataLoader = DataLoader()
         dataLoader.listEntities()
     }
+    
+    @IBAction func checkNetwork(sender: UIButton) {
+        println("Checking network status...")
+    }
+    
+    @IBAction func retrieveRemoteData(sender: UIButton) {
+        println("Retrieve remote data from server ...")
+    }
+    
 }

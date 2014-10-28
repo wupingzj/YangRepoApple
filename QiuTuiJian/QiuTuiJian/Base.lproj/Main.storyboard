@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -359,6 +360,24 @@
                                         </state>
                                         <connections>
                                             <action selector="listBusinessEntities:" destination="hWA-rH-4kU" eventType="touchUpInside" id="ek7-fE-GMD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMJ-Xa-S5e">
+                                        <rect key="frame" x="212" y="20" width="106" height="30"/>
+                                        <state key="normal" title="Check Network">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="checkNetwork:" destination="hWA-rH-4kU" eventType="touchUpInside" id="4as-CU-DmW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qG3-cF-CeJ">
+                                        <rect key="frame" x="192" y="119" width="177" height="30"/>
+                                        <state key="normal" title="Retrieve Data from Server">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="retrieveRemoteData:" destination="hWA-rH-4kU" eventType="touchUpInside" id="I0N-Es-tFp"/>
                                         </connections>
                                     </button>
                                 </subviews>
