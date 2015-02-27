@@ -48,7 +48,7 @@ public class BusinessEntity: AbstractEntity {
         super.awakeFromInsert()
         
         // createdDate cannot be initialized in AbstractEntity
-        self.uuid = NSUUID.UUID().UUIDString
+        self.uuid = NSUUID().UUIDString
         self.createdDate = NSDate()
     }
     

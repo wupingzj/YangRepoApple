@@ -32,6 +32,7 @@
 		3944B3C219B2EDFC00C269E4 /* AbstractEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B3C119B2EDFC00C269E4 /* AbstractEntity.swift */; };
 		3982A9B219BDBF1C0017DAED /* BusinessEntityLayoutFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3982A9B119BDBF1C0017DAED /* BusinessEntityLayoutFactory.swift */; };
 		39B1D5E31981B462000BE637 /* DataServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B1D5E21981B462000BE637 /* DataServiceTest.swift */; };
+		39B7E01E19FF6D9500A0514C /* PGNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7E01D19FF6D9500A0514C /* PGNetworkManager.swift */; };
 		39BE31A5198BB5B000758D4B /* DataDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE31A4198BB5B000758D4B /* DataDaoTests.swift */; };
 		39CA066B19BB160700BE5153 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA066A19BB160700BE5153 /* AddressView.swift */; };
 		39E131AA19D9760900F0EDC4 /* AddressTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E131A919D9760900F0EDC4 /* AddressTest.swift */; };
@@ -116,6 +117,7 @@
 		3944B3C119B2EDFC00C269E4 /* AbstractEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractEntity.swift; sourceTree = "<group>"; };
 		3982A9B119BDBF1C0017DAED /* BusinessEntityLayoutFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessEntityLayoutFactory.swift; sourceTree = "<group>"; };
 		39B1D5E21981B462000BE637 /* DataServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataServiceTest.swift; sourceTree = "<group>"; };
+		39B7E01D19FF6D9500A0514C /* PGNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGNetworkManager.swift; sourceTree = "<group>"; };
 		39BE31A4198BB5B000758D4B /* DataDaoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataDaoTests.swift; sourceTree = "<group>"; };
 		39CA066A19BB160700BE5153 /* AddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		39E131A919D9760900F0EDC4 /* AddressTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTest.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				3924E2D419CC493600F7CBA9 /* Utils.swift */,
+				39B7E01D19FF6D9500A0514C /* PGNetworkManager.swift */,
 				39EFB8CD19E8EBA3002DC210 /* QTJCompatibilityUtils.swift */,
 				39EFB8CB19E6628E002DC210 /* TQJOSVersion.swift */,
 			);
@@ -414,6 +417,7 @@
 				392F43B5198D2769003C4D01 /* DataDao.swift in Sources */,
 				3924E2DE19CD585F00F7CBA9 /* MapVC.swift in Sources */,
 				39CA066B19BB160700BE5153 /* AddressView.swift in Sources */,
+				39B7E01E19FF6D9500A0514C /* PGNetworkManager.swift in Sources */,
 				39222D0019B5D3F6005B12A9 /* Performance.swift in Sources */,
 				39222D0219B5D564005B12A9 /* Review.swift in Sources */,
 				393841F019720A0D00060A6E /* AppDelegate.swift in Sources */,

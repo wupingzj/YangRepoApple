@@ -111,7 +111,7 @@ public class SeekTableVC: UITableViewController, NSFetchedResultsControllerDeleg
     override public func tableView(tableView: UITableView, titleForHeaderInSection sectionIdx:NSInteger) -> String {
         if let sections = self.fetchedResultsController.sections {
             let sectionInfo = sections[sectionIdx] as NSFetchedResultsSectionInfo
-            return sectionInfo.name
+            return sectionInfo.name!
         } else {
             println("ERROR@SeekTableVC: No sections found!")
             return "N/A"

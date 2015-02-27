@@ -86,7 +86,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
             
             
             let app: UIApplication = UIApplication.sharedApplication()
-            app.openURL(NSURL.URLWithString(phoneSting))
+            app.openURL(NSURL(fileURLWithPath: phoneSting)!)
             
             // Note1: the call is aynchronous. So, the application continues while calling.
             // the application will applicationWillResignActive and then applicationDidEnterBackground.
@@ -105,7 +105,7 @@ class BusinessEntityDetailVC: UIViewController, MFMailComposeViewControllerDeleg
             
             
             let app: UIApplication = UIApplication.sharedApplication()
-            app.openURL(NSURL.URLWithString(mobileString))
+            app.openURL(NSURL(fileURLWithPath: mobileString)!)
             
             // Note1: the call is aynchronous. So, the application continues while calling.
             // the application will applicationWillResignActive and then applicationDidEnterBackground.

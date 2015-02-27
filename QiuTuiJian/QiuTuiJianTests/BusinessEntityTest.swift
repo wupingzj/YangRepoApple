@@ -12,7 +12,7 @@ import QiuTuiJian
 import CoreData
 
 class BusinessEntityTest: XCTestCase {
-    func xtestListEntities() {
+    func testListEntities() {
         var dataDao: DataDao = DataDao()
 
         let (managedObjects, error) = dataDao.listEntities("BusinessEntity", fault:false, sortByKey: "name", ascending: false, fetchBatchSize:20)

@@ -20,7 +20,7 @@ public class BusinessPerson: Person {
     public override func awakeFromInsert() {
         super.awakeFromInsert()
         
-        self.uuid = NSUUID.UUID().UUIDString
+        self.uuid = NSUUID().UUIDString
         self.createdDate = NSDate()
     }
     
